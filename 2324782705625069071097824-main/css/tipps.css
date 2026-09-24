@@ -1,0 +1,605 @@
+/* Tipps Resource Center Styles */
+
+.tipps-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - var(--nav-h));
+  padding-top: var(--nav-h);
+  background: var(--cream);
+}
+
+/* Sticky Sidebar */
+.tipps-sidebar {
+  border-right: 1px solid var(--border);
+  padding: 3rem 2rem;
+  position: sticky;
+  top: var(--nav-h);
+  height: calc(100vh - var(--nav-h));
+  overflow-y: auto;
+  background: rgba(245, 243, 238, 0.5);
+}
+
+.tipps-sidebar-title {
+  font-family: var(--M);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 2rem;
+}
+
+.tipps-filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tipps-filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--B);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tipps-filter-btn:hover {
+  background: rgba(11, 14, 26, 0.04);
+  color: var(--ink);
+}
+
+.tipps-filter-btn.active {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: var(--ink);
+}
+
+/* Grid Area */
+.tipps-content {
+  padding: 4rem clamp(1.5rem, 5vw, 4rem);
+}
+
+.tipps-header {
+  margin-bottom: 3rem;
+}
+
+.tipps-header h1 {
+  font-family: var(--H);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.tipps-count {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.tipps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* Modern Card */
+.tipp-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.tipp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(11, 14, 26, 0.06);
+  border-color: rgba(29, 186, 110, 0.4);
+}
+
+.tipp-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.tipp-card:hover::before {
+  transform: scaleX(1);
+}
+
+.tipp-icon {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  background: var(--cream);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+}
+
+.tipp-icon img {
+  width: 42px;
+  height: 42px;
+  display: block;
+  object-fit: contain;
+}
+
+.tipp-category {
+  font-family: var(--M);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+
+.tipp-title {
+  font-family: var(--H);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+.tipp-excerpt {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tipp-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.tipp-read-more {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--green);
+  transition: gap 0.2s;
+}
+
+.tipp-card:hover .tipp-read-more {
+  gap: 0.8rem;
+}
+
+/* Fullscreen Modal */
+.tipp-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(245, 243, 238, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding: 2rem;
+}
+
+.tipp-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tipp-modal-content {
+  background: var(--white);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(11, 14, 26, 0.12);
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tipp-modal.open .tipp-modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.tipp-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--cream);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.tipp-modal-close:hover {
+  background: var(--ink);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+.tipp-modal-hero {
+  padding: 4rem 4rem 3rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+}
+
+.tipp-modal-body {
+  padding: 3rem 4rem 4rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--ink2);
+}
+
+.tipp-modal-body strong {
+  color: var(--ink);
+}
+
+.tipp-action-box {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(29, 186, 110, 0.08);
+  border-left: 4px solid var(--green);
+  border-radius: 0 12px 12px 0;
+}
+
+.tipp-action-box h4 {
+  font-family: var(--H);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+/* ========================================
+   EXPANDABLE CARD ANIMATION SYSTEM
+   Framer-Motion inspired transitions
+   ======================================== */
+
+/* Backdrop overlay */
+.tipp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(245, 243, 238, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.tipp-modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Expandable Card Container */
+.tipp-expandable-card {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 2rem;
+  padding-top: 6rem;
+}
+
+.tipp-expandable-card.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Expanded Card Content */
+.tipp-expandable-content {
+  width: 100%;
+  max-width: 850px;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(11, 14, 26, 0.12);
+  
+  /* Animation states */
+  transform: translateY(30px) scale(0.96);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+}
+
+.tipp-expandable-card.active .tipp-expandable-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Hide scrollbar but keep functionality */
+.tipp-expandable-content {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.tipp-expandable-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Image section in expanded view */
+.tipp-expandable-image {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.tipp-expandable-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--white), transparent);
+  pointer-events: none;
+}
+
+.tipp-expandable-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Content area */
+.tipp-expandable-body {
+  padding: 2rem 3rem 4rem;
+  position: relative;
+}
+
+/* Header with title and close button */
+.tipp-expandable-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.tipp-expandable-info {
+  flex: 1;
+}
+
+.tipp-expandable-category {
+  font-family: var(--M);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.tipp-expandable-title {
+  font-family: var(--H);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Close button */
+.tipp-expandable-close {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.tipp-expandable-close:hover {
+  background: var(--ink);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+.tipp-expandable-close svg {
+  transition: transform 0.3s ease;
+}
+
+.tipp-expandable-card.active .tipp-expandable-close svg {
+  transform: rotate(45deg);
+}
+
+/* Body text */
+.tipp-expandable-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--ink2);
+}
+
+.tipp-expandable-text strong {
+  color: var(--ink);
+}
+
+/* Action box */
+.tipp-expandable-action {
+  margin-top: 2.5rem;
+  padding: 1.5rem 2rem;
+  background: rgba(29, 186, 110, 0.08);
+  border-left: 4px solid var(--green);
+  border-radius: 0 12px 12px 0;
+}
+
+.tipp-expandable-action h4 {
+  font-family: var(--H);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+/* ========================================
+   CARD HOVER ENHANCEMENTS
+   ======================================== */
+
+.tipp-card {
+  /* Ensure proper stacking */
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.tipp-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r);
+  opacity: 0;
+  background: radial-gradient(circle at center, rgba(29, 186, 110, 0.1) 0%, transparent 70%);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.tipp-card:hover::after {
+  opacity: 1;
+}
+
+/* Icon pulse animation */
+.tipp-icon {
+  position: relative;
+  overflow: hidden;
+}
+
+.tipp-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(29, 186, 110, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tipp-card:hover .tipp-icon::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered entrance animation */
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tipp-card {
+  animation: cardSlideIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+/* Individual stagger delays handled in JS */
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 900px) {
+  .tipp-expandable-card {
+    padding: 1rem;
+    padding-top: 4rem;
+    align-items: flex-start;
+  }
+  
+  .tipp-expandable-content {
+    max-height: calc(100vh - 6rem);
+    border-radius: 20px;
+  }
+  
+  .tipp-expandable-image {
+    height: 200px;
+  }
+  
+  .tipp-expandable-body {
+    padding: 1.5rem 2rem 2rem;
+  }
+  
+  .tipp-expandable-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .tipp-expandable-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .tipp-expandable-card {
+    padding: 0;
+  }
+  
+  .tipp-expandable-content {
+    max-height: 100vh;
+    border-radius: 0;
+    height: 100%;
+  }
+  
+  .tipp-expandable-action {
+    padding: 1rem 1.5rem;
+  }
+}

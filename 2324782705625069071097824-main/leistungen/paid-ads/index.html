@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paid Ads für Sicherheitsunternehmen – Google & Meta Ads – InboxElevate</title>
+  <meta name="description" content="Google Ads und Meta Ads speziell für Sicherheitsdienste, Alarmanlagen-Anbieter und Sicherheitsunternehmen. Mehr qualifizierte Leads ohne Streuverlust.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    .spoke-page { padding-top: 68px; }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      padding: 1.2rem clamp(1.5rem,5vw,5rem);
+      font-family: var(--M);
+      font-size: .7rem;
+      letter-spacing: .06em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb-sep { opacity: .4; }
+
+    /* HERO */
+    .spoke-hero {
+      padding: 6rem clamp(1.5rem,5vw,5rem) 5rem;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .spoke-label {
+      font-family: var(--M);
+      font-size: .7rem;
+      letter-spacing: .14em;
+      color: var(--green);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 1.5rem;
+    }
+    .spoke-label::before { content:''; width:20px; height:1px; background:var(--green); }
+    .spoke-hero h1 {
+      font-family: var(--H);
+      font-size: clamp(2.8rem,5vw,4.5rem);
+      font-weight: 800;
+      letter-spacing: -.05em;
+      line-height: .95;
+      margin-bottom: 1.5rem;
+    }
+    .spoke-hero h1 span { color: var(--green); }
+    .spoke-hero-desc {
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+    .spoke-hero-visual {
+      background: var(--ink);
+      border-radius: 24px;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .spoke-stat {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .spoke-stat-val {
+      font-family: var(--H);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+    .spoke-stat-label {
+      font-size: .85rem;
+      color: rgba(245,243,238,.6);
+      text-align: right;
+      max-width: 160px;
+      line-height: 1.4;
+    }
+
+    /* PROBLEM SECTION */
+    .spoke-problem {
+      padding: 6rem clamp(1.5rem,5vw,5rem);
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .spoke-section-label {
+      font-family: var(--M);
+      font-size: .7rem;
+      letter-spacing: .14em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .spoke-section-h2 {
+      font-family: var(--H);
+      font-size: clamp(2rem,4vw,3.2rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1.05;
+      margin-bottom: 3rem;
+      max-width: 700px;
+    }
+    .spoke-section-h2 span { color: var(--green); }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .problem-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .problem-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .problem-card h3 {
+      font-family: var(--H);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .6rem;
+    }
+    .problem-card p { font-size: .88rem; color: rgba(245,243,238,.6); line-height: 1.65; }
+
+    /* SOLUTION SECTION */
+    .spoke-solution {
+      padding: 6rem clamp(1.5rem,5vw,5rem);
+      background: var(--cream);
+    }
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+    .solution-cell {
+      background: var(--cream);
+      padding: 2.5rem;
+      transition: background .2s;
+    }
+    .solution-cell:hover { background: rgba(29,186,110,.04); }
+    .solution-num {
+      font-family: var(--M);
+      font-size: .65rem;
+      color: var(--muted);
+      letter-spacing: .1em;
+      margin-bottom: 1rem;
+    }
+    .solution-cell h3 {
+      font-family: var(--H);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: .6rem;
+      color: var(--ink);
+    }
+    .solution-cell p { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+    /* PLATFORMS */
+    .spoke-platforms {
+      padding: 5rem clamp(1.5rem,5vw,5rem);
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .platform-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      background: var(--cream);
+      transition: border-color .2s, transform .2s;
+    }
+    .platform-card:hover { border-color: var(--green); transform: translateY(-3px); }
+    .platform-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .platform-card h3 {
+      font-family: var(--H);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+    }
+    .platform-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* FAQ */
+    .spoke-faq {
+      padding: 6rem clamp(1.5rem,5vw,5rem);
+      background: var(--cream);
+    }
+    .faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q-btn {
+      width: 100%;
+      text-align: left;
+      padding: 1.8rem 2rem;
+      background: var(--white);
+      border: none;
+      font-family: var(--H);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: background .2s;
+    }
+    .faq-q-btn:hover { background: rgba(29,186,110,.04); }
+    .faq-q-btn.open { color: var(--green); }
+    .faq-icon { font-size: 1.3rem; transition: transform .3s; color: var(--muted); flex-shrink: 0; }
+    .faq-q-btn.open .faq-icon { transform: rotate(45deg); color: var(--green); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, padding .3s ease;
+      background: var(--cream);
+    }
+    .faq-answer.open { max-height: 400px; }
+    .faq-answer-inner { padding: 0 2rem 1.8rem; font-size: .95rem; color: var(--muted); line-height: 1.75; }
+
+    /* CTA SECTION */
+    .spoke-cta {
+      padding: 7rem clamp(1.5rem,5vw,5rem);
+      background: var(--ink);
+      color: var(--cream);
+      text-align: center;
+    }
+    .spoke-cta h2 {
+      font-family: var(--H);
+      font-size: clamp(2.5rem,5vw,4rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      margin-bottom: 1.2rem;
+    }
+    .spoke-cta h2 span { color: var(--green); }
+    .spoke-cta p { color: rgba(245,243,238,.65); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .btn-green {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--green);
+      color: var(--ink);
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      font-family: var(--H);
+      font-weight: 800;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-green:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(29,186,110,.3); }
+
+    /* FOOTER */
+    .spoke-footer {
+      background: var(--ink);
+      color: rgba(245,243,238,.4);
+      padding: 2rem clamp(1.5rem,5vw,5rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .8rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .spoke-footer a { color: rgba(245,243,238,.4); text-decoration: none; }
+    .spoke-footer a:hover { color: var(--cream); }
+
+    @media(max-width: 800px) {
+      .spoke-hero { grid-template-columns: 1fr; gap: 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV (injected by JS) -->
+  <div data-site-nav></div>
+
+
+  <main class="spoke-page">
+
+    <div class="breadcrumb">
+      <a href="/">Start</a><span class="breadcrumb-sep">/</span>
+      <a href="/leistungen">Leistungen</a><span class="breadcrumb-sep">/</span>
+      <span style="color:var(--ink)">Paid Ads</span>
+    </div>
+
+    <section class="spoke-hero">
+      <div>
+        <div class="spoke-label">Leistung 02</div>
+        <h1>Ads, die<br><span>Aufträge bringen.</span></h1>
+        <p class="spoke-hero-desc">Google Search und Meta Ads — zielgenau ausgesteuert für Alarmanlagen-Anfragen, Objektschutz-Leads und das Recruiting von Sicherheitsmitarbeitern. Ohne Streuverlust.</p>
+        <a href="/#kontakt" class="btn-ink">Kostenlosen Marketing-Check anfordern →</a>
+      </div>
+      <div class="spoke-hero-visual">
+        <div class="spoke-stat">
+          <div class="spoke-stat-val">< 48h</div>
+          <div class="spoke-stat-label">Reaktionszeit auf deine Anfrage</div>
+        </div>
+        <div class="spoke-stat">
+          <div class="spoke-stat-val">3×</div>
+          <div class="spoke-stat-label">Plattformen parallel bespielt</div>
+        </div>
+        <div class="spoke-stat">
+          <div class="spoke-stat-val">100%</div>
+          <div class="spoke-stat-label">Fokus auf Sicherheitsbranche</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="spoke-problem">
+      <div class="spoke-section-label">Das Problem</div>
+      <h2 class="spoke-section-h2">Warum normale Ads für<br><span>Sicherheitsfirmen scheitern.</span></h2>
+      <div class="problems-grid">
+        <div class="problem-card">
+          <div class="problem-icon">🎯</div>
+          <h3>Falsche Zielgruppen</h3>
+          <p>Generische Kampagnen erreichen Menschen, die einen Bodyguard suchen oder in der Sicherheitsbranche arbeiten wollen — nicht deinen Wunschkunden.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">💸</div>
+          <h3>Budget verpufft</h3>
+          <p>Ohne Branchen-spezifische Negative Keywords fließt ein erheblicher Teil deines Budgets in Klicks, die nie eine Chance hatten zu konvertieren.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📄</div>
+          <h3>Schlechte Landingpages</h3>
+          <p>Selbst perfekte Ads verlieren ihre Wirkung, wenn die Zielseite keine klare Handlungsaufforderung hat oder auf dem Handy schlecht lädt.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📊</div>
+          <h3>Kein sauberes Tracking</h3>
+          <p>Ohne korrekt eingerichtetes Conversion-Tracking weißt du nicht, welche Kampagne wirklich Anrufe und Anfragen generiert — und zahlst blind.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spoke-solution">
+      <div class="spoke-section-label" style="color:var(--green)">Unsere Lösung</div>
+      <h2 class="spoke-section-h2" style="color:var(--ink)">Was wir konkret<br>für dich tun.</h2>
+      <div class="solution-grid">
+        <div class="solution-cell">
+          <div class="solution-num">01</div>
+          <h3>Branchen-Keyword-Strategie</h3>
+          <p>Wir recherchieren die genauen Suchbegriffe, die potenzielle Kunden in deiner Region bei Google eingeben — und schließen alles Irrelevante von Beginn an aus.</p>
+        </div>
+        <div class="solution-cell">
+          <div class="solution-num">02</div>
+          <h3>Anzeigentexte die konvertieren</h3>
+          <p>Keine Baukastentexte. Wir schreiben spezifische Anzeigen für Alarmanlagen, Objektschutz, Pfortendienst oder Werkschutz — was auch immer dein Kerngeschäft ist.</p>
+        </div>
+        <div class="solution-cell">
+          <div class="solution-num">03</div>
+          <h3>Conversion-Tracking einrichten</h3>
+          <p>Anruf-Tracking, Formular-Conversions, WhatsApp-Klicks — wir richten sauberes Tracking ein, damit du genau weißt, was dein Anzeigenbudget bringt.</p>
+        </div>
+        <div class="solution-cell">
+          <div class="solution-num">04</div>
+          <h3>Monatliches Reporting</h3>
+          <p>Kein Zahlen-Bingo: Du bekommst einen klaren, verständlichen Bericht mit Klicks, Leads und Kosten pro Anfrage — ohne Fachjargon.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spoke-platforms">
+      <div class="spoke-section-label" style="color:var(--green)">Plattformen</div>
+      <h2 class="spoke-section-h2" style="color:var(--ink);font-size:clamp(1.8rem,3vw,2.5rem)">Wo wir für dich aktiv sind.</h2>
+      <div class="platforms-grid">
+        <div class="platform-card">
+          <div class="platform-icon">🔍</div>
+          <h3>Google Search Ads</h3>
+          <p>Direkte Sichtbarkeit für Nutzer, die aktiv nach Sicherheitsdienstleistungen suchen — der höchste Kaufintent aller Kanäle.</p>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon">📘</div>
+          <h3>Meta Ads (Facebook & Instagram)</h3>
+          <p>Zielgruppen-Targeting nach Region, Unternehmenstyp und Verhalten — ideal für Bewusstsein und Recruiting.</p>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon">💼</div>
+          <h3>LinkedIn Ads</h3>
+          <p>Für B2B-Entscheider in Industrie und Immobilienwirtschaft — wenn du Objektschutz oder Werkschutz vertreibst.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="spoke-faq">
+      <div class="spoke-section-label" style="color:var(--green)">FAQ</div>
+      <h2 class="spoke-section-h2" style="color:var(--ink);font-size:clamp(1.8rem,3vw,2.5rem)">Häufige Fragen.</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q-btn" onclick="toggleFaqSpoke(this)">Wie lange dauert es, bis erste Ergebnisse sichtbar sind? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Google Search Ads liefern in der Regel innerhalb der ersten 2–4 Wochen erste Klicks und Anfragen. Meta Ads benötigen meist 4–6 Wochen bis der Algorithmus die optimale Zielgruppe gefunden hat. Wir setzen realistische Erwartungen — nicht unrealistische Versprechen.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" onclick="toggleFaqSpoke(this)">Welches Mediabudget brauche ich mindestens? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Das kommt auf deine Region und Dienstleistung an. Im Erstgespräch analysieren wir, was in deiner Situation Sinn ergibt — wir empfehlen kein Budget, das wir selbst nicht für sinnvoll halten würden.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" onclick="toggleFaqSpoke(this)">Brauche ich schon eine gute Website, damit Ads funktionieren? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Eine solide, schnell ladende Landingpage ist essenziell. Wir sagen es dir offen, wenn deine aktuelle Website der Performance-Engpass ist — und können dir hier ebenfalls weiterhelfen.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" onclick="toggleFaqSpoke(this)">Betreut ihr uns langfristig oder nur beim Start? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Wir arbeiten ausschließlich langfristig. Ads werden besser mit mehr Daten und Zeit. Kurzfristige Setup-only-Pakete bieten wir nicht an — das würde dir mehr schaden als nützen.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="spoke-cta">
+      <h2>Bereit für<br><span>messbare Ergebnisse?</span></h2>
+      <p>Im kostenlosen Marketing-Check schauen wir gemeinsam, welche Ads-Strategie für dein Sicherheitsunternehmen den größten Hebel hat.</p>
+      <a href="/#kontakt" class="btn-green">Marketing-Check anfordern →</a>
+    </section>
+
+  </main>
+
+  <footer class="spoke-footer">
+    <span>© 2025 InboxElevate · <a class="js-email-link" data-u="david" data-d="inbox-elevate.de">[E-Mail laden…]</a></span>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="/leistungen">Alle Leistungen</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaqSpoke(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q-btn.open').forEach(b => {
+        b.classList.remove('open');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.classList.add('open');
+      }
+    }
+  </script>
+  <script src="/js/main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Draggable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/InertiaPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Physics2DPlugin.min.js"></script>
+</body>
+</html>

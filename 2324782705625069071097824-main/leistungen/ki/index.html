@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI-Automatisierung für Sicherheitsunternehmen – InboxElevate</title>
+  <meta name="description" content="KI-Lösungen für Sicherheitsdienste: Anfragen automatisch vorqualifizieren, 24/7 Chatbots und Workflow-Automatisierung. Weniger manuelle Arbeit, mehr Effizienz.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    .spoke-page { padding-top: 68px; }
+    .breadcrumb {
+      padding: 1.2rem clamp(1.5rem,5vw,5rem);
+      font-family: var(--M);
+      font-size: .7rem;
+      letter-spacing: .06em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb-sep { opacity: .4; }
+
+    /* HERO – dark for KI */
+    .ki-hero {
+      padding: 7rem clamp(1.5rem,5vw,5rem) 6rem;
+      background: var(--ink);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .ki-hero::before {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(29,186,110,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .ki-hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .spoke-label {
+      font-family: var(--M);
+      font-size: .7rem;
+      letter-spacing: .14em;
+      color: var(--green);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 1.5rem;
+    }
+    .spoke-label::before { content:''; width:20px; height:1px; background:var(--green); }
+    .ki-hero h1 {
+      font-family: var(--H);
+      font-size: clamp(2.8rem,5vw,4.5rem);
+      font-weight: 800;
+      letter-spacing: -.05em;
+      line-height: .95;
+      margin-bottom: 1.5rem;
+    }
+    .ki-hero h1 span { color: var(--green); }
+    .ki-hero-desc {
+      color: rgba(245,243,238,.7);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    /* KI TERMINAL VISUAL */
+    .ki-terminal {
+      background: #0d1117;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      overflow: hidden;
+      font-family: var(--M);
+    }
+    .ki-terminal-bar {
+      background: rgba(255,255,255,.05);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      padding: .8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .ki-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .ki-terminal-body { padding: 1.5rem; font-size: .8rem; line-height: 1.9; }
+    .ki-line-label { color: rgba(255,255,255,.25); }
+    .ki-line-user { color: rgba(245,243,238,.8); }
+    .ki-line-bot { color: var(--green); }
+    .ki-line-sys { color: rgba(29,186,110,.5); font-style: italic; }
+
+    /* USE CASES */
+    .ki-usecases {
+      padding: 7rem clamp(1.5rem,5vw,5rem);
+      background: var(--cream);
+    }
+    .spoke-section-label { font-family: var(--M); font-size: .7rem; letter-spacing: .14em; color: var(--green); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .spoke-section-h2 {
+      font-family: var(--H);
+      font-size: clamp(2rem,4vw,3.2rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1.05;
+      margin-bottom: 3.5rem;
+      max-width: 700px;
+    }
+    .spoke-section-h2 span { color: var(--green); }
+
+    .usecase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+      gap: 1.5rem;
+    }
+    .usecase-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: border-color .25s, transform .25s;
+    }
+    .usecase-card:hover { border-color: var(--green); transform: translateY(-4px); }
+    .uc-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(29,186,110,.1);
+      border: 1px solid rgba(29,186,110,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .usecase-card h3 {
+      font-family: var(--H);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: .7rem;
+      color: var(--ink);
+    }
+    .usecase-card p { font-size: .9rem; color: var(--muted); line-height: 1.65; }
+    .uc-result {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: 1.2rem;
+      font-family: var(--M);
+      font-size: .72rem;
+      color: var(--green);
+      letter-spacing: .05em;
+    }
+
+    /* HOW IT WORKS */
+    .ki-process {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 7rem clamp(1.5rem,5vw,5rem);
+    }
+    .process-steps {
+      margin-top: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .process-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2.5rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      align-items: start;
+    }
+    .process-step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: var(--M);
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: rgba(29,186,110,.4);
+      line-height: 1;
+      padding-top: .2rem;
+    }
+    .step-content h3 {
+      font-family: var(--H);
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: .6rem;
+      color: var(--cream);
+    }
+    .step-content p { font-size: .95rem; color: rgba(245,243,238,.6); line-height: 1.7; max-width: 550px; }
+
+    /* FAQ */
+    .ki-faq {
+      padding: 6rem clamp(1.5rem,5vw,5rem);
+      background: var(--cream);
+    }
+    .faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q-btn {
+      width: 100%; text-align: left;
+      padding: 1.8rem 2rem;
+      background: var(--white);
+      border: none;
+      font-family: var(--H);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: background .2s;
+    }
+    .faq-q-btn:hover { background: rgba(29,186,110,.04); }
+    .faq-q-btn.open { color: var(--green); }
+    .faq-icon { font-size: 1.3rem; transition: transform .3s; color: var(--muted); flex-shrink: 0; }
+    .faq-q-btn.open .faq-icon { transform: rotate(45deg); color: var(--green); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease; background: var(--cream); }
+    .faq-answer.open { max-height: 400px; }
+    .faq-answer-inner { padding: 0 2rem 1.8rem; font-size: .95rem; color: var(--muted); line-height: 1.75; }
+
+    /* CTA */
+    .spoke-cta {
+      padding: 7rem clamp(1.5rem,5vw,5rem);
+      background: var(--green);
+      color: var(--ink);
+      text-align: center;
+    }
+    .spoke-cta h2 {
+      font-family: var(--H);
+      font-size: clamp(2.5rem,5vw,4rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+    }
+    .spoke-cta p { color: rgba(11,14,26,.65); max-width: 560px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--ink);
+      color: var(--cream);
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      font-family: var(--H);
+      font-weight: 800;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-dark:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(11,14,26,.3); }
+
+    .spoke-footer {
+      background: var(--ink);
+      color: rgba(245,243,238,.4);
+      padding: 2rem clamp(1.5rem,5vw,5rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .8rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .spoke-footer a { color: rgba(245,243,238,.4); text-decoration: none; }
+    .spoke-footer a:hover { color: var(--cream); }
+
+    @media(max-width:800px) {
+      .ki-hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .process-step { grid-template-columns: 48px 1fr; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV (injected by JS) -->
+  <div data-site-nav></div>
+
+
+  <main class="spoke-page">
+
+    <div class="breadcrumb">
+      <a href="/">Start</a><span class="breadcrumb-sep">/</span>
+      <a href="/leistungen">Leistungen</a><span class="breadcrumb-sep">/</span>
+      <span style="color:var(--ink)">KI-Automatisierung</span>
+    </div>
+
+    <section class="ki-hero">
+      <div class="ki-hero-inner">
+        <div>
+          <div class="spoke-label">Leistung 03</div>
+          <h1>KI, die wirklich<br><span>im Alltag hilft.</span></h1>
+          <p class="ki-hero-desc">Pragmatische KI-Implementierungen für Sicherheitsunternehmen — kein Tech-Blabla, kein Labor-Experiment. Nur Lösungen, die sofort weniger manuelle Arbeit, schnellere Reaktionszeiten und klaren ROI bringen.</p>
+          <a href="/#kontakt" class="btn-ink" style="background:var(--green);color:var(--ink);">Marketing-Check anfordern →</a>
+        </div>
+        <div class="ki-terminal">
+          <div class="ki-terminal-bar">
+            <div class="ki-dot" style="background:#ff5f56"></div>
+            <div class="ki-dot" style="background:#ffbd2e"></div>
+            <div class="ki-dot" style="background:#27c93f"></div>
+            <span style="color:rgba(255,255,255,.3);font-size:.72rem;margin-left:.5rem">anfragen-bot.js</span>
+          </div>
+          <div class="ki-terminal-body">
+            <div class="ki-line-sys">// Eingehende Anfrage 03:47 Uhr</div>
+            <div class="ki-line-user">Besucher: "Brauche Objektschutz für 3 Standorte in NRW"</div>
+            <div class="ki-line-bot">Bot: "Verstanden. Für wie viele Stunden täglich?"</div>
+            <div class="ki-line-user">Besucher: "24/7, alle 3 Objekte"</div>
+            <div class="ki-line-bot">Bot: "Super. Wann soll es losgehen?"</div>
+            <div class="ki-line-user">Besucher: "Ab nächstem Monat"</div>
+            <div class="ki-line-sys">→ Lead qualifiziert ✓</div>
+            <div class="ki-line-sys">→ CRM-Eintrag erstellt ✓</div>
+            <div class="ki-line-sys">→ Benachrichtigung an david@... ✓</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section class="ki-usecases">
+      <div class="spoke-section-label">Konkrete Anwendungsfälle</div>
+      <h2 class="spoke-section-h2">Was KI für dein<br><span>Unternehmen tut.</span></h2>
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <div class="uc-icon">💬</div>
+          <h3>24/7 Anfrage-Bot</h3>
+          <p>Ein KI-Chatbot auf deiner Website qualifiziert eingehende Anfragen automatisch vor — auch um 3 Uhr morgens. Nur wirklich relevante Leads landen bei dir.</p>
+          <div class="uc-result">→ Weniger Telefonat-Zeitverschwendung</div>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">📋</div>
+          <h3>Automatisches Angebots-Drafting</h3>
+          <p>Sobald ein Lead qualifiziert ist, erstellt die KI automatisch einen Angebotsentwurf auf Basis deiner Preisstruktur — du prüfst, passt an und sendest.</p>
+          <div class="uc-result">→ Angebote in Minuten statt Stunden</div>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">📞</div>
+          <h3>Follow-Up-Automatisierung</h3>
+          <p>Kein Interessent geht mehr vergessen. Automatische E-Mail-Sequenzen erinnern Interessenten sanft und zur richtigen Zeit — ohne dass du manuell nachhakst.</p>
+          <div class="uc-result">→ Höhere Abschlussrate</div>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">📊</div>
+          <h3>Bewerbermanagement</h3>
+          <p>KI-gestützte Vorselektion von Bewerbungen nach deinen Kriterien (Qualifikation, Region, Verfügbarkeit). Du sprichst nur noch mit den Besten.</p>
+          <div class="uc-result">→ Recruiting-Zeit um bis zu 60% reduziert</div>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">📱</div>
+          <h3>WhatsApp-Automatisierung</h3>
+          <p>Anfragen per WhatsApp automatisch beantworten, Termine vereinbaren und Informationen versenden — auf dem Kanal, den deine Kunden bevorzugen.</p>
+          <div class="uc-result">→ Schnellste Reaktionszeit am Markt</div>
+        </div>
+        <div class="usecase-card">
+          <div class="uc-icon">🔗</div>
+          <h3>CRM-Integration</h3>
+          <p>Alle Informationen aus Chats, Formularen und Anrufen landen automatisch strukturiert in deinem CRM — ohne manuelle Dateneingabe.</p>
+          <div class="uc-result">→ Null Datenverlust, maximale Übersicht</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE WORK -->
+    <section class="ki-process">
+      <div class="spoke-section-label">Unser Vorgehen</div>
+      <h2 class="spoke-section-h2" style="color:var(--cream)">Von der Analyse<br>bis zum laufenden Bot.</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Prozess-Analyse</h3>
+            <p>Wir schauen uns an, wo bei dir aktuell die meiste Zeit verloren geht — Anfragenbearbeitung, Angebotserstellung, Bewerberkommunikation. Kein generischer Ansatz.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Tool-Auswahl & Setup</h3>
+            <p>Wir wählen die passenden KI-Tools (kein Overkill) und richten alles direkt in deiner bestehenden Infrastruktur ein. Keine teuren Eigenentwicklungen.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Training & Testing</h3>
+            <p>Der Bot lernt deine Dienstleistungen, deine Sprache und deine Qualifikationskriterien. Wir testen intensiv bevor er live geht.</p>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">04</div>
+          <div class="step-content">
+            <h3>Laufende Optimierung</h3>
+            <p>KI wird besser mit mehr Daten. Wir optimieren monatlich die Qualifizierungslogik auf Basis echter Ergebnisse.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="ki-faq">
+      <div class="spoke-section-label">FAQ</div>
+      <h2 class="spoke-section-h2" style="font-size:clamp(1.8rem,3vw,2.5rem)">Häufige Fragen.</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q-btn" onclick="toggleFaqSpoke(this)">Brauche ich technisches Wissen? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Kein bisschen. Wir richten alles ein, schulen dich und deinen Betrieb und stehen bei Fragen persönlich zur Verfügung. Du musst nur den Bot nutzen — nicht verstehen wie er funktioniert.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" onclick="toggleFaqSpoke(this)">Welche Tools werden eingesetzt? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Das hängt von deinem Anwendungsfall ab. Wir arbeiten mit etablierten Lösungen wie Make (ehemals Integromat), Manychat, Landbot und OpenAI-basierten Diensten — je nachdem, was für dich am einfachsten zu handhaben ist.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" onclick="toggleFaqSpoke(this)">Ist das DSGVO-konform? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Ja. Wir setzen ausschließlich auf Tools mit europäischer Datenhaltung oder korrekt eingerichteten Auftragsverarbeitungsverträgen (AVV). Datenschutz ist für uns keine Nachsicht, sondern Ausgangspunkt.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q-btn" onclick="toggleFaqSpoke(this)">Was, wenn der Bot Unsinn antwortet? <span class="faq-icon">+</span></button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">Wir trainieren den Bot intensiv auf deine spezifische Branche und geben ihm klare Grenzen. Bei Fragen außerhalb seines Wissensbereichs gibt er das transparent an und leitet zur richtigen Person weiter — er erfindet nichts.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="spoke-cta">
+      <h2>Zeig mir was<br>möglich ist.</h2>
+      <p>Im kostenlosen Erstgespräch analysieren wir, welche KI-Automatisierung in deinem Betrieb den größten Zeitgewinn bringt.</p>
+      <a href="/#kontakt" class="btn-dark">Jetzt Erstgespräch vereinbaren →</a>
+    </section>
+
+  </main>
+
+  <footer class="spoke-footer">
+    <span>© 2025 InboxElevate · <a class="js-email-link" data-u="david" data-d="inbox-elevate.de">[E-Mail laden…]</a></span>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="/leistungen">Alle Leistungen</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaqSpoke(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q-btn.open').forEach(b => {
+        b.classList.remove('open');
+        b.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Draggable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/InertiaPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Physics2DPlugin.min.js"></script>
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
