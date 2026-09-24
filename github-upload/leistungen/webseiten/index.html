@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webdesign für Sicherheitsunternehmen – InboxElevate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css?v=20260924-copy">
+  <link rel="stylesheet" href="/css/leistungen.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="/" class="logo">
+      <svg viewBox="0 0 40 40" fill="none" style="width:30px;">
+        <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      InboxElevate
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Start</a></li>
+      <li><a href="/leistungen" class="active">Leistungen</a></li>
+      <li><a href="/prozess">Prozess</a></li>
+      <li><a href="/ueber-uns">Über uns</a></li>
+      <li><a href="/tipps">Tipps</a></li>
+      <li><a href="/kontakt" class="nav-cta">Kontakt <span class="nav-arrow">→</span></a></li>
+    </ul>
+    <button class="ham" id="ham" onclick="document.getElementById('mobMenu').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="mob-menu" id="mobMenu">
+    <a href="/">Start</a>
+    <a href="/leistungen" style="color:var(--green)">Leistungen</a>
+    <a href="/prozess">Prozess</a>
+    <a href="/ueber-uns">Über uns</a>
+    <a href="/tipps">Tipps</a>
+    <a href="/kontakt">Kontakt →</a>
+  </div>
+
+  <main>
+    <section class="spoke-hero">
+      <div class="spoke-hero-content">
+        <div style="font-family:var(--M);font-size:0.75rem;letter-spacing:0.1em;color:var(--green);text-transform:uppercase;margin-bottom:1.5rem;">Leistung 01 · Webseiten</div>
+        <h1>Deine Website führt Besucher <span style="color:var(--green)">zur Anfrage.</span></h1>
+        <p>Zeige Leistungen, Referenzen und Kontakt sofort. So finden Entscheider schnell die Informationen, die sie für eine Anfrage brauchen.</p>
+        <a href="/kontakt" class="btn-ink">Website-Check starten <span style="font-size:1.2em">→</span></a>
+      </div>
+      <div class="spoke-hero-visual">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Webseite Analyse" style="width:100%; border-radius: 24px; box-shadow: 0 40px 80px rgba(11, 14, 26, 0.15);">
+      </div>
+    </section>
+
+    <!-- Problem-Agitation -->
+    <section class="spoke-section spoke-section-dark">
+      <div class="spoke-section-title">
+        <h2>Was Besucher von deiner Website erwarten</h2>
+        <p>Interessenten wollen schnell wissen, was du anbietest, wo du arbeitest und wie sie dich erreichen.</p>
+      </div>
+      <div class="spoke-features">
+        <div class="spoke-feature">
+          <div class="spoke-feature-icon">📵</div>
+          <h3>Kontakt sofort sichtbar</h3>
+          <p>Eine gut platzierte Telefonnummer und ein klares Formular machen den nächsten Schritt leicht.</p>
+        </div>
+        <div class="spoke-feature">
+          <div class="spoke-feature-icon">🐌</div>
+          <h3>Schnell auf jedem Gerät</h3>
+          <p>Kurze Ladezeiten halten Besucher auf der Seite. Wir optimieren Bilder, Code und mobile Ansichten.</p>
+        </div>
+        <div class="spoke-feature">
+          <div class="spoke-feature-icon">🔍</div>
+          <h3>In deiner Region auffindbar</h3>
+          <p>Klare lokale Inhalte helfen dir, bei passenden Suchanfragen sichtbar zu werden.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lösung (Features) -->
+    <section class="spoke-section">
+      <div class="spoke-section-title">
+        <h2 style="color:var(--ink)">Deine Website als erster Kontakt</h2>
+        <p>Wir strukturieren Inhalte so, dass Besucher Vertrauen fassen und schnell eine passende Anfrage senden.</p>
+      </div>
+      <div class="spoke-features">
+        <div class="spoke-feature" style="border-color: rgba(29, 186, 110, 0.3); background: rgba(29, 186, 110, 0.03);">
+          <div class="spoke-feature-icon">⚡</div>
+          <h3 style="color:var(--ink)">Schnelle Ladezeiten</h3>
+          <p>Wir bauen schlanke Seiten, die auf Mobilgeräten schnell laden.</p>
+        </div>
+        <div class="spoke-feature" style="border-color: rgba(29, 186, 110, 0.3); background: rgba(29, 186, 110, 0.03);">
+          <div class="spoke-feature-icon">🛡️</div>
+          <h3 style="color:var(--ink)">Vertrauen sichtbar machen</h3>
+          <p>Wir platzieren Zertifikate, Referenzen und Bewertungen dort, wo sie Fragen beantworten.</p>
+        </div>
+        <div class="spoke-feature" style="border-color: rgba(29, 186, 110, 0.3); background: rgba(29, 186, 110, 0.03);">
+          <div class="spoke-feature-icon">🎯</div>
+          <h3 style="color:var(--ink)">Klare Anfrageformulare</h3>
+          <p>Ein verständliches Formular sammelt die Informationen, die du für den Erstkontakt brauchst.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:6rem clamp(1.5rem,5vw,4rem); background:var(--ink); color:var(--cream); text-align:center;">
+      <h2 style="font-family:var(--H); font-size:3rem; margin-bottom:1.5rem;">Mach deine Website zum nächsten Schritt.</h2>
+      <p style="color:rgba(245,243,238,0.7); max-width:600px; margin:0 auto 2.5rem; line-height:1.7;">Wir prüfen deinen aktuellen Webauftritt und zeigen dir konkrete Verbesserungen.</p>
+      <a href="/kontakt" style="display:inline-flex; align-items:center; gap:0.5rem; background:var(--green); color:var(--ink); padding:1rem 2rem; border-radius:50px; font-family:var(--B); font-weight:700; text-decoration:none; transition:transform 0.2s ease;">
+        Website-Check anfragen
+      </a>
+    </section>
+
+  </main>
+
+</body>
+</html>

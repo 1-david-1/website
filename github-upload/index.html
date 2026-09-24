@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InboxElevate – Mehr Anfragen für Sicherheitsunternehmen.</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css?v=20260924-usp-section">
+  <link rel="stylesheet" href="/css/fullscreen-menu.css?v=20260924-menu-left-2">
+  <style>
+    /* Failsafe: hide preloader after 2.5s even if JS fails */
+    @keyframes _preloader_escape {
+      to { opacity: 0; pointer-events: none; visibility: hidden; }
+    }
+    #preloader { animation: _preloader_escape 0.5s 2.5s ease forwards; }
+  </style>
+</head>
+
+<body>
+
+  <div class="preloader" id="preloader" aria-hidden="true" style="display:none">
+    <div class="preloader-inner">
+      <div class="preloader-brand">
+        <svg viewBox="0 0 40 40" fill="none">
+          <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <span>InboxElevate</span>
+      </div>
+      <div class="preloader-track">
+        <div class="preloader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wipe" id="pageWipe" aria-hidden="true"></div>
+  <div class="progress-bar" id="scrollProgress" aria-hidden="true">
+    <div class="progress-bar-fill" id="scrollProgressFill"></div>
+  </div>
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Custom Cursor -->
+  
+
+  <div class="sticky-mobile-cta" id="stickyMobileCta">
+    <a href="/#kontakt" class="contact-trigger">Jetzt anfragen →</a>
+  </div>
+
+  <!-- NAV -->
+  <div class="site-header-wrapper">
+    <header class="header">
+      <nav id="nav" class="nav-row">
+        <a href="/" class="logo logo-outer">
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" />
+            <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          InboxElevate
+        </a>
+        <div class="nav-row__right">
+          <button type="button" class="nav-close-btn" aria-label="Menü öffnen" aria-expanded="false" aria-controls="fullscreenNavigation">
+            <div class="menu-button-text">
+              <p>Menü</p>
+              <p>Schließen</p>
+            </div>
+            <div class="icon-wrap">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="menu-button-icon" aria-hidden="true">
+                <path d="M7.33333 16L7.33333 -3.2055e-07L8.66667 -3.78832e-07L8.66667 16L7.33333 16Z" fill="currentColor"></path>
+                <path d="M16 8.66667L-2.62269e-07 8.66667L-3.78832e-07 7.33333L16 7.33333L16 8.66667Z" fill="currentColor"></path>
+                <path d="M6 7.33333L7.33333 7.33333L7.33333 6C7.33333 6.73637 6.73638 7.33333 6 7.33333Z" fill="currentColor"></path>
+                <path d="M10 7.33333L8.66667 7.33333L8.66667 6C8.66667 6.73638 9.26362 7.33333 10 7.33333Z" fill="currentColor"></path>
+                <path d="M6 8.66667L7.33333 8.66667L7.33333 10C7.33333 9.26362 6.73638 8.66667 6 8.66667Z" fill="currentColor"></path>
+                <path d="M10 8.66667L8.66667 8.66667L8.66667 10C8.66667 9.26362 9.26362 8.66667 10 8.66667Z" fill="currentColor"></path>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <section class="fullscreen-menu-container">
+    <div id="fullscreenNavigation" data-nav="closed" class="nav-overlay-wrapper" aria-hidden="true">
+      <div class="overlay"></div>
+      <nav class="menu-content" aria-label="Hauptnavigation">
+        <div class="menu-bg">
+          <div class="backdrop-layer first"></div>
+          <div class="backdrop-layer second"></div>
+          <div class="backdrop-layer"></div>
+          <div class="ambient-background-shapes">
+            <svg class="bg-shape bg-shape-1" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+              <circle class="shape-element" cx="80" cy="120" r="40" fill="rgba(16,158,86,0.15)" />
+              <circle class="shape-element" cx="300" cy="80" r="60" fill="rgba(29,186,110,0.12)" />
+              <circle class="shape-element" cx="200" cy="300" r="80" fill="rgba(35,232,130,0.1)" />
+              <circle class="shape-element" cx="350" cy="280" r="30" fill="rgba(16,158,86,0.15)" />
+            </svg>
+            <svg class="bg-shape bg-shape-2" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+              <path class="shape-element" d="M0 200 Q100 100, 200 200 T 400 200" stroke="rgba(16,158,86,0.2)" stroke-width="60" fill="none" />
+              <path class="shape-element" d="M0 280 Q100 180, 200 280 T 400 280" stroke="rgba(29,186,110,0.15)" stroke-width="40" fill="none" />
+            </svg>
+            <svg class="bg-shape bg-shape-3" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+              <circle class="shape-element" cx="50" cy="50" r="8" fill="rgba(16,158,86,0.3)" />
+              <circle class="shape-element" cx="150" cy="50" r="8" fill="rgba(29,186,110,0.3)" />
+              <circle class="shape-element" cx="250" cy="50" r="8" fill="rgba(35,232,130,0.3)" />
+              <circle class="shape-element" cx="350" cy="50" r="8" fill="rgba(16,158,86,0.3)" />
+              <circle class="shape-element" cx="100" cy="150" r="12" fill="rgba(29,186,110,0.25)" />
+              <circle class="shape-element" cx="200" cy="150" r="12" fill="rgba(35,232,130,0.25)" />
+              <circle class="shape-element" cx="300" cy="150" r="12" fill="rgba(16,158,86,0.25)" />
+            </svg>
+            <svg class="bg-shape bg-shape-4" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+              <path class="shape-element" d="M100 100 Q150 50, 200 100 Q250 150, 200 200 Q150 250, 100 200 Q50 150, 100 100" fill="rgba(16,158,86,0.12)" />
+              <path class="shape-element" d="M250 200 Q300 150, 350 200 Q400 250, 350 300 Q300 350, 250 300 Q200 250, 250 200" fill="rgba(35,232,130,0.1)" />
+            </svg>
+            <svg class="bg-shape bg-shape-5" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+              <line class="shape-element" x1="0" y1="100" x2="300" y2="400" stroke="rgba(16,158,86,0.15)" stroke-width="30" />
+              <line class="shape-element" x1="100" y1="0" x2="400" y2="300" stroke="rgba(29,186,110,0.12)" stroke-width="25" />
+              <line class="shape-element" x1="200" y1="0" x2="400" y2="200" stroke="rgba(35,232,130,0.1)" stroke-width="20" />
+            </svg>
+          </div>
+        </div>
+        <div class="menu-content-wrapper">
+          <ul class="menu-list">
+            <li class="menu-list-item" data-shape="1">
+              <a href="/" class="nav-link"><p class="nav-link-text">Start</p><div class="nav-link-hover-bg"></div></a>
+            </li>
+            <li class="menu-list-item" data-shape="2">
+              <a href="/leistungen" class="nav-link"><p class="nav-link-text">Leistungen</p><div class="nav-link-hover-bg"></div></a>
+            </li>
+            <li class="menu-list-item" data-shape="3">
+              <a href="/prozess" class="nav-link"><p class="nav-link-text">Prozess</p><div class="nav-link-hover-bg"></div></a>
+            </li>
+            <li class="menu-list-item" data-shape="4">
+              <a href="/ueber-uns" class="nav-link"><p class="nav-link-text">Über uns</p><div class="nav-link-hover-bg"></div></a>
+            </li>
+            <li class="menu-list-item" data-shape="5">
+              <a href="/tipps" class="nav-link"><p class="nav-link-text" data-menu-fade>Tipps</p><div class="nav-link-hover-bg"></div></a>
+            </li>
+            <li class="menu-list-item" data-shape="1">
+              <a href="/kontakt" class="nav-link"><p class="nav-link-text">Kontakt</p><div class="nav-link-hover-bg"></div></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <main>
+
+  <!-- Leistungen Modal removed – Hub-Teaser on homepage instead -->
+
+  <!-- ══════════════════ HOME PAGE ══════════════════ -->
+  <div id="home">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-label sr">Marketing für Sicherheitsunternehmen</div>
+        <h1 class="hero-h1 sr" data-d="1">
+          <span id="tw-line1">Mehr qualifizierte</span><br>
+          <span id="tw-line2">Anfragen für</span><br>
+          <span class="hero-tw-line"><span id="tw-text" aria-live="polite"></span><span
+              class="tw-cursor" aria-hidden="true"></span></span>
+        </h1>
+        <div class="hero-sub-row">
+          <p class="hero-p sr" data-d="2">Gewinne mehr passende Anfragen und Bewerbungen. Wir machen deine Website und deine Werbung dafür klar und messbar.</p>
+          <div class="hero-actions sr" data-d="3">
+            <div class="btn-pulse-wrap">
+              <a href="/#kontakt" class="btn-ink">
+                Marketing-Check starten
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+            <a href="/leistungen" class="btn-ghost">
+              Leistungen ansehen <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Animated Stats Strip -->
+    <div class="home-stats" id="homeStats">
+      <div class="home-stat">
+        <div class="n"><span class="stat-counter" data-target="24" data-suffix="h" data-prefix="&lt;">&lt;24h</span></div>
+        <div class="l">Antwort auf deine Anfrage</div>
+      </div>
+      <div class="home-stat">
+        <div class="n"><span class="stat-counter" data-target="100" data-suffix="%">100%</span></div>
+        <div class="l">Fokus auf Sicherheitsunternehmen</div>
+      </div>
+      <a class="home-stat home-stat-link" href="/leistungen" aria-label="Zu den Leistungen">
+        <div class="n"><span class="stat-counter" data-target="3" data-suffix="">3</span></div>
+        <div class="l">Kanäle für deine Zielgruppe</div>
+      </a>
+      <div class="home-stat">
+        <div class="n"><span class="stat-counter" data-target="5" data-suffix=" – 10" data-prefix="">5 – 10</span></div>
+        <div class="l">Werktage bis zum Kampagnenstart</div>
+      </div>
+    </div>
+
+    <section class="usp-section sr" aria-labelledby="usp-heading">
+      <div class="usp-section-inner">
+        <p class="usp-label">Unser Zahlungsversprechen</p>
+        <div class="usp-reveal">
+          <h2 id="usp-heading">Du zahlst erst nach vollständiger Freigabe.</h2>
+          <p>Wir rechnen erst ab, wenn die vereinbarte Arbeit fertig ist und du sie freigibst.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leistungen Hub Teaser -->
+    <section class="svc-hub" aria-labelledby="svc-hub-heading">
+      <div class="svc-hub-header sr">
+        <p class="svc-hub-label">Deine nächsten Schritte</p>
+        <h2 id="svc-hub-heading">Mehr passende Anfragen.<br><span>Weniger Zeitverlust im Alltag.</span></h2>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.7;max-width:640px;margin:1rem auto 0;">Wähle die Unterstützung, die zu deinem Ziel und deinem Unternehmen passt.</p>
+      </div>
+      <div class="svc-hub-grid">
+
+        <!-- Webseiten -->
+        <article class="svc-card sr" data-d="0">
+          <div class="svc-card-icon">🌐</div>
+          <div class="svc-card-num">01</div>
+          <h3 class="svc-card-title">Webseiten</h3>
+          <p class="svc-card-desc">Zeige Leistungen, Referenzen und Kontakt sofort. Deine Website führt Interessenten schnell zur passenden Anfrage.</p>
+          <ul class="svc-card-tags">
+            <li>Schnelle Ladezeit</li>
+            <li>Lokale Auffindbarkeit</li>
+            <li>Für Mobilgeräte</li>
+            <li>5–10 Werktage</li>
+          </ul>
+          <a href="/leistungen/webseiten" class="svc-card-btn">Website ansehen <span class="svc-card-arrow">→</span></a>
+        </article>
+
+        <!-- Paid Ads -->
+        <article class="svc-card sr" data-d="1">
+          <div class="svc-card-icon">📣</div>
+          <div class="svc-card-num">02</div>
+          <h3 class="svc-card-title">Paid Ads</h3>
+          <p class="svc-card-desc">Erreiche Menschen mit konkretem Bedarf. Wir planen Google-, Meta- und LinkedIn-Kampagnen mit klaren Zielgruppen.</p>
+          <ul class="svc-card-tags">
+            <li>Google Ads</li>
+            <li>Meta Ads</li>
+            <li>Passende Anfragen</li>
+            <li>Neue Bewerbungen</li>
+          </ul>
+          <a href="/leistungen/paid-ads" class="svc-card-btn">Ads ansehen <span class="svc-card-arrow">→</span></a>
+        </article>
+
+        <!-- KI-Automatisierung -->
+        <article class="svc-card svc-card--dark sr" data-d="2">
+          <div class="svc-card-icon">🤖</div>
+          <div class="svc-card-num">03</div>
+          <h3 class="svc-card-title">KI-Automatisierung</h3>
+          <p class="svc-card-desc">Automatisiere wiederkehrende Aufgaben. Ein Bot beantwortet Anfragen, sortiert Bewerbungen und spart deinem Team Zeit.</p>
+          <p style="font-size:.8rem;color:rgba(245,243,238,.5);margin-top:.5rem;font-style:italic;">Wir setzen nur Funktionen um, die zu deinem Betrieb passen.</p>
+          <ul class="svc-card-tags">
+            <li>Anfragen vorqualifizieren</li>
+            <li>Abläufe automatisieren</li>
+            <li>CRM anbinden</li>
+            <li>Praktisch umsetzbar</li>
+          </ul>
+          <a href="/leistungen/ki" class="svc-card-btn">KI ansehen <span class="svc-card-arrow">→</span></a>
+        </article>
+
+      </div>
+      <div class="svc-hub-footer sr">
+        <p>Du weißt noch nicht, was zuerst zählt?</p>
+        <a href="/#kontakt" class="btn-ink">Kostenlosen Check starten →</a>
+      </div>
+    </section>
+
+    <section class="home-trust" aria-labelledby="home-trust-heading">
+      <div class="home-trust-copy sr">
+        <p class="page-label">Warum das fair ist</p>
+        <h2 id="home-trust-heading">Du entscheidest erst,<br><span>wenn die Arbeit passt.</span></h2>
+        <p>Wir vereinbaren Umfang und Ergebnis vor dem Start. Du prüfst die Arbeit in Ruhe.</p>
+      </div>
+      <div class="home-trust-grid">
+        <article class="trust-card sr" data-d="1">
+          <span>01</span>
+          <h3>Ein fester Kontakt</h3>
+          <p>Du sprichst direkt mit der Person, die dein Projekt plant und umsetzt.</p>
+        </article>
+        <article class="trust-card sr" data-d="2">
+          <span>02</span>
+          <h3>Freigabe vor Zahlung</h3>
+          <p>Du prüfst die vereinbarte Arbeit. Erst wenn sie passt, stellst du die Zahlung frei.</p>
+        </article>
+        <article class="trust-card sr" data-d="3">
+          <span>03</span>
+          <h3>Fokus auf deine Branche</h3>
+          <p>Wir richten Texte, Kampagnen und Websites auf Sicherheitsunternehmen aus.</p>
+        </article>
+      </div>
+    </section>
+
+  </div>
+
+  </main>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg viewBox="0 0 40 40" fill="none" style="width:30px;">
+          <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p><strong>InboxElevate</strong><br>Mehr passende Anfragen. Klare Prozesse. Für Sicherheitsunternehmen.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="/">Start</a>
+        <a href="/leistungen">Leistungen</a>
+        <a href="/prozess">Prozess</a>
+        <a href="/ueber-uns">Über uns</a>
+        <a href="/tipps">Tipps</a>
+      </div>
+      <div class="footer-col">
+        <h5>Leistungen</h5>
+        <a href="/leistungen/webseiten">Webentwicklung</a>
+        <a href="/leistungen/paid-ads">Paid Ads</a>
+        <a href="/leistungen/ki">KI-Automatisierung</a>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakt</h5>
+        <a href="mailto:david@inbox-elevate.de">david@inbox-elevate.de</a>
+        <a href="/#kontakt">Anfrage senden</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 InboxElevate. Alle Rechte vorbehalten.</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/inboxelevate/" class="soc" title="LinkedIn">in</a>
+        <a href="mailto:david@inbox-elevate.de" class="soc" title="Email">✉</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Draggable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/InertiaPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Physics2DPlugin.min.js"></script>
+  <script src="/js/fullscreen-menu.js?v=20260924-menu-left" defer></script>
+  <script src="/js/main.js?v=20260924-copy" defer></script>
+</body>
+
+</html>
