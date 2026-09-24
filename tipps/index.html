@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Tipps für Sicherheitsunternehmen – InboxElevate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/tipps.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <!-- NAV (injected by JS) -->
+  <div data-site-nav></div>
+
+
+  <main class="tipps-layout">
+    <aside class="tipps-sidebar">
+      <h2 class="tipps-sidebar-title">Kategorien filtern</h2>
+      <div class="tipps-filter-list" id="tippsFilters">
+        <!-- JS renders filters here -->
+      </div>
+    </aside>
+
+    <div class="tipps-content">
+      <div class="tipps-header">
+        <h1>Resource Center</h1>
+        <p class="tipps-count" id="tippsCount">Alle Tipps laden...</p>
+      </div>
+      <div class="tipps-grid" id="tippsGrid">
+        <!-- JS renders cards here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Backdrop -->
+  <div class="tipp-modal-backdrop" id="tippBackdrop"></div>
+
+  <!-- Expandable Card Overlay -->
+  <div class="tipp-expandable-card" id="tippExpandable" role="dialog" aria-modal="true">
+    <div class="tipp-expandable-content">
+      <!-- Image Section -->
+      <div class="tipp-expandable-image">
+        <img id="expandableImg" src="" alt="">
+      </div>
+      
+      <!-- Body Content -->
+      <div class="tipp-expandable-body">
+        <!-- Header -->
+        <div class="tipp-expandable-header">
+          <div class="tipp-expandable-info">
+            <p class="tipp-expandable-category" id="expandableCat">KATEGORIE</p>
+            <h2 class="tipp-expandable-title" id="expandableTitle">Titel hier</h2>
+          </div>
+          <button class="tipp-expandable-close" id="expandableClose" aria-label="Schließen">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/>
+              <path d="M12 5v14"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Text Content -->
+        <div class="tipp-expandable-text">
+          <p id="expandableBody">Body content</p>
+          
+          <!-- Action Box -->
+          <div class="tipp-expandable-action">
+            <h4>🔥 Umsetzungstipp</h4>
+            <p id="expandableAction"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tipsData = [
+      { cat: 'Webseite', icon: '/assets/tipp-webseite.svg', title: 'Mach den Anruf auf Mobilgeräten einfach', impact: 'hoch', body: 'Viele Interessenten suchen nicht am Schreibtisch, sondern unterwegs: auf dem Smartphone, mit wenig Zeit und einem konkreten Problem. Wenn die Telefonnummer erst im Footer steht oder nicht antippbar ist, verliert die Website unnötig Anfragen. <strong>Eine gut sichtbare Klick-zu-Anruf-Nummer im Header nimmt Reibung raus</strong> und macht den nächsten Schritt sofort klar.', action: 'Setze die Telefonnummer oben in den Header und hinterlege sie als tel:-Link. Auf Mobilgeräten sollte sie ohne Zoomen oder Scrollen erreichbar sein.' },
+      { cat: 'Webseite', icon: '/assets/tipp-webseite.svg', title: 'Zeig Vertrauen, bevor du Leistung erklärst', impact: 'hoch', body: 'Bei Sicherheitsdienstleistungen entscheidet Vertrauen oft früher als der Preis. Gute Google-Bewertungen, Einsatzbereiche, Zertifikate oder Referenzkunden sollten deshalb nicht irgendwo versteckt sein. <strong>Platziere deine stärksten Vertrauenssignale direkt im oberen Bereich der Website</strong>, damit Besucher sofort merken: Dieses Unternehmen wirkt zuverlässig.', action: 'Nutze keine überladene Bewertungswand. Drei bis fünf starke Signale reichen: Sternebewertung, Anzahl der Rezensionen, Zertifikate, Einsatzregion oder ein kurzer Kundenhinweis.' },
+      { cat: 'Webseite', icon: '/assets/tipp-webseite.svg', title: 'Ladezeit ist Teil des ersten Eindrucks', impact: 'hoch', body: 'Eine langsame Website fühlt sich nicht nur technisch schwach an, sie wirkt auch weniger professionell. Gerade im Sicherheitsbereich sollte der erste Eindruck ruhig, schnell und verlässlich sein. Häufig bremsen zu große Bilder, unnötige Effekte oder alte Skripte die Seite aus. <strong>Schnelligkeit zahlt direkt auf Vertrauen und Kontaktanfragen ein.</strong>', action: 'Prüfe die Startseite mit PageSpeed Insights. Komprimiere zuerst große Bilder, entferne unnötige Einbindungen und teste anschließend erneut auf dem Smartphone.' },
+      { cat: 'Google Ads', icon: '📣', title: 'Schütze dein Budget vor falschen Klicks', impact: 'hoch', body: 'Google Ads funktionieren nur, wenn die Anzeigen bei den richtigen Suchanfragen erscheinen. Ohne Ausschlüsse zahlst du schnell für Klicks von Bewerbern, Kursteilnehmern oder Menschen, die gar keinen Sicherheitsdienst beauftragen wollen. <strong>Negative Keywords sind kein Feintuning, sondern Budgetschutz.</strong>', action: 'Sieh dir regelmäßig den Suchanfragebericht an. Begriffe wie Ausbildung, kostenlos, Kurs, Jobs oder Gehalt gehören je nach Kampagnenziel oft auf die Ausschlussliste.' },
+      { cat: 'Meta Ads', icon: '📱', title: 'Zeig Menschen statt nur Grafiken', impact: 'hoch', body: 'Auf Facebook und Instagram funktionieren Anzeigen besser, wenn sie nach echtem Unternehmen aussehen. Ein kurzer Clip vom Team, einem Fahrzeug, der Leitstelle oder einem sauberen Einsatzkontext wirkt greifbarer als ein generisches Werbebild. <strong>Gerade Sicherheitsunternehmen können mit echten Einblicken Nähe und Seriosität verbinden.</strong>', action: 'Nimm ein kurzes Hochkantvideo mit dem Smartphone auf. 10 bis 20 Sekunden reichen: klare Szene, ruhige Bewegung, Untertitel und ein einfacher Satz, wofür ihr Ansprechpartner seid.' },
+      { cat: 'Kein Budget', icon: '✅', title: 'Pflege dein Google Business Profil wie eine zweite Website', impact: 'hoch', body: 'Viele lokale Anfragen beginnen nicht auf deiner Website, sondern direkt in Google Maps. Ein halb leeres Profil wirkt dort schnell wie ein Unternehmen, das nicht aktiv gepflegt wird. <strong>Öffnungszeiten, Leistungen, Fotos und aktuelle Beiträge helfen Interessenten, dich schneller einzuordnen.</strong>', action: 'Fülle alle wichtigen Felder aus, ergänze deine Leistungen und lade regelmäßig echte Fotos hoch: Team, Fahrzeuge, Standort, Einsatzbereiche oder Material.' }
+    ];
+
+    const cats = ['Alle', ...new Set(tipsData.map(t => t.cat))];
+    let activeCat = 'Alle';
+
+    function renderFilters() {
+      const container = document.getElementById('tippsFilters');
+      container.innerHTML = cats.map(c => 
+        `<button class="tipps-filter-btn ${c === activeCat ? 'active' : ''}" data-cat="${c}">
+          ${c} <span>${c === 'Alle' ? tipsData.length : tipsData.filter(t=>t.cat===c).length}</span>
+        </button>`
+      ).join('');
+
+      container.querySelectorAll('.tipps-filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          activeCat = e.currentTarget.dataset.cat;
+          renderFilters();
+          renderGrid();
+        });
+      });
+    }
+
+    function renderGrid() {
+      const grid = document.getElementById('tippsGrid');
+      const filtered = activeCat === 'Alle' ? tipsData : tipsData.filter(t => t.cat === activeCat);
+      document.getElementById('tippsCount').textContent = `${filtered.length} Tipps gefunden`;
+      
+      grid.innerHTML = filtered.map((tip, i) => `
+        <article class="tipp-card" data-index="${tipsData.indexOf(tip)}" style="animation-delay: ${i * 0.08}s;">
+          <div class="tipp-icon">${tip.icon.startsWith('/') ? `<img src="${tip.icon}" alt="" loading="lazy">` : tip.icon}</div>
+          <div class="tipp-category">${tip.cat}</div>
+          <h3 class="tipp-title">${tip.title}</h3>
+          <p class="tipp-excerpt">${tip.body.replace(/<[^>]+>/g, '')}</p>
+          <div class="tipp-footer">
+            <span style="color:var(--muted)">Impact: ${tip.impact}</span>
+            <span class="tipp-read-more">Lesen <span style="font-size:1.2em">→</span></span>
+          </div>
+        </article>
+      `).join('');
+
+      grid.querySelectorAll('.tipp-card').forEach(card => {
+        card.addEventListener('click', () => openExpandable(card.dataset.index));
+      });
+    }
+
+    /* ========================================
+       EXPANDABLE CARD SYSTEM
+       Framer-Motion inspired animation
+       ======================================== */
+    const expandable = document.getElementById('tippExpandable');
+    const backdrop = document.getElementById('tippBackdrop');
+    
+    function openExpandable(index) {
+      const tip = tipsData[index];
+      
+      // Set content
+      document.getElementById('expandableCat').textContent = tip.cat.toUpperCase();
+      document.getElementById('expandableTitle').textContent = tip.title;
+      document.getElementById('expandableBody').innerHTML = tip.body;
+      document.getElementById('expandableAction').innerHTML = tip.action;
+      
+      // Set category-specific image
+      let imgSrc = '/assets/tipp-default.svg';
+      if (tip.cat === 'Webseite') imgSrc = '/assets/tipp-webseite.svg';
+      else if (tip.cat === 'Google Ads') imgSrc = '/assets/tipp-google.svg';
+      else if (tip.cat === 'Meta Ads') imgSrc = '/assets/tipp-meta.svg';
+      else if (tip.cat === 'Kein Budget') imgSrc = '/assets/tipp-gratis.svg';
+      document.getElementById('expandableImg').src = imgSrc;
+      
+      // Open with animation
+      backdrop.classList.add('active');
+      expandable.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeExpandable() {
+      expandable.classList.remove('active');
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close button
+    document.getElementById('expandableClose').addEventListener('click', closeExpandable);
+    
+    // Click outside to close
+    expandable.addEventListener('click', (e) => {
+      if (e.target === expandable || e.target.closest('.tipp-expandable-content') === null) {
+        closeExpandable();
+      }
+    });
+    
+    // Escape key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && expandable.classList.contains('active')) {
+        closeExpandable();
+      }
+    });
+    
+    // Backdrop click
+    backdrop.addEventListener('click', closeExpandable);
+
+    renderFilters();
+    renderGrid();
+  </script>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg viewBox="0 0 40 40" fill="none" style="width:30px;">
+          <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p><strong>InboxElevate</strong><br>Mehr Anfragen. Mehr Bewerbungen. Spezialisiert auf Sicherheitsunternehmen.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="/">Start</a>
+        <a href="/leistungen">Leistungen</a>
+        <a href="/prozess">Prozess</a>
+        <a href="/ueber-uns">Über uns</a>
+        <a href="/tipps">Tipps</a>
+      </div>
+      <div class="footer-col">
+        <h5>Leistungen</h5>
+        <a href="/leistungen/webseiten">Webentwicklung</a>
+        <a href="/leistungen/paid-ads">Paid Ads</a>
+        <a href="/leistungen/ki">KI-Automatisierung</a>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakt</h5>
+        <a href="mailto:david@inbox-elevate.de">david@inbox-elevate.de</a>
+        <a href="/#kontakt">Anfrage stellen</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 InboxElevate. Alle Rechte vorbehalten.</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/inboxelevate/" class="soc" title="LinkedIn">in</a>
+        <a href="mailto:david@inbox-elevate.de" class="soc" title="Email">✉</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="/js/main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Draggable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/InertiaPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Physics2DPlugin.min.js"></script>
+</body>
+</html>
