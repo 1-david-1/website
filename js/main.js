@@ -1040,6 +1040,142 @@
     counterObserver.observe(homeStats);
   }
 
+  /* ── USP Handschrift-Animation ──
+     Zeichnet den USP-Satz Buchstabe für Buchstabe wie mit einem Stift, dann füllt
+     er sich ein. Die Buchstaben-Umrisse kommen aus der echten Schriftdatei
+     (opentype.js parst die TTF), nicht aus einer Web-Font – nur so lässt sich ein
+     Umriss überhaupt als Linie zeichnen. Läuft nur einmal, wenn der Bereich ins
+     Bild scrollt, und lädt Bibliothek + Schrift nur dann nach (keine Kosten auf
+     Unterseiten ohne diesen Bereich). */
+  const USP_OPENTYPE_CDN = 'https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js';
+  const USP_FONT_URL = '/assets/fonts/PermanentMarker-Regular.ttf';
+  const USP_EM = 100;
+  let uspOpentypePromise = null;
+  let uspFontPromise = null;
+
+  function loadUspOpentype() {
+    if (window.opentype) return Promise.resolve(window.opentype);
+    if (!uspOpentypePromise) {
+      uspOpentypePromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = USP_OPENTYPE_CDN;
+        script.async = true;
+        script.onload = () => window.opentype ? resolve(window.opentype) : reject(new Error('opentype.js lieferte kein Objekt'));
+        script.onerror = () => reject(new Error('opentype.js konnte nicht geladen werden'));
+        document.head.appendChild(script);
+      });
+    }
+    return uspOpentypePromise;
+  }
+
+  function loadUspFont() {
+    if (!uspFontPromise) {
+      uspFontPromise = fetch(USP_FONT_URL)
+        .then(res => { if (!res.ok) throw new Error('Font-Request fehlgeschlagen: ' + res.status); return res.arrayBuffer(); })
+        .then(buffer => window.opentype.parse(buffer));
+    }
+    return uspFontPromise;
+  }
+
+  function uspGlyphGeometry(text, font) {
+    const path = font.getPath(text, 0, USP_EM, USP_EM);
+    const box = path.getBoundingBox();
+    const pad = USP_EM * 0.12;
+    const full = path.toPathData(2);
+    return {
+      full,
+      contours: full.split(/(?=M)/).filter(d => d.trim().length > 1),
+      x: box.x1 - pad,
+      y: box.y1 - pad,
+      w: (box.x2 - box.x1) + pad * 2,
+      h: (box.y2 - box.y1) + pad * 2
+    };
+  }
+
+  function renderUspLine(el, font, delay, instant) {
+    const text = (el.textContent || '').trim();
+    if (!text) return delay;
+    const geom = uspGlyphGeometry(text, font);
+    const count = Math.max(1, geom.contours.length);
+    const duration = Math.min(2.6, Math.max(1.1, text.length * 0.052));
+    const ns = 'http://www.w3.org/2000/svg';
+
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', `${geom.x} ${geom.y} ${geom.w} ${geom.h}`);
+    svg.setAttribute('aria-hidden', 'true');
+    svg.style.height = '1.05em';
+    svg.style.width = `calc(1.05em * ${(geom.w / geom.h).toFixed(4)})`;
+
+    const fillPath = document.createElementNS(ns, 'path');
+    fillPath.setAttribute('d', geom.full);
+    fillPath.setAttribute('fill', 'currentColor');
+    fillPath.setAttribute('stroke', 'none');
+    fillPath.style.opacity = instant ? '1' : '0';
+    svg.appendChild(fillPath);
+
+    const strokePaths = geom.contours.map(d => {
+      const p = document.createElementNS(ns, 'path');
+      p.setAttribute('d', d);
+      p.setAttribute('fill', 'none');
+      p.setAttribute('stroke', 'currentColor');
+      p.setAttribute('stroke-width', '2.1');
+      p.setAttribute('stroke-linecap', 'round');
+      p.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(p);
+      return p;
+    });
+
+    el.innerHTML = '';
+    el.appendChild(svg);
+
+    if (instant) return delay;
+
+    const lengths = strokePaths.map(p => p.getTotalLength() || 1);
+    strokePaths.forEach((p, i) => {
+      p.style.strokeDasharray = String(lengths[i]);
+      p.style.strokeDashoffset = String(lengths[i]);
+    });
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      strokePaths.forEach((p, i) => {
+        const each = (duration / count) * 2.4;
+        const start = delay + (i / count) * duration;
+        p.style.transition = `stroke-dashoffset ${each.toFixed(3)}s ease-out ${start.toFixed(3)}s`;
+        p.style.strokeDashoffset = '0';
+      });
+      fillPath.style.transition = `opacity .45s ease-out ${(delay + duration * 0.72).toFixed(3)}s`;
+      fillPath.style.opacity = '1';
+    }));
+
+    return delay + duration + 0.45;
+  }
+
+  function playUspHandwriting(container) {
+    const lines = Array.prototype.slice.call(container.querySelectorAll('[data-usp-line]'));
+    if (!lines.length) return;
+    loadUspOpentype()
+      .then(loadUspFont)
+      .then(font => {
+        const instant = reducedMotion;
+        let nextDelay = instant ? 0 : 0.15;
+        lines.forEach(el => {
+          nextDelay = renderUspLine(el, font, nextDelay, instant) + (instant ? 0 : 0.25);
+        });
+      })
+      .catch(() => { /* Fallback bleibt: normaler Text, bereits im DOM */ });
+  }
+
+  function initUspHandwriting() {
+    const container = document.getElementById('uspHandwriting');
+    if (!container || !container.querySelector('[data-usp-line]')) return;
+    const io = new IntersectionObserver(entries => {
+      if (!entries[0].isIntersecting) return;
+      io.disconnect();
+      playUspHandwriting(container);
+    }, { threshold: 0.4 });
+    io.observe(container);
+  }
+
   /* ── Preloader ── */
   function initPreloader() {
     if (!preloader) {
@@ -1070,6 +1206,7 @@
   initHeroOrbAnimation();
   observeScrambleTargets();
   initCounters();
+  initUspHandwriting();
   initBrandAnimation();
   initMagneticButtons();
   initSpotlights();
