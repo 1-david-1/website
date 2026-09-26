@@ -241,7 +241,7 @@
       <div class="footer-col">
         <h5>Kontakt</h5>
         <a class="js-email-link" data-u="david" data-d="inbox-elevate.de">[E-Mail laden…]</a>
-        <a href="/#kontakt">Anfrage stellen</a>
+        <a href="/kontakt">Anfrage stellen</a>
         <a href="/#datenschutz">Datenschutz</a>
       </div>
     </div>
