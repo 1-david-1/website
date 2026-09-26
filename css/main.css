@@ -1877,6 +1877,51 @@
       padding: 5rem clamp(2rem, 5vw, 4rem);
     }
 
+    .contact-alt {
+      margin: 0 auto;
+      padding: 1.5rem clamp(2rem, 5vw, 4rem);
+      border-top: 1px solid var(--border);
+      background: var(--cream);
+    }
+
+    .contact-alt summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--B);
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .contact-alt summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .contact-alt summary span {
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .contact-alt[open] summary span {
+      transform: rotate(45deg);
+    }
+
+    .contact-alt-content {
+      padding-top: 1rem;
+    }
+
+    .contact-alt-content a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .contact-alt-content a:hover {
+      color: var(--green);
+    }
+
     .contact-right .page-label {
       margin-bottom: 2rem;
     }
