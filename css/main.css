@@ -1,4 +1,4 @@
-    :root {
+:root {
       --bg: #0b0e1a;
       --ink: #0b0e1a;
       --ink2: #1a2035;
@@ -4085,7 +4085,7 @@
 .usp-note {
   font-family: 'Caveat', cursive;
   font-weight: 600;
-  font-size: clamp(1.2rem, 2.6vw, 1.55rem);
+  font-size: clamp(1.05rem, 2.1vw, 1.3rem);
   line-height: 1.5;
   color: var(--ink);
   max-width: 520px;
