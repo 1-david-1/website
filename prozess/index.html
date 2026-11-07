@@ -3,12 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prozess – InboxElevate</title>
+  <!-- @build:head -->
+  <title>Prozess: So arbeiten wir – InboxElevate</title>
+  <meta name="description" content="Von der ersten Anfrage bis zur laufenden Optimierung: So läuft die Zusammenarbeit mit InboxElevate ab – transparent, strukturiert und ohne Überraschungen.">
+  <link rel="canonical" href="https://inbox-elevate.de/prozess/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#f5f3ee">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="InboxElevate">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Prozess: So arbeiten wir – InboxElevate">
+  <meta property="og:description" content="Von der ersten Anfrage bis zur laufenden Optimierung: So läuft die Zusammenarbeit mit InboxElevate ab – transparent, strukturiert und ohne Überraschungen.">
+  <meta property="og:url" content="https://inbox-elevate.de/prozess/">
+  <meta property="og:image" content="https://inbox-elevate.de/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/fonts.css">
+  <noscript><style>.sr,.sr-l,.sr-r{opacity:1!important;transform:none!important}</style></noscript>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://inbox-elevate.de/"},{"@type":"ListItem","position":2,"name":"Prozess","item":"https://inbox-elevate.de/prozess/"}]}</script>
+  <!-- @end:head -->
   <link rel="stylesheet" href="/css/main.css">
+  <!-- @build:headend -->
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/type.css">
+  <!-- @end:headend -->
 </head>
 <body class="process-page">
-  <!-- NAV (injected by JS) -->
-  <div data-site-nav></div>
+  <!-- @build:nav -->
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header id="nav" class="site-nav">
+    <a href="/" class="logo logo-outer" aria-label="InboxElevate – Startseite">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-name">InboxElevate</span>
+    </a>
+    <div class="nav-actions">
+      <a href="/kontakt/" class="nav-contact">Anfrage stellen</a>
+      <button type="button" class="nav-close-btn" id="ham" aria-expanded="false" aria-controls="navOverlay" aria-label="Menü öffnen">
+        <span class="menu-button-text" aria-hidden="true">
+          <span class="p-large">Menü</span>
+          <span class="p-large">Schließen</span>
+        </span>
+        <span class="icon-wrap" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="menu-button-icon">
+            <path d="M7.33333 16L7.33333 -3.2055e-07L8.66667 -3.78832e-07L8.66667 16L7.33333 16Z" fill="currentColor"></path>
+            <path d="M16 8.66667L-2.62269e-07 8.66667L-3.78832e-07 7.33333L16 7.33333L16 8.66667Z" fill="currentColor"></path>
+            <path d="M6 7.33333L7.33333 7.33333L7.33333 6C7.33333 6.73637 6.73638 7.33333 6 7.33333Z" fill="currentColor"></path>
+            <path d="M10 7.33333L8.66667 7.33333L8.66667 6C8.66667 6.73638 9.26362 7.33333 10 7.33333Z" fill="currentColor"></path>
+            <path d="M6 8.66667L7.33333 8.66667L7.33333 10C7.33333 9.26362 6.73638 8.66667 6 8.66667Z" fill="currentColor"></path>
+            <path d="M10 8.66667L8.66667 8.66667L8.66667 10C8.66667 9.26362 9.26362 8.66667 10 8.66667Z" fill="currentColor"></path>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <div data-nav="closed" class="nav-overlay-wrapper" id="navOverlay" role="dialog" aria-modal="true" aria-label="Hauptmenü">
+    <div class="overlay" id="navOverlayBg"></div>
+    <nav class="menu-content" aria-label="Hauptnavigation">
+      <div class="menu-bg" aria-hidden="true">
+        <div class="backdrop-layer first"></div>
+        <div class="backdrop-layer second"></div>
+        <div class="backdrop-layer"></div>
+        <div class="ambient-background-shapes">
+          <svg class="bg-shape bg-shape-1" viewBox="0 0 400 400" fill="none"><circle class="shape-element" cx="80" cy="120" r="40" fill="rgba(29,186,110,0.12)"/><circle class="shape-element" cx="300" cy="80" r="60" fill="rgba(29,186,110,0.09)"/><circle class="shape-element" cx="200" cy="300" r="80" fill="rgba(29,186,110,0.07)"/><circle class="shape-element" cx="350" cy="280" r="30" fill="rgba(29,186,110,0.12)"/></svg>
+          <svg class="bg-shape bg-shape-2" viewBox="0 0 400 400" fill="none"><path class="shape-element" d="M0 200 Q100 100, 200 200 T 400 200" stroke="rgba(29,186,110,0.18)" stroke-width="60" fill="none"/><path class="shape-element" d="M0 280 Q100 180, 200 280 T 400 280" stroke="rgba(29,186,110,0.12)" stroke-width="40" fill="none"/></svg>
+          <svg class="bg-shape bg-shape-3" viewBox="0 0 400 400" fill="none"><circle class="shape-element" cx="50" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="150" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="250" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="350" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="100" cy="150" r="12" fill="rgba(29,186,110,0.22)"/><circle class="shape-element" cx="200" cy="150" r="12" fill="rgba(29,186,110,0.22)"/><circle class="shape-element" cx="300" cy="150" r="12" fill="rgba(29,186,110,0.22)"/><circle class="shape-element" cx="50" cy="250" r="10" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="150" cy="250" r="10" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="250" cy="250" r="10" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="350" cy="250" r="10" fill="rgba(29,186,110,0.28)"/></svg>
+          <svg class="bg-shape bg-shape-4" viewBox="0 0 400 400" fill="none"><path class="shape-element" d="M100 100 Q150 50, 200 100 Q250 150, 200 200 Q150 250, 100 200 Q50 150, 100 100" fill="rgba(29,186,110,0.1)"/><path class="shape-element" d="M250 200 Q300 150, 350 200 Q400 250, 350 300 Q300 350, 250 300 Q200 250, 250 200" fill="rgba(29,186,110,0.08)"/></svg>
+          <svg class="bg-shape bg-shape-5" viewBox="0 0 400 400" fill="none"><line class="shape-element" x1="0" y1="100" x2="300" y2="400" stroke="rgba(29,186,110,0.13)" stroke-width="30"/><line class="shape-element" x1="100" y1="0" x2="400" y2="300" stroke="rgba(29,186,110,0.1)" stroke-width="25"/><line class="shape-element" x1="200" y1="0" x2="400" y2="200" stroke="rgba(29,186,110,0.08)" stroke-width="20"/></svg>
+        </div>
+      </div>
+      <div class="menu-content-wrapper">
+        <button type="button" class="menu-close" id="menuClose" aria-label="Menü schließen">
+          <svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg>
+        </button>
+        <a href="/" class="menu-logo" aria-label="InboxElevate – Startseite">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36" aria-hidden="true">
+            <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="menu-logo-text">InboxElevate</span>
+        </a>
+        <ul class="menu-list">
+          <li class="menu-list-item" data-shape="1"><a href="/" class="nav-link w-inline-block"><span class="nav-link-text">Start</span><span class="nav-link-hover-bg"></span></a></li>
+          <li class="menu-list-item" data-shape="2"><a href="/leistungen/" class="nav-link w-inline-block"><span class="nav-link-text">Leistungen</span><span class="nav-link-hover-bg"></span></a></li>
+          <li class="menu-list-item" data-shape="3"><a href="/prozess/" class="nav-link w-inline-block active" aria-current="page"><span class="nav-link-text">Prozess</span><span class="nav-link-hover-bg"></span></a></li>
+          <li class="menu-list-item" data-shape="4"><a href="/ueber-uns/" class="nav-link w-inline-block"><span class="nav-link-text">Über uns</span><span class="nav-link-hover-bg"></span></a></li>
+          <li class="menu-list-item" data-shape="5"><a href="/tipps/" class="nav-link w-inline-block"><span class="nav-link-text">Tipps</span><span class="nav-link-hover-bg"></span></a></li>
+        </ul>
+        <div class="menu-footer" data-menu-fade>
+          <p class="menu-sub-title">Leistungen im Einzelnen</p>
+          <ul class="menu-sub">
+            <li><a href="/leistungen/webseiten/">Webseiten</a></li>
+            <li><a href="/leistungen/paid-ads/">Paid Ads</a></li>
+            <li><a href="/leistungen/ki/">KI-Automatisierung</a></li>
+          </ul>
+          <a href="/kontakt/" class="btn-green menu-cta">Jetzt anfragen</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- @end:nav -->
+
+  <main id="main">
 
   <!-- PROCESS INTRO SECTION (before the flow animation) -->
   <section class="process-intro-hero">
@@ -40,7 +146,7 @@
   <!-- PROCESS FLOW ANIMATION CONTAINER -->
   <div class="process-flow-shell" data-process-flow>
     <section class="process-flow-section" data-flow-section data-section-color="light">
-      <div class="process-card-number">01</div>
+      <div class="process-card-number" aria-hidden="true">01</div>
       <div class="process-card-copy">
         <h3>Erstkontakt & Kennenlernen</h3>
         <p>Du schreibst uns über das Kontaktformular oder per Mail. Innerhalb von 48 Stunden melden wir uns mit einem konkreten Terminvorschlag für ein kostenloses Erstgespräch. Wir lernen dein Unternehmen, deine Ziele und dein Budget kennen — und du lernst uns kennen, ohne Verkaufsdruck.</p>
@@ -53,7 +159,7 @@
     </section>
 
     <section class="process-flow-section" data-flow-section data-section-color="green-light">
-      <div class="process-card-number">02</div>
+      <div class="process-card-number" aria-hidden="true">02</div>
       <div class="process-card-copy">
         <h3>Analyse & Strategie</h3>
         <p>Wir prüfen dein bestehendes Setup, deine Sichtbarkeit bei Google, deine Wettbewerbssituation und die realen Potenziale. Daraus entwickeln wir eine klare Strategie mit passenden Kanälen, Zielgruppen und einer nachvollziehbaren Budgetverteilung.</p>
@@ -66,7 +172,7 @@
     </section>
 
     <section class="process-flow-section" data-flow-section data-section-color="green">
-      <div class="process-card-number">03</div>
+      <div class="process-card-number" aria-hidden="true">03</div>
       <div class="process-card-copy">
         <h3>Setup & Launch</h3>
         <p>Nach deiner Freigabe starten wir mit dem technischen Setup: Kampagnenstruktur, Tracking, Creatives, Landing Pages oder Webseite. Alles wird vor dem Launch gemeinsam abgestimmt und so vorbereitet, dass der Start sauber und kontrolliert verläuft.</p>
@@ -79,7 +185,7 @@
     </section>
 
     <section class="process-flow-section" data-flow-section data-section-color="green-dark">
-      <div class="process-card-number">04</div>
+      <div class="process-card-number" aria-hidden="true">04</div>
       <div class="process-card-copy">
         <h3>Optimierung & Skalierung</h3>
         <p>Wir prüfen Daten regelmäßig, testen Varianten und optimieren gezielt. So fließt dein Budget nicht in unqualifizierte Klicks, sondern in echte Anfragen für Sicherheitsdienstleistungen und langfristig in bessere Ergebnisse.</p>
@@ -92,7 +198,7 @@
     </section>
 
     <section class="process-flow-section process-section-last" data-flow-section data-section-color="ink">
-      <div class="process-card-number">05</div>
+      <div class="process-card-number" aria-hidden="true">05</div>
       <div class="process-card-copy">
         <h3>Reporting & Kommunikation</h3>
         <p>Du erhältst klare Reports und eine direkte Kommunikation mit deinem Ansprechpartner. So bleibt der Überblick erhalten und du weißt jederzeit, was läuft, was verbessert wird und welche nächsten Schritte kommen.</p>
@@ -110,52 +216,57 @@
     <div class="process-cta-content">
       <h2>Bereit, deinen Prozess zu starten?</h2>
       <p>Lass uns in einem kostenlosen Erstgespräch herausfinden, wie wir dir helfen können.</p>
-      <a href="/kontakt" class="btn-ink">Jetzt anfragen <span class="btn-arrow">→</span></a>
+      <a href="/kontakt" class="btn-ink">Jetzt anfragen</a>
     </div>
   </section>
+  </main>
 
-  <footer class="process-footer">
+  <!-- @build:footer -->
+  <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <svg viewBox="0 0 40 40" fill="none" style="width:30px;">
-          <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
         <p><strong>InboxElevate</strong><br>Mehr Anfragen. Mehr Bewerbungen. Spezialisiert auf Sicherheitsunternehmen.</p>
       </div>
       <div class="footer-col">
-        <h5>Navigation</h5>
+        <p class="footer-title">Navigation</p>
         <a href="/">Start</a>
-        <a href="/leistungen">Leistungen</a>
-        <a href="/prozess">Prozess</a>
-        <a href="/ueber-uns">Über uns</a>
-        <a href="/tipps">Tipps</a>
+        <a href="/leistungen/">Leistungen</a>
+        <a href="/prozess/">Prozess</a>
+        <a href="/ueber-uns/">Über uns</a>
+        <a href="/tipps/">Tipps</a>
       </div>
       <div class="footer-col">
-        <h5>Leistungen</h5>
-        <a href="/leistungen/webseiten">Webentwicklung</a>
-        <a href="/leistungen/paid-ads">Paid Ads</a>
-        <a href="/leistungen/ki">KI-Automatisierung</a>
+        <p class="footer-title">Leistungen</p>
+        <a href="/leistungen/webseiten/">Webseiten</a>
+        <a href="/leistungen/paid-ads/">Paid Ads</a>
+        <a href="/leistungen/ki/">KI-Automatisierung</a>
       </div>
       <div class="footer-col">
-        <h5>Kontakt</h5>
+        <p class="footer-title">Kontakt</p>
         <a href="mailto:david@inbox-elevate.de">david@inbox-elevate.de</a>
-        <a href="/kontakt">Anfrage stellen</a>
-        <a href="/datenschutz">Datenschutz</a>
+        <a href="/kontakt/">Anfrage stellen</a>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© 2026 InboxElevate. Alle Rechte vorbehalten.</p>
+      <ul class="footer-legal">
+        <li><a href="/impressum/">Impressum</a></li>
+        <li><a href="/datenschutz/">Datenschutz</a></li>
+      </ul>
       <div class="socials">
-        <a href="https://www.linkedin.com/company/inboxelevate/" class="soc" title="LinkedIn">in</a>
-        <a href="mailto:david@inbox-elevate.de" class="soc" title="Email">✉</a>
+        <a href="https://www.linkedin.com/company/inboxelevate/" target="_blank" rel="noopener noreferrer" class="soc" aria-label="InboxElevate auf LinkedIn (öffnet in neuem Tab)"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin"/></svg></a>
+        <a href="mailto:david@inbox-elevate.de" class="soc" aria-label="E-Mail an InboxElevate"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-mail"/></svg></a>
       </div>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+
+  <!-- @end:footer -->
+  <!-- @build:scripts -->
+  <script src="/vendor/gsap.min.js"></script>
+  <script src="/vendor/CustomEase.min.js"></script>
+  <script src="/vendor/ScrollTrigger.min.js"></script>
   <script src="/js/main.js" defer></script>
+  <!-- @end:scripts -->
   <script>
     (function () {
       'use strict';

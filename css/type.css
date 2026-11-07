@@ -1,0 +1,75 @@
+/* ═══════════════════════════════════════════════════════════
+   type.css – Typografie-System
+   Wird zuletzt geladen. `:not(#_)` hebt die Spezifität bewusst über die
+   seitenspezifischen Altregeln, damit eine Stufe überall gleich aussieht.
+   Altregeln dürfen nach und nach gelöscht werden; dann kann `:not(#_)` weg.
+
+   Rollen (Hierarchie über Gewicht, Familie und Größe – nicht nur über Größe):
+   Display  Bricolage 800 · nur Startseiten-Hero
+   H1       Bricolage 800 · ein H1 pro Seite
+   H2       Bricolage 700 · Abschnittsüberschrift (ohne zweifarbigen Akzent)
+   H3       Instrument Sans 600 · Kartentitel
+   Eyebrow  Instrument Sans 600, normale Schreibweise (statt Mono-Versalien)
+   ═══════════════════════════════════════════════════════════ */
+:root {
+  --fs-hero: clamp(2.9rem, 1rem + 7.6vw, 7.5rem);
+  --fs-h1: clamp(2.5rem, 1.2rem + 4.2vw, 4.75rem);
+  --fs-h1-split: clamp(2.2rem, 1rem + 2.6vw, 3.4rem);
+  --fs-h1-doc: clamp(2rem, 1.3rem + 2vw, 2.75rem);
+  --fs-h2: clamp(1.9rem, 1.1rem + 2.4vw, 3.1rem);
+  --fs-h2-card: clamp(1.9rem, 1rem + 2vw, 2.7rem);
+  --fs-h2-sub: clamp(1.4rem, 1.05rem + 1vw, 1.8rem);
+  --fs-h3: 1.2rem;
+  --fs-h3-lg: clamp(1.4rem, 1.1rem + .6vw, 1.65rem);
+}
+
+h1, h2, h3 { overflow-wrap: break-word; hyphens: manual; }
+
+/* ── Display / H1 ── */
+.hero-h1:not(#_) { font-size: var(--fs-hero); font-weight: 800; line-height: 1; letter-spacing: -.035em; }
+h1:not(#_):where(:not(.hero-h1)) { font-family: var(--H); font-weight: 800; font-size: var(--fs-h1); line-height: 1.04; letter-spacing: -.03em; text-wrap: balance; }
+h1.h1-split:not(#_) { font-size: var(--fs-h1-split); line-height: 1.08; }
+.legal-page h1:not(#_) { font-size: var(--fs-h1-doc); line-height: 1.1; letter-spacing: -.025em; margin-bottom: .5rem; }
+
+/* ── H2 ── */
+h2:not(#_):where(:not(.usp-hw):not(.tipp-expandable-title)) { font-family: var(--H); font-weight: 700; font-size: var(--fs-h2); line-height: 1.1; letter-spacing: -.02em; text-wrap: balance; }
+.hub-svc-title:not(#_) { font-size: var(--fs-h2-card); line-height: 1.05; }
+.spoke-next h2:not(#_), .about-right h2:not(#_), .contact-right h2:not(#_), .legal-page h2:not(#_) { font-size: var(--fs-h2-sub); line-height: 1.2; letter-spacing: -.01em; }
+.legal-page h2:not(#_) { font-size: 1.25rem; font-weight: 700; letter-spacing: -.005em; }
+.process-cta-content h2:not(#_) { font-size: var(--fs-h2); }
+
+/* ── H3 ── */
+h3:not(#_) { font-family: var(--B); font-weight: 600; font-size: var(--fs-h3); line-height: 1.25; letter-spacing: -.005em; }
+.svc-card-title:not(#_) { font-family: var(--H); font-weight: 700; font-size: var(--fs-h3-lg); line-height: 1.1; letter-spacing: -.02em; }
+.founder-card h3:not(#_) { font-size: 1.3rem; }
+.process-flow-section .process-card-copy h3:not(#_) { font-family: var(--H); font-weight: 800; font-size: clamp(2.8rem, 6vw, 5.5rem); line-height: 1; letter-spacing: -.035em; }
+
+/* ── Eyebrows: normale Schreibweise statt Mono-Versalien; Akzentlinie entfällt ── */
+.hero-label:not(#_),
+.svc-hub-label:not(#_),
+.page-label:not(#_),
+.hub-hero-label:not(#_),
+.spoke-label:not(#_),
+.spoke-eyebrow:not(#_),
+.spoke-section-label:not(#_),
+.m-label:not(#_),
+.founder-role:not(#_),
+.tipps-sidebar-title:not(#_),
+.tipp-category:not(#_),
+.process-stat-label:not(#_) {
+  font-family: var(--B); font-weight: 600; font-size: .95rem; line-height: 1.35;
+  letter-spacing: 0; text-transform: none; color: var(--green);
+}
+.hero-label:not(#_)::before,
+.svc-hub-label:not(#_)::before,
+.page-label:not(#_)::before,
+.hub-hero-label:not(#_)::before,
+.spoke-label:not(#_)::before,
+.spoke-section-label:not(#_)::before { display: none; }
+.spoke-eyebrow:not(#_) { margin-bottom: 1.25rem; }
+.tipp-category:not(#_) { color: var(--muted); }
+
+/* ── Kontrast: auf dunklem Grund wird das helle Grün verwendet ── */
+.svc-card--dark, .hub-hero, .hub-service-wide, .spoke-section-dark, .spoke-hero-visual, .spoke-problem, .spoke-cta,
+.ki-hero, .ki-terminal, .ki-process, .process-section-last, .process-flow-section[data-section-color="ink"],
+.about-left, .contact-left, footer, .menu-content { --green: var(--green-l); }

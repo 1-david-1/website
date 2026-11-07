@@ -3,29 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- @build:head -->
   <title>Webdesign für Sicherheitsunternehmen – InboxElevate</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Schnelle Webseiten für Sicherheitsunternehmen: klickbare Notrufnummer, sichtbare Zertifikate, lokale SEO und Anfrage-Formulare, die Leads vorqualifizieren.">
+  <link rel="canonical" href="https://inbox-elevate.de/leistungen/webseiten/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#f5f3ee">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="InboxElevate">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Webdesign für Sicherheitsunternehmen – InboxElevate">
+  <meta property="og:description" content="Schnelle Webseiten für Sicherheitsunternehmen: klickbare Notrufnummer, sichtbare Zertifikate, lokale SEO und Anfrage-Formulare, die Leads vorqualifizieren.">
+  <meta property="og:url" content="https://inbox-elevate.de/leistungen/webseiten/">
+  <meta property="og:image" content="https://inbox-elevate.de/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/fonts.css">
+  <noscript><style>.sr,.sr-l,.sr-r{opacity:1!important;transform:none!important}</style></noscript>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Webdesign für Sicherheitsunternehmen","description":"Schnelle Webseiten für Sicherheitsunternehmen: klickbare Notrufnummer, sichtbare Zertifikate, lokale SEO und Anfrage-Formulare, die Leads vorqualifizieren.","serviceType":"Webdesign","url":"https://inbox-elevate.de/leistungen/webseiten/","areaServed":{"@type":"Country","name":"Deutschland"},"provider":{"@type":"Organization","@id":"https://inbox-elevate.de/#organization","name":"InboxElevate","url":"https://inbox-elevate.de"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://inbox-elevate.de/"},{"@type":"ListItem","position":2,"name":"Leistungen","item":"https://inbox-elevate.de/leistungen/"},{"@type":"ListItem","position":3,"name":"Webseiten","item":"https://inbox-elevate.de/leistungen/webseiten/"}]}</script>
+  <!-- @end:head -->
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/leistungen.css">
+  <!-- @build:headend -->
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/type.css">
+  <!-- @end:headend -->
 </head>
 <body>
 
-  <!-- NAV -->
-  <!-- NAV (injected by JS) -->
-  <div data-site-nav></div>
+  <!-- @build:nav -->
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <header id="nav" class="site-nav">
+    <a href="/" class="logo logo-outer" aria-label="InboxElevate – Startseite">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-name">InboxElevate</span>
+    </a>
+    <div class="nav-actions">
+      <a href="/kontakt/" class="nav-contact">Anfrage stellen</a>
+      <button type="button" class="nav-close-btn" id="ham" aria-expanded="false" aria-controls="navOverlay" aria-label="Menü öffnen">
+        <span class="menu-button-text" aria-hidden="true">
+          <span class="p-large">Menü</span>
+          <span class="p-large">Schließen</span>
+        </span>
+        <span class="icon-wrap" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="menu-button-icon">
+            <path d="M7.33333 16L7.33333 -3.2055e-07L8.66667 -3.78832e-07L8.66667 16L7.33333 16Z" fill="currentColor"></path>
+            <path d="M16 8.66667L-2.62269e-07 8.66667L-3.78832e-07 7.33333L16 7.33333L16 8.66667Z" fill="currentColor"></path>
+            <path d="M6 7.33333L7.33333 7.33333L7.33333 6C7.33333 6.73637 6.73638 7.33333 6 7.33333Z" fill="currentColor"></path>
+            <path d="M10 7.33333L8.66667 7.33333L8.66667 6C8.66667 6.73638 9.26362 7.33333 10 7.33333Z" fill="currentColor"></path>
+            <path d="M6 8.66667L7.33333 8.66667L7.33333 10C7.33333 9.26362 6.73638 8.66667 6 8.66667Z" fill="currentColor"></path>
+            <path d="M10 8.66667L8.66667 8.66667L8.66667 10C8.66667 9.26362 9.26362 8.66667 10 8.66667Z" fill="currentColor"></path>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <div data-nav="closed" class="nav-overlay-wrapper" id="navOverlay" role="dialog" aria-modal="true" aria-label="Hauptmenü">
+    <div class="overlay" id="navOverlayBg"></div>
+    <nav class="menu-content" aria-label="Hauptnavigation">
+      <div class="menu-bg" aria-hidden="true">
+        <div class="backdrop-layer first"></div>
+        <div class="backdrop-layer second"></div>
+        <div class="backdrop-layer"></div>
+        <div class="ambient-background-shapes">
+          <svg class="bg-shape bg-shape-1" viewBox="0 0 400 400" fill="none"><circle class="shape-element" cx="80" cy="120" r="40" fill="rgba(29,186,110,0.12)"/><circle class="shape-element" cx="300" cy="80" r="60" fill="rgba(29,186,110,0.09)"/><circle class="shape-element" cx="200" cy="300" r="80" fill="rgba(29,186,110,0.07)"/><circle class="shape-element" cx="350" cy="280" r="30" fill="rgba(29,186,110,0.12)"/></svg>
+          <svg class="bg-shape bg-shape-2" viewBox="0 0 400 400" fill="none"><path class="shape-element" d="M0 200 Q100 100, 200 200 T 400 200" stroke="rgba(29,186,110,0.18)" stroke-width="60" fill="none"/><path class="shape-element" d="M0 280 Q100 180, 200 280 T 400 280" stroke="rgba(29,186,110,0.12)" stroke-width="40" fill="none"/></svg>
+          <svg class="bg-shape bg-shape-3" viewBox="0 0 400 400" fill="none"><circle class="shape-element" cx="50" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="150" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="250" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="350" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="100" cy="150" r="12" fill="rgba(29,186,110,0.22)"/><circle class="shape-element" cx="200" cy="150" r="12" fill="rgba(29,186,110,0.22)"/><circle class="shape-element" cx="300" cy="150" r="12" fill="rgba(29,186,110,0.22)"/><circle class="shape-element" cx="50" cy="250" r="10" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="150" cy="250" r="10" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="250" cy="250" r="10" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="350" cy="250" r="10" fill="rgba(29,186,110,0.28)"/></svg>
+          <svg class="bg-shape bg-shape-4" viewBox="0 0 400 400" fill="none"><path class="shape-element" d="M100 100 Q150 50, 200 100 Q250 150, 200 200 Q150 250, 100 200 Q50 150, 100 100" fill="rgba(29,186,110,0.1)"/><path class="shape-element" d="M250 200 Q300 150, 350 200 Q400 250, 350 300 Q300 350, 250 300 Q200 250, 250 200" fill="rgba(29,186,110,0.08)"/></svg>
+          <svg class="bg-shape bg-shape-5" viewBox="0 0 400 400" fill="none"><line class="shape-element" x1="0" y1="100" x2="300" y2="400" stroke="rgba(29,186,110,0.13)" stroke-width="30"/><line class="shape-element" x1="100" y1="0" x2="400" y2="300" stroke="rgba(29,186,110,0.1)" stroke-width="25"/><line class="shape-element" x1="200" y1="0" x2="400" y2="200" stroke="rgba(29,186,110,0.08)" stroke-width="20"/></svg>
+        </div>
+      </div>
+      <div class="menu-content-wrapper">
+        <button type="button" class="menu-close" id="menuClose" aria-label="Menü schließen">
+          <svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg>
+        </button>
+        <a href="/" class="menu-logo" aria-label="InboxElevate – Startseite">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36" aria-hidden="true">
+            <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="menu-logo-text">InboxElevate</span>
+        </a>
+        <ul class="menu-list">
+          <li class="menu-list-item" data-shape="1"><a href="/" class="nav-link w-inline-block"><span class="nav-link-text">Start</span><span class="nav-link-hover-bg"></span></a></li>
+          <li class="menu-list-item" data-shape="2"><a href="/leistungen/" class="nav-link w-inline-block active" aria-current="page"><span class="nav-link-text">Leistungen</span><span class="nav-link-hover-bg"></span></a></li>
+          <li class="menu-list-item" data-shape="3"><a href="/prozess/" class="nav-link w-inline-block"><span class="nav-link-text">Prozess</span><span class="nav-link-hover-bg"></span></a></li>
+          <li class="menu-list-item" data-shape="4"><a href="/ueber-uns/" class="nav-link w-inline-block"><span class="nav-link-text">Über uns</span><span class="nav-link-hover-bg"></span></a></li>
+          <li class="menu-list-item" data-shape="5"><a href="/tipps/" class="nav-link w-inline-block"><span class="nav-link-text">Tipps</span><span class="nav-link-hover-bg"></span></a></li>
+        </ul>
+        <div class="menu-footer" data-menu-fade>
+          <p class="menu-sub-title">Leistungen im Einzelnen</p>
+          <ul class="menu-sub">
+            <li><a href="/leistungen/webseiten/" aria-current="page">Webseiten</a></li>
+            <li><a href="/leistungen/paid-ads/">Paid Ads</a></li>
+            <li><a href="/leistungen/ki/">KI-Automatisierung</a></li>
+          </ul>
+          <a href="/kontakt/" class="btn-green menu-cta">Jetzt anfragen</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- @end:nav -->
 
 
-  <main>
+  <main id="main">
+    <!-- @build:breadcrumb -->
+    <nav class="breadcrumb" aria-label="Brotkrumen">
+      <a href="/">Start</a><span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="/leistungen/">Leistungen</a><span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span class="breadcrumb-current" aria-current="page">Webseiten</span>
+    </nav>
+  <!-- @end:breadcrumb -->
+
     <section class="spoke-hero">
       <div class="spoke-hero-content">
-        <div style="font-family:var(--M);font-size:0.75rem;letter-spacing:0.1em;color:var(--green);text-transform:uppercase;margin-bottom:1.5rem;">Webseiten Entwicklung</div>
+        <p class="spoke-eyebrow">Webseiten-Entwicklung</p>
         <h1>Webseiten, die aus Besuchern <span style="color:var(--green)">Aufträge machen.</span></h1>
         <p>Eine hübsche Webseite reicht heute nicht mehr. Wenn Entscheider im Bereich Objektschutz oder Alarmanlagen nach Dienstleistern suchen, wollen sie sofort Klarheit, Vertrauen und Erreichbarkeit.</p>
-        <a href="/kontakt" class="btn-ink">Kostenlosen Marketing-Check anfordern <span style="font-size:1.2em">→</span></a>
+        <a href="/kontakt" class="btn-ink">Kostenlosen Marketing-Check anfordern</a>
       </div>
       <div class="spoke-hero-visual">
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Webseite Analyse" style="width:100%; border-radius: 24px; box-shadow: 0 40px 80px rgba(11, 14, 26, 0.15);">
+        <svg class="site-mockup" viewBox="0 0 640 440" role="img" aria-label="Beispiel-Layout einer Webseite für ein Sicherheitsunternehmen: Kopfzeile mit Anruf-Button, Anfrageformular und Vertrauenssignale">
+          <rect width="640" height="440" rx="20" fill="#fff" stroke="rgba(11,14,26,.12)"/>
+          <path d="M0 20a20 20 0 0 1 20-20h600a20 20 0 0 1 20 20v20H0z" fill="#ede9df"/>
+          <circle cx="22" cy="20" r="5" fill="#d6d0c2"/><circle cx="40" cy="20" r="5" fill="#d6d0c2"/><circle cx="58" cy="20" r="5" fill="#d6d0c2"/>
+          <rect x="100" y="11" width="280" height="18" rx="9" fill="#fff"/>
+          <text x="114" y="24" font-family="Instrument Sans, system-ui, sans-serif" font-size="10" fill="#6b7184">sicherheit-beispiel.de</text>
+          <rect x="28" y="64" width="24" height="24" rx="6" fill="#0b0e1a"/>
+          <text x="60" y="82" font-family="Bricolage Grotesque, system-ui, sans-serif" font-size="14" font-weight="700" fill="#0b0e1a">Muster Security</text>
+          <rect x="290" y="71" width="36" height="8" rx="4" fill="#cfd2da"/><rect x="336" y="71" width="36" height="8" rx="4" fill="#cfd2da"/><rect x="382" y="71" width="36" height="8" rx="4" fill="#cfd2da"/>
+          <rect x="450" y="62" width="162" height="28" rx="14" fill="#109e56"/>
+          <g transform="translate(466 68)" fill="none" stroke="#0b0e1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 20.5C9 20.5 3.5 15 3.5 7.5 3.5 6.4 4.4 5.5 5.5 5.5H8l1.5 3.8-1.9 1.3c.9 1.8 2.3 3.2 4.1 4.1l1.3-1.9 3.8 1.5v2.5c0 1.1-.9 2-2 2z" transform="scale(.8)"/></g>
+          <text x="498" y="80.5" font-family="Instrument Sans, system-ui, sans-serif" font-size="12.5" font-weight="600" fill="#0b0e1a">Jetzt anrufen</text>
+          <rect x="28" y="124" width="290" height="22" rx="6" fill="#0b0e1a"/><rect x="28" y="154" width="220" height="22" rx="6" fill="#0b0e1a"/>
+          <rect x="28" y="192" width="250" height="8" rx="4" fill="#cfd2da"/><rect x="28" y="208" width="200" height="8" rx="4" fill="#cfd2da"/>
+          <rect x="28" y="236" width="140" height="34" rx="17" fill="#0b0e1a"/><rect x="48" y="249" width="100" height="8" rx="4" fill="#f5f3ee" opacity=".9"/>
+          <rect x="372" y="112" width="240" height="176" rx="14" fill="#f5f3ee" stroke="rgba(11,14,26,.1)"/>
+          <rect x="390" y="130" width="110" height="10" rx="5" fill="#0b0e1a" opacity=".85"/>
+          <rect x="390" y="156" width="204" height="24" rx="6" fill="#fff" stroke="rgba(11,14,26,.12)"/><rect x="390" y="188" width="204" height="24" rx="6" fill="#fff" stroke="rgba(11,14,26,.12)"/><rect x="390" y="220" width="204" height="24" rx="6" fill="#fff" stroke="rgba(11,14,26,.12)"/>
+          <rect x="390" y="252" width="204" height="24" rx="12" fill="#109e56"/>
+          <g font-family="Instrument Sans, system-ui, sans-serif">
+            <rect x="28" y="316" width="184" height="72" rx="12" fill="#fff" stroke="rgba(11,14,26,.1)"/>
+            <g transform="translate(46 338)" fill="none" stroke="#0a7c42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 4.5 5.5v6c0 4.4 3 7.6 7.5 9.5 4.5-1.9 7.5-5.1 7.5-9.5v-6z"/><path d="m8.8 12 2.3 2.3 4.2-4.6"/></g>
+            <text x="82" y="349" font-size="13" font-weight="600" fill="#0b0e1a">Zertifikate</text><text x="82" y="366" font-size="11" fill="#5d6377">IHK · DIN · VdS</text>
+            <rect x="228" y="316" width="184" height="72" rx="12" fill="#fff" stroke="rgba(11,14,26,.1)"/>
+            <g transform="translate(246 338)" fill="none" stroke="#0a7c42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></g>
+            <text x="282" y="349" font-size="13" font-weight="600" fill="#0b0e1a">Bewertungen</text><text x="282" y="366" font-size="11" fill="#5d6377">Google &amp; Referenzen</text>
+            <rect x="428" y="316" width="184" height="72" rx="12" fill="#fff" stroke="rgba(11,14,26,.1)"/>
+            <g transform="translate(446 338)" fill="none" stroke="#0a7c42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></g>
+            <text x="482" y="349" font-size="13" font-weight="600" fill="#0b0e1a">Einsatzgebiet</text><text x="482" y="366" font-size="11" fill="#5d6377">Region &amp; Standorte</text>
+          </g>
+        </svg>
       </div>
     </section>
 
@@ -37,17 +177,17 @@
       </div>
       <div class="spoke-features">
         <div class="spoke-feature">
-          <div class="spoke-feature-icon">📵</div>
+          <div class="spoke-feature-icon"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-phone-off"/></svg></div>
           <h3>Schlechte Erreichbarkeit</h3>
           <p>Potenzielle Kunden in einer Notsituation wollen nicht lange suchen. Wenn die Notrufnummer nicht sofort klickbar im Header ist, gehen Anfragen verloren.</p>
         </div>
         <div class="spoke-feature">
-          <div class="spoke-feature-icon">🐌</div>
+          <div class="spoke-feature-icon"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-hourglass"/></svg></div>
           <h3>Lange Ladezeiten</h3>
           <p>Die meisten User springen ab, wenn eine Seite länger als 3 Sekunden lädt. Überladene Slider und riesige Bilder zerstören deine Conversion-Rate.</p>
         </div>
         <div class="spoke-feature">
-          <div class="spoke-feature-icon">🔍</div>
+          <div class="spoke-feature-icon"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-search"/></svg></div>
           <h3>Keine lokale SEO</h3>
           <p>Du wirst in Google nicht gefunden, weil wichtige lokale Keywords wie "Sicherheitsdienst Düsseldorf" im Content, in der URL-Struktur und den Meta-Tags fehlen.</p>
         </div>
@@ -62,38 +202,89 @@
       </div>
       <div class="spoke-features">
         <div class="spoke-feature" style="border-color: rgba(29, 186, 110, 0.3); background: rgba(29, 186, 110, 0.03);">
-          <div class="spoke-feature-icon">⚡</div>
+          <div class="spoke-feature-icon"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-zap"/></svg></div>
           <h3 style="color:var(--ink)">Rasend schnelle Ladezeiten</h3>
           <p>Wir verzichten auf schwere Baukästen wie Wordpress-Elementor und bauen extrem schlanke, performante Webseiten, die bei Google PageSpeed glänzen.</p>
         </div>
         <div class="spoke-feature" style="border-color: rgba(29, 186, 110, 0.3); background: rgba(29, 186, 110, 0.03);">
-          <div class="spoke-feature-icon">🛡️</div>
+          <div class="spoke-feature-icon"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"/></svg></div>
           <h3 style="color:var(--ink)">Integrierte Vertrauenssignale</h3>
           <p>Wir platzieren deine Zertifikate (IHK, DIN, VdS), Referenzen und Google-Bewertungen exakt dort, wo sie den Besucher überzeugen.</p>
         </div>
         <div class="spoke-feature" style="border-color: rgba(29, 186, 110, 0.3); background: rgba(29, 186, 110, 0.03);">
-          <div class="spoke-feature-icon">🎯</div>
+          <div class="spoke-feature-icon"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-target"/></svg></div>
           <h3 style="color:var(--ink)">Conversion-Formulare</h3>
           <p>Smarte, mehrstufige Anfrage-Formulare. So qualifizierst du Leads vorab (z.B. nach Budget oder Einsatzort), bevor du überhaupt das erste Gespräch führst.</p>
         </div>
       </div>
     </section>
+    <!-- @build:spoke-next -->
+    <section class="spoke-next" aria-labelledby="spokeNextTitle">
+      <h2 id="spokeNextTitle">Weitere Leistungen</h2>
+      <div class="spoke-next-grid">
+        <a class="spoke-next-link" href="/leistungen/paid-ads/"><span class="spoke-next-name">Paid Ads</span><span class="spoke-next-teaser">Google- und Meta-Ads, die Anfragen bringen statt nur Klicks.</span></a>
+        <a class="spoke-next-link" href="/leistungen/ki/"><span class="spoke-next-name">KI-Automatisierung</span><span class="spoke-next-teaser">KI-Bot und Workflows, die Anfragen vorqualifizieren.</span></a>
+      </div>
+      <a class="spoke-next-all" href="/leistungen/">Alle Leistungen im Überblick</a>
+    </section>
+  <!-- @end:spoke-next -->
+
 
     <section style="padding:6rem clamp(1.5rem,5vw,4rem); background:var(--ink); color:var(--cream); text-align:center;">
       <h2 style="font-family:var(--H); font-size:3rem; margin-bottom:1.5rem;">Bereit für mehr Anfragen?</h2>
       <p style="color:rgba(245,243,238,0.7); max-width:600px; margin:0 auto 2.5rem; line-height:1.7;">Lass uns in einem kurzen, unverbindlichen Call herausfinden, wie viel Potenzial in deinem aktuellen Webauftritt steckt.</p>
-      <a href="/kontakt" style="display:inline-flex; align-items:center; gap:0.5rem; background:var(--green); color:var(--ink); padding:1rem 2rem; border-radius:50px; font-family:var(--B); font-weight:700; text-decoration:none; transition:transform 0.2s ease;">
+      <a href="/kontakt" style="display:inline-flex; align-items:center; gap:0.5rem; background:var(--green-fill); color:var(--ink); padding:1rem 2rem; border-radius:50px; font-family:var(--B); font-weight:700; text-decoration:none; transition:transform 0.2s ease;">
         Jetzt Termin vereinbaren
       </a>
     </section>
 
   </main>
 
+  <!-- @build:footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p><strong>InboxElevate</strong><br>Mehr Anfragen. Mehr Bewerbungen. Spezialisiert auf Sicherheitsunternehmen.</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">Navigation</p>
+        <a href="/">Start</a>
+        <a href="/leistungen/">Leistungen</a>
+        <a href="/prozess/">Prozess</a>
+        <a href="/ueber-uns/">Über uns</a>
+        <a href="/tipps/">Tipps</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">Leistungen</p>
+        <a href="/leistungen/webseiten/">Webseiten</a>
+        <a href="/leistungen/paid-ads/">Paid Ads</a>
+        <a href="/leistungen/ki/">KI-Automatisierung</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-title">Kontakt</p>
+        <a href="mailto:david@inbox-elevate.de">david@inbox-elevate.de</a>
+        <a href="/kontakt/">Anfrage stellen</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 InboxElevate. Alle Rechte vorbehalten.</p>
+      <ul class="footer-legal">
+        <li><a href="/impressum/">Impressum</a></li>
+        <li><a href="/datenschutz/">Datenschutz</a></li>
+      </ul>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/inboxelevate/" target="_blank" rel="noopener noreferrer" class="soc" aria-label="InboxElevate auf LinkedIn (öffnet in neuem Tab)"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin"/></svg></a>
+        <a href="mailto:david@inbox-elevate.de" class="soc" aria-label="E-Mail an InboxElevate"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-mail"/></svg></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- @end:footer -->
+
+  <!-- @build:scripts -->
+  <script src="/vendor/gsap.min.js"></script>
+  <script src="/vendor/CustomEase.min.js"></script>
   <script src="/js/main.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Draggable.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/InertiaPlugin.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Physics2DPlugin.min.js"></script>
+  <!-- @end:scripts -->
 </body>
 </html>
