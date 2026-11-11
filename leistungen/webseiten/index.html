@@ -1,204 +1,99 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webdesign für Sicherheitsunternehmen – InboxElevate</title>
-  <meta name="description" content="Schnelle, vertrauenswürdige Websites für Sicherheitsdienste und Alarmanlagen-Anbieter: Notrufnummer im Header, Zertifikate sichtbar, lokale SEO.">
-  <meta name="theme-color" content="#F2F1EC">
-  <link rel="canonical" href="https://inbox-elevate.de/leistungen/webseiten/">
-  <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="de_DE">
-  <meta property="og:site_name" content="InboxElevate">
-  <meta property="og:title" content="Webdesign für Sicherheitsunternehmen – InboxElevate">
-  <meta property="og:description" content="Schnelle, vertrauenswürdige Websites für Sicherheitsdienste und Alarmanlagen-Anbieter: Notrufnummer im Header, Zertifikate sichtbar, lokale SEO.">
-  <meta property="og:url" content="https://inbox-elevate.de/leistungen/webseiten/">
-  <link rel="preload" href="/assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/base.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/leistungen.css">
-  <link rel="stylesheet" href="/css/stack.css">
 </head>
 <body>
-  <a class="skip" href="#main">Zum Inhalt springen</a>
-  <div data-site-header></div>
 
-  <main id="main">
+  <!-- NAV -->
+  <!-- NAV (injected by JS) -->
+  <div data-site-nav></div>
 
-    <section class="page-hero" aria-labelledby="page-title">
-      <div class="wrap">
-        <nav class="crumbs" aria-label="Brotkrumen"><ol><li><a href="/">Start</a></li><li><a href="/leistungen">Leistungen</a></li><li aria-current="page">Webseiten</li></ol></nav>
-        <div class="page-hero__grid">
-          <div class="page-hero__copy">
-            <h1 id="page-title">Webseiten, die aus Besuchern Aufträge machen</h1>
-            <p class="lede">Eine hübsche Webseite reicht heute nicht mehr. Wenn Entscheider im Bereich Objektschutz oder Alarmanlagen nach Dienstleistern suchen, wollen sie sofort Klarheit, Vertrauen und Erreichbarkeit.</p>
-            <div class="actions">
-              <a class="btn" href="/kontakt">Kostenlosen Marketing-Check anfordern</a>
-              <a class="link" href="/leistungen">Alle Leistungen</a>
-            </div>
-          </div>
-          <figure class="mock-wrap">
-            <div class="mock mock-site" role="img" aria-label="Schematische Beispielseite eines Wachdienstes mit drei markierten Bereichen">
-              <div class="mock-site__bar"><span class="mock-site__logo">Wachdienst Beispiel</span><span class="mock-site__call"><i class="pin">1</i>Jetzt anrufen</span></div>
-              <div class="mock-site__hero"><span class="mock-site__h">Objektschutz in Düsseldorf</span><span class="bar" style="--w:88%"></span><span class="bar" style="--w:66%"></span></div>
-              <div class="mock-site__trust"><i class="pin">2</i><span>IHK</span><span>DIN 77200</span><span>VdS</span><span>Google-Bewertungen</span></div>
-              <div class="mock-site__form"><i class="pin">3</i><span class="mock-field">Einsatzort</span><span class="mock-field">Beginn</span><span class="mock-btn">Anfrage senden</span></div>
-            </div>
-            <figcaption>
-              <ol class="legend">
-                <li><i class="pin">1</i>Notrufnummer klickbar im Kopfbereich</li>
-                <li><i class="pin">2</i>Zertifikate und Bewertungen im ersten Bildschirm</li>
-                <li><i class="pin">3</i>Anfrageformular, das nach Einsatzort und Beginn fragt</li>
-              </ol>
-              <span class="mock-note">Schematisches Beispiel, kein Kundenprojekt.</span>
-            </figcaption>
-          </figure>
+
+  <main>
+    <section class="spoke-hero">
+      <div class="spoke-hero-content">
+        <div style="font-family:var(--M);font-size:0.75rem;letter-spacing:0.1em;color:var(--green);text-transform:uppercase;margin-bottom:1.5rem;">Webseiten Entwicklung</div>
+        <h1>Webseiten, die aus Besuchern <span style="color:var(--green)">Aufträge machen.</span></h1>
+        <p>Eine hübsche Webseite reicht heute nicht mehr. Wenn Entscheider im Bereich Objektschutz oder Alarmanlagen nach Dienstleistern suchen, wollen sie sofort Klarheit, Vertrauen und Erreichbarkeit.</p>
+        <a href="/kontakt" class="btn-ink">Kostenlosen Marketing-Check anfordern <span style="font-size:1.2em">→</span></a>
+      </div>
+      <div class="spoke-hero-visual">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Webseite Analyse" style="width:100%; border-radius: 24px; box-shadow: 0 40px 80px rgba(11, 14, 26, 0.15);">
+      </div>
+    </section>
+
+    <!-- Problem-Agitation -->
+    <section class="spoke-section spoke-section-dark">
+      <div class="spoke-section-title">
+        <h2>Warum die meisten Websites scheitern</h2>
+        <p>Viele Webdesigner kennen sich mit Ästhetik aus – aber nicht mit der Sicherheitsbranche. Das Ergebnis sind Seiten, die zwar gut aussehen, aber die typischen Fehler machen.</p>
+      </div>
+      <div class="spoke-features">
+        <div class="spoke-feature">
+          <div class="spoke-feature-icon">📵</div>
+          <h3>Schlechte Erreichbarkeit</h3>
+          <p>Potenzielle Kunden in einer Notsituation wollen nicht lange suchen. Wenn die Notrufnummer nicht sofort klickbar im Header ist, gehen Anfragen verloren.</p>
+        </div>
+        <div class="spoke-feature">
+          <div class="spoke-feature-icon">🐌</div>
+          <h3>Lange Ladezeiten</h3>
+          <p>Die meisten User springen ab, wenn eine Seite länger als 3 Sekunden lädt. Überladene Slider und riesige Bilder zerstören deine Conversion-Rate.</p>
+        </div>
+        <div class="spoke-feature">
+          <div class="spoke-feature-icon">🔍</div>
+          <h3>Keine lokale SEO</h3>
+          <p>Du wirst in Google nicht gefunden, weil wichtige lokale Keywords wie "Sicherheitsdienst Düsseldorf" im Content, in der URL-Struktur und den Meta-Tags fehlen.</p>
         </div>
       </div>
     </section>
 
-    <section class="section " aria-labelledby="problem-title">
-      <div class="wrap split">
-        <div class="split__head split__head--sticky">
-          <h2 id="problem-title">Warum die meisten Websites scheitern</h2>
-          <p class="muted">Viele Webdesigner kennen sich mit Ästhetik aus, aber nicht mit der Sicherheitsbranche. Das Ergebnis: Seiten, die gut aussehen und trotzdem dieselben Fehler machen.</p>
+    <!-- Lösung (Features) -->
+    <section class="spoke-section">
+      <div class="spoke-section-title">
+        <h2 style="color:var(--ink)">Unsere Lösung für dich</h2>
+        <p>Wir bauen Websites, die als digitaler Vertriebsmitarbeiter funktionieren. Sie beantworten Fragen, bauen Vertrauen auf und filtern unpassende Anfragen heraus.</p>
+      </div>
+      <div class="spoke-features">
+        <div class="spoke-feature" style="border-color: rgba(29, 186, 110, 0.3); background: rgba(29, 186, 110, 0.03);">
+          <div class="spoke-feature-icon">⚡</div>
+          <h3 style="color:var(--ink)">Rasend schnelle Ladezeiten</h3>
+          <p>Wir verzichten auf schwere Baukästen wie Wordpress-Elementor und bauen extrem schlanke, performante Webseiten, die bei Google PageSpeed glänzen.</p>
         </div>
-        <div>
-          <dl class="rows">
-            <div class="rows__item"><dt>Schlechte Erreichbarkeit</dt><dd>Wer in einer Notsituation sucht, will nicht lange suchen. Ist die Notrufnummer nicht sofort klickbar im Header, gehen Anfragen verloren.</dd></div>
-            <div class="rows__item"><dt>Lange Ladezeiten</dt><dd>Viele Nutzer springen ab, wenn eine Seite länger als drei Sekunden lädt. Überladene Slider und riesige Bilder drücken die Zahl der Anfragen.</dd></div>
-            <div class="rows__item"><dt>Keine lokale SEO</dt><dd>Du wirst bei Google nicht gefunden, weil lokale Suchbegriffe wie „Sicherheitsdienst Düsseldorf“ in Text, URL und Meta-Tags fehlen.</dd></div>
-          </dl>
+        <div class="spoke-feature" style="border-color: rgba(29, 186, 110, 0.3); background: rgba(29, 186, 110, 0.03);">
+          <div class="spoke-feature-icon">🛡️</div>
+          <h3 style="color:var(--ink)">Integrierte Vertrauenssignale</h3>
+          <p>Wir platzieren deine Zertifikate (IHK, DIN, VdS), Referenzen und Google-Bewertungen exakt dort, wo sie den Besucher überzeugen.</p>
+        </div>
+        <div class="spoke-feature" style="border-color: rgba(29, 186, 110, 0.3); background: rgba(29, 186, 110, 0.03);">
+          <div class="spoke-feature-icon">🎯</div>
+          <h3 style="color:var(--ink)">Conversion-Formulare</h3>
+          <p>Smarte, mehrstufige Anfrage-Formulare. So qualifizierst du Leads vorab (z.B. nach Budget oder Einsatzort), bevor du überhaupt das erste Gespräch führst.</p>
         </div>
       </div>
     </section>
 
-    <section class="section band-white" aria-labelledby="loesung-title">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 id="loesung-title">Wie wir Websites bauen</h2>
-          <p class="muted">Wir bauen Websites, die wie ein digitaler Vertriebsmitarbeiter arbeiten: Sie beantworten Fragen, schaffen Vertrauen und filtern unpassende Anfragen heraus.</p>
-        </div>
-          <div class="cols">
-            <div class="cols__item"><h3>Schnelle Ladezeiten</h3><p>Wir verzichten auf schwere Baukästen wie WordPress mit Elementor und bauen schlanke Websites, die bei Google PageSpeed gut abschneiden.</p></div>
-            <div class="cols__item"><h3>Vertrauen an der richtigen Stelle</h3><p>Zertifikate (IHK, DIN, VdS), Referenzen und Google-Bewertungen stehen genau dort, wo sie Besucher überzeugen.</p></div>
-            <div class="cols__item"><h3>Formulare, die vorqualifizieren</h3><p>Mehrstufige Anfrageformulare fragen zum Beispiel nach Budget oder Einsatzort. So führst du das erste Gespräch erst, wenn die Anfrage passt.</p></div>
-          </div>
-      </div>
+    <section style="padding:6rem clamp(1.5rem,5vw,4rem); background:var(--ink); color:var(--cream); text-align:center;">
+      <h2 style="font-family:var(--H); font-size:3rem; margin-bottom:1.5rem;">Bereit für mehr Anfragen?</h2>
+      <p style="color:rgba(245,243,238,0.7); max-width:600px; margin:0 auto 2.5rem; line-height:1.7;">Lass uns in einem kurzen, unverbindlichen Call herausfinden, wie viel Potenzial in deinem aktuellen Webauftritt steckt.</p>
+      <a href="/kontakt" style="display:inline-flex; align-items:center; gap:0.5rem; background:var(--green); color:var(--ink); padding:1rem 2rem; border-radius:50px; font-family:var(--B); font-weight:700; text-decoration:none; transition:transform 0.2s ease;">
+        Jetzt Termin vereinbaren
+      </a>
     </section>
 
-    <section class="section " aria-labelledby="ablauf-title">
-      <div class="wrap split">
-        <div class="split__head split__head--sticky">
-          <h2 id="ablauf-title">So entsteht deine Website</h2>
-          <p class="muted">Von der ersten Abstimmung bis zum Start läuft ein Projekt in vier Schritten. Die Umsetzung dauert in der Regel 5–10 Werktage.</p>
-        </div>
-        <div>
-          <ol class="stack" data-stack data-count="4" data-scale-step="0.03">
-            <li class="stack__item" data-stack-item>
-              <article class="stack-card">
-                <header class="stack-card__head">
-                  <span class="stack-card__no" aria-hidden="true">1</span>
-                  <h3 class="stack-card__title">Ziele und Inhalte klären</h3>
-                  <span class="stack-card__meta">Erstgespräch kostenlos</span>
-                </header>
-                <div class="stack-card__body">
-                  <p class="stack-card__meta-m">Erstgespräch kostenlos</p>
-                  <p>Wir sprechen über dein Angebot, deine Einsatzregion und deine Zielkunden. Dazu sammeln wir Zertifikate, Referenzen und Bewertungen, die auf die Seite gehören.</p>
-                  <dl class="stack-card__result"><dt>Ergebnis</dt><dd>Klarer Rahmen für Seite und Texte</dd></dl>
-                </div>
-              </article>
-            </li>
-            <li class="stack__item" data-stack-item>
-              <article class="stack-card">
-                <header class="stack-card__head">
-                  <span class="stack-card__no" aria-hidden="true">2</span>
-                  <h3 class="stack-card__title">Aufbau und Texte</h3>
-                  <span class="stack-card__meta">mit deiner Freigabe</span>
-                </header>
-                <div class="stack-card__body">
-                  <p class="stack-card__meta-m">mit deiner Freigabe</p>
-                  <p>Wir legen fest, was auf welcher Seite steht: Notrufnummer, Leistungen, Vertrauenssignale, Formular. Die Texte schreiben wir auf deine Branche und deine Region zu.</p>
-                  <dl class="stack-card__result"><dt>Ergebnis</dt><dd>Seitenaufbau und Texte zur Freigabe</dd></dl>
-                </div>
-              </article>
-            </li>
-            <li class="stack__item" data-stack-item>
-              <article class="stack-card">
-                <header class="stack-card__head">
-                  <span class="stack-card__no" aria-hidden="true">3</span>
-                  <h3 class="stack-card__title">Umsetzung</h3>
-                  <span class="stack-card__meta">5–10 Werktage insgesamt</span>
-                </header>
-                <div class="stack-card__body">
-                  <p class="stack-card__meta-m">5–10 Werktage insgesamt</p>
-                  <p>Wir bauen die Seite schlank und für Smartphones zuerst, richten das Formular ein und legen die technische Grundlage für lokale SEO.</p>
-                  <dl class="stack-card__result"><dt>Ergebnis</dt><dd>Fertige Seite zur Abnahme</dd></dl>
-                </div>
-              </article>
-            </li>
-            <li class="stack__item" data-stack-item>
-              <article class="stack-card">
-                <header class="stack-card__head">
-                  <span class="stack-card__no" aria-hidden="true">4</span>
-                  <h3 class="stack-card__title">Start und Messung</h3>
-                  <span class="stack-card__meta">nach deiner Abnahme</span>
-                </header>
-                <div class="stack-card__body">
-                  <p class="stack-card__meta-m">nach deiner Abnahme</p>
-                  <p>Nach deiner Freigabe geht die Seite online. Wir richten die Messung ein, damit du siehst, wie viele Anrufe und Anfragen ankommen.</p>
-                  <dl class="stack-card__result"><dt>Ergebnis</dt><dd>Seite online, Anfragen messbar</dd></dl>
-                </div>
-              </article>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <section class="section band-white" aria-labelledby="faq-title">
-      <div class="wrap split">
-        <div class="split__head split__head--sticky">
-          <h2 id="faq-title">Häufige Fragen</h2>
-        </div>
-        <div>
-          <div class="faq">
-            <details><summary>Wie lange dauert es, bis meine neue Website online ist?</summary><div class="answer"><p>In der Regel 5–10 Werktage. Entscheidend ist, wie schnell Texte, Bilder und Zertifikate bei uns ankommen. Im Erstgespräch nennen wir dir einen realistischen Zeitplan.</p></div></details>
-            <details><summary>Muss ich meine Texte selbst schreiben?</summary><div class="answer"><p>Du musst nicht bei null anfangen. Wir erarbeiten die Texte mit dir und für deine Branche. Du prüfst und gibst frei.</p></div></details>
-            <details><summary>Warum kein WordPress-Baukasten?</summary><div class="answer"><p>Schwere Baukästen laden langsam und schleppen viel Ballast mit. Wir bauen schlanke Seiten, die schnell laden und sich gut auf lokale Suchanfragen ausrichten lassen.</p></div></details>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section--tight" aria-labelledby="also-title">
-      <div class="wrap split">
-        <div class="split__head"><h2 id="also-title">Weitere Leistungen</h2></div>
-        <div class="also">
-            <a href="/leistungen/paid-ads"><h3>Paid Ads</h3><span>Ansehen</span></a>
-            <a href="/leistungen/ki"><h3>KI-Automatisierung</h3><span>Ansehen</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-band" aria-labelledby="cta-title">
-      <div class="wrap">
-        <div>
-          <h2 id="cta-title">Bereit für mehr Anfragen?</h2>
-          <p>Lass uns in einem kurzen, unverbindlichen Gespräch herausfinden, wie viel Potenzial in deinem Webauftritt steckt.</p>
-        </div>
-        <div class="cta-band__action">
-          <a class="btn" href="/kontakt">Termin vereinbaren</a>
-          <p class="small">Antwort innerhalb von 48 Stunden.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer" data-site-footer></footer>
-
-  <script src="/js/site.js" defer></script>
-  <script src="/js/stack.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Draggable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/InertiaPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Physics2DPlugin.min.js"></script>
 </body>
 </html>

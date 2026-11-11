@@ -1,121 +1,126 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Über uns – InboxElevate</title>
-  <meta name="description" content="Inhabergeführte Digitalagentur für die Sicherheitsbranche. Kein aufgeblähtes Team: Du arbeitest direkt mit Gründer David Matuttis. Maßgeschneiderte Websites, Ads und KI-Automatisierungen.">
-  <meta name="theme-color" content="#F2F1EC">
-  <link rel="canonical" href="https://inbox-elevate.de/ueber-uns/">
+  <meta name="description" content="Inhabergeführte Digitalagentur für die Sicherheitsbranche. Kein aufgeblähtes Team – du arbeitest direkt mit Gründer David Matuttis. Maßgeschneiderte Websites, Ads &amp; KI-Automatisierungen.">
   <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="de_DE">
-  <meta property="og:site_name" content="InboxElevate">
-  <meta property="og:title" content="Über uns – InboxElevate">
-  <meta property="og:description" content="Inhabergeführte Digitalagentur für die Sicherheitsbranche. Kein aufgeblähtes Team: Du arbeitest direkt mit Gründer David Matuttis. Maßgeschneiderte Websites, Ads und KI-Automatisierungen.">
-  <meta property="og:url" content="https://inbox-elevate.de/ueber-uns/">
-  <link rel="preload" href="/assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/leistungen.css">
-  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    /* Ensure left column scrolls independently with content */
+    .about-grid { align-items: start; }
+    .about-left { min-height: 100%; }
+    .about-manifesto { margin-top: 2.5rem; }
+  </style>
 </head>
 <body>
-  <a class="skip" href="#main">Zum Inhalt springen</a>
-  <div data-site-header></div>
+  
+  <div class="page-wipe" id="pageWipe" aria-hidden="true"></div>
+  <div class="progress-bar" id="scrollProgress" aria-hidden="true">
+    <div class="progress-bar-fill" id="scrollProgressFill"></div>
+  </div>
 
-  <main id="main">
 
-    <section class="page-hero page-hero--plain" aria-labelledby="page-title">
-      <div class="wrap">
-        <h1 id="page-title">Wir bauen unsere Expertise in der Sicherheitsbranche auf</h1>
-        <p class="lede">InboxElevate ist eine spezialisierte Digitalagentur, ausschließlich für Sicherheitsunternehmen. Wir entwickeln keine generischen Marketingpakete für alle. Stattdessen konzentrieren wir uns vollständig auf eine Branche, lernen ihre Sprache, ihre Zielgruppen und ihre Herausforderungen und bauen darauf Systeme, die wirklich funktionieren.</p>
-      </div>
-    </section>
+  <!-- NAV (injected by JS) -->
+  <div data-site-nav></div>
 
-    <section class="section" aria-labelledby="bedeutet-title">
-      <div class="wrap split">
-        <div class="split__head"><h2 id="bedeutet-title">Was das für dich bedeutet</h2></div>
-        <div class="prose">
-          <p class="lede">Maßgeschneiderte Websites, die Vertrauen aufbauen und aus Besuchern Anfragen machen. Performance-Kampagnen auf Meta und Google, die auf die Kaufmotive von B2B-Entscheidern ausgerichtet sind. Und KI-gestützte Automatisierungen, die deinen Alltag entlasten, vom Erstgespräch bis zum Onboarding neuer Mitarbeiter.</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="section band-white" aria-labelledby="gruender-title">
-      <div class="wrap split">
-        <div class="split__head">
-          <h2 id="gruender-title" class="visually-hidden">Der Gründer</h2>
-          <div class="founder">
-            <p class="caption">Gründer</p>
-            <p class="founder__name">David Matuttis</p>
-            <p class="muted">Dein fester Ansprechpartner</p>
+
+  <main class="about-grid">
+
+    <!-- ── LINKE SPALTE (dunkel) ── -->
+    <div class="about-left">
+      <div>
+        <p style="font-family:var(--M);font-size:.68rem;letter-spacing:.12em;color:var(--green);text-transform:uppercase;margin-bottom:1.5rem;">Über InboxElevate</p>
+
+        <h1 style="font-family:var(--H);font-size:3.1rem;font-weight:800;letter-spacing:-.01em;line-height:1.07;color:var(--cream);">
+          Wir bauen unsere<br>Expertise in der<br><span style="color:var(--green);">Sicherheitsbranche auf.</span>
+        </h1>
+
+        <p style="color:rgba(245,243,238,.7);margin-top:1.8rem;font-size:1rem;line-height:1.8;max-width:500px;">
+          InboxElevate ist eine spezialisierte Digitalagentur — ausschließlich für Sicherheitsunternehmen. Wir entwickeln keine generischen Marketingpakete für alle. Stattdessen konzentrieren wir uns vollständig auf eine Branche, lernen ihre Sprache, ihre Zielgruppen und ihre Herausforderungen — und bauen darauf aufbauend Systeme, die wirklich funktionieren.
+        </p>
+
+        <p style="color:rgba(245,243,238,.55);margin-top:1.2rem;font-size:.93rem;line-height:1.75;max-width:500px;">
+          Das bedeutet: Maßgeschneiderte Websites, die Vertrauen aufbauen und aus Besuchern Anfragen machen. Performance-Kampagnen auf Meta &amp; Google, die auf die Kaufmotive von B2B-Entscheidern ausgerichtet sind. Und KI-gestützte Automatisierungen, die deinen Alltag entlasten — vom Erstgespräch bis zum Onboarding neuer Mitarbeiter.
+        </p>
+
+        <!-- Manifesto-Punkte -->
+        <div class="about-manifesto">
+          <div class="manifesto-item">
+            <div class="m-label">01 · Fokus</div>
+            <p>Wir arbeiten ausschließlich mit Sicherheitsunternehmen. Kein Branchen-Hopping, kein Template-Denken — nur tiefes Verständnis für dein Geschäft.</p>
+          </div>
+          <div class="manifesto-item">
+            <div class="m-label">02 · Transparenz</div>
+            <p>Keine versteckten Gebühren, keine überteuerten Retainer ohne messbare Ergebnisse. Du weißt immer, wo dein Budget hingeht und was es bringt.</p>
+          </div>
+          <div class="manifesto-item">
+            <div class="m-label">03 · Direktheit</div>
+            <p>Kein Projektmanager als Zwischenschicht. Du redest direkt mit dem Menschen, der deine Kampagnen aufsetzt und deine Website baut.</p>
           </div>
         </div>
-        <div class="founder__text">
-          <p>Ich habe InboxElevate gegründet, weil ich gesehen habe, wie viele starke Sicherheitsunternehmen online unsichtbar bleiben, nicht wegen mangelnder Qualität, sondern wegen austauschbarer Auftritte und fehlender digitaler Systeme.</p>
-          <p>Du bekommst keinen Praktikanten, der deine Anzeigen betreut, sondern direkten Zugang zu mir: von der Strategie über die Umsetzung bis zur monatlichen Auswertung.</p>
-        </div>
       </div>
-    </section>
 
-    <section class="section" aria-labelledby="grundsaetze-title">
-      <div class="wrap split">
-        <div class="split__head"><h2 id="grundsaetze-title">Drei Grundsätze</h2></div>
-        <dl class="rows">
-            <div class="rows__item"><dt>Fokus</dt><dd>Wir arbeiten ausschließlich mit Sicherheitsunternehmen. Kein Branchen-Hopping, kein Template-Denken, nur tiefes Verständnis für dein Geschäft.</dd></div>
-            <div class="rows__item"><dt>Transparenz</dt><dd>Keine versteckten Gebühren, keine überteuerten Retainer ohne messbare Ergebnisse. Du weißt immer, wo dein Budget hingeht und was es bringt.</dd></div>
-            <div class="rows__item"><dt>Direktheit</dt><dd>Kein Projektmanager als Zwischenschicht. Du redest direkt mit dem Menschen, der deine Kampagnen aufsetzt und deine Website baut.</dd></div>
-          </dl>
+      <!-- Founder Card -->
+      <div class="founder-card">
+        <h3>David Matuttis</h3>
+        <div class="founder-role">Gründer · Dein fester Ansprechpartner</div>
+        <p style="margin-top:.75rem;line-height:1.75;">
+          Ich habe InboxElevate gegründet, weil ich gesehen habe, wie viele starke Sicherheitsunternehmen online unsichtbar bleiben — nicht wegen mangelnder Qualität, sondern wegen austauschbarer Auftritte und fehlender digitaler Systeme. Du bekommst keinen Praktikanten, der deine Anzeigen betreut, sondern direkten Zugang zu mir: von der Strategie über die Umsetzung bis zur monatlichen Auswertung.
+        </p>
       </div>
-    </section>
+    </div>
 
-    <section class="section band-white" aria-labelledby="warum-title">
-      <div class="wrap split">
-        <div class="split__head split__head--sticky"><h2 id="warum-title">Warum Sicherheitsfirmen mit uns arbeiten</h2></div>
-        <div class="prose">
-          <p>Sicherheitsdienstleistungen sind Vertrauenssache, und Vertrauen entsteht heute zuerst online. Ob Objektschutz, Revierdienst, Event-Security oder Personenschutz: Anspruchsvolle B2B-Kunden und qualifizierte Fachkräfte entscheiden sich für den Anbieter, der sofort Professionalität ausstrahlt. Eine schlecht gemachte Website, langsame Reaktionszeiten oder fehlende Social Proof kosten täglich Aufträge, ohne dass du es merkst.</p>
-          <p>Wir adressieren genau diese Lücke: mit Websites, die in unter 3 Sekunden laden und klar kommunizieren, was dich von der Konkurrenz unterscheidet. Mit Anzeigen, die nicht auf Klicks, sondern auf qualifizierte Anfragen optimiert sind. Und mit automatisierten Abläufen, die dafür sorgen, dass kein Interessent im Sand verläuft.</p>
-          <p>Dazu lösen wir das größte Wachstumshindernis der Branche: den Fachkräftemangel. Mit datengetriebenen Recruiting-Funnels sprechen wir wechselbereite Sicherheitskräfte (§ 34a, Waffensachkunde, Vollzugsbeamte im Seiteneinstieg) dort an, wo sie täglich aktiv sind, und qualifizieren sie automatisiert vor, bevor sie überhaupt bei dir anrufen.</p>
-        </div>
-      </div>
-    </section>
+    <!-- ── RECHTE SPALTE (hell) ── -->
+    <div class="about-right">
+      <p class="page-label">— Was uns ausmacht</p>
+      <h2>Warum Sicherheitsfirmen<br>mit uns arbeiten.</h2>
 
-    <section class="section model" data-model-section aria-label="Interaktives 3D-Geländerelief">
-      <div class="wrap">
-        <p class="model__caption">Interaktives 3D-Geländerelief</p>
+      <p style="color:var(--muted);margin-top:1.4rem;font-size:0.95rem;line-height:1.8;max-width:540px;">
+        Sicherheitsdienstleistungen sind Vertrauenssache — und Vertrauen entsteht heute zuerst online. Ob Objektschutz, Revierdienst, Event-Security oder Personenschutz: Anspruchsvolle B2B-Kunden und qualifizierte Fachkräfte entscheiden sich für den Anbieter, der sofort Professionalität ausstrahlt. Eine schlecht gemachte Website, langsame Reaktionszeiten oder fehlende Social Proof kosten täglich Aufträge — ohne dass du es merkst.
+      </p>
+
+      <p style="color:var(--muted);margin-top:1rem;font-size:0.95rem;line-height:1.8;max-width:540px;">
+        Wir adressieren genau diese Lücke: Mit Websites, die in unter 3 Sekunden laden und klar kommunizieren, was dich von der Konkurrenz unterscheidet. Mit Anzeigen, die nicht auf Klicks, sondern auf qualifizierte Anfragen optimiert sind. Und mit automatisierten Abläufen, die dafür sorgen, dass kein Interessent im Sand verläuft.
+      </p>
+
+      <p style="color:var(--muted);margin-top:1rem;font-size:0.95rem;line-height:1.8;max-width:540px;">
+        Dazu lösen wir das größte Wachstumshindernis der Branche: den Fachkräftemangel. Mit datengetriebenen Recruiting-Funnels sprechen wir wechselbereite Sicherheitskräfte (§ 34a, Waffensachkunde, Vollzugsbeamte im Seiteneinstieg) dort an, wo sie täglich aktiv sind — und qualifizieren sie automatisiert vor, bevor sie überhaupt bei dir anrufen.
+      </p>
+
+      <!-- ── 3D-Modell: relief_model.glb ── -->
+      <div class="about-model-wrapper">
+        <p class="model-caption">
+          <span class="pulse-dot"></span> Interaktives 3D-Geländerelief
+        </p>
         <div class="about-model-container">
           <div id="model-loader" class="model-loader">
             <div class="loader-spinner"></div>
             <div class="loader-text">Lade 3D-Modell… <span class="loader-percent">0%</span></div>
           </div>
-          <canvas id="reliefCanvas" aria-label="3D-Geländerelief, mit der Maus drehbar"></canvas>
-          <div class="model-hint">Mit der Maus ziehen zum Drehen, scrollen zum Zoomen</div>
+          <canvas id="reliefCanvas"></canvas>
+          <div class="model-hint">Mit der Maus ziehen zum Drehen · Scrollen zum Zoomen</div>
         </div>
       </div>
-    </section>
 
-    <section class="cta-band" aria-labelledby="cta-title">
-      <div class="wrap">
-        <div>
-          <h2 id="cta-title">Lass uns kennenlernen</h2>
-          <p>Schreib uns kurz, worum es geht. Wir melden uns innerhalb von 48 Stunden mit einer ehrlichen Einschätzung.</p>
-        </div>
-        <div class="cta-band__action">
-          <a class="btn" href="/kontakt">Kontakt aufnehmen</a>
-          <p class="small">Antwort innerhalb von 48 Stunden.</p>
-        </div>
-      </div>
-    </section>
+    </div>
+
   </main>
 
-  <footer class="site-footer" data-site-footer></footer>
+  <footer data-site-footer></footer>
 
-  <script src="/js/site.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
+  <!-- Three.js + GLTFLoader + DRACOLoader + OrbitControls -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/DRACOLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script src="/js/about-model.js" defer></script>
+  <script src="/js/main.js" defer></script>
 </body>
 </html>

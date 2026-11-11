@@ -1,141 +1,261 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>InboxElevate – Mehr Anfragen für Sicherheitsunternehmen</title>
-  <meta name="description" content="Webseiten, Google- und Meta-Ads und KI-Automatisierung ausschließlich für Sicherheitsunternehmen. Kostenloser Marketing-Check, Antwort innerhalb von 48 Stunden.">
-  <meta name="theme-color" content="#F2F1EC">
-  <link rel="canonical" href="https://inbox-elevate.de/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InboxElevate – Mehr Anfragen für Sicherheitsunternehmen.</title>
   <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="de_DE">
-  <meta property="og:site_name" content="InboxElevate">
-  <meta property="og:title" content="InboxElevate – Mehr Anfragen für Sicherheitsunternehmen">
-  <meta property="og:description" content="Webseiten, Google- und Meta-Ads und KI-Automatisierung ausschließlich für Sicherheitsunternehmen. Kostenloser Marketing-Check, Antwort innerhalb von 48 Stunden.">
-  <meta property="og:url" content="https://inbox-elevate.de/">
-  <link rel="preload" href="/assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/base.css">
-  <link rel="stylesheet" href="/css/home.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    /* Failsafe: hide preloader after 2.5s even if JS fails */
+    @keyframes _preloader_escape {
+      to { opacity: 0; pointer-events: none; visibility: hidden; }
+    }
+    #preloader { animation: _preloader_escape 0.5s 2.5s ease forwards; }
+  </style>
 </head>
+
 <body>
-  <a class="skip" href="#main">Zum Inhalt springen</a>
-  <div data-site-header></div>
 
-  <main id="main">
+  <div class="preloader" id="preloader" aria-hidden="true" style="display:none">
+    <div class="preloader-inner">
+      <div class="preloader-brand">
+        <svg viewBox="0 0 40 40" fill="none">
+          <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="preloader-track">
+        <div class="preloader-bar"></div>
+      </div>
+    </div>
+  </div>
 
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap">
-        <h1 class="hero__title" id="hero-title"><span class="hero__lead">Mehr qualifizierte Anfragen für</span> <span class="plate" aria-hidden="true"><span id="tw-text">Sicherheits&shy;unternehmen</span></span><span class="visually-hidden">Sicherheitsunternehmen</span></h1>
-        <div class="hero__row">
-          <div class="hero__copy">
-            <p class="lede">Du bist gut in deinem Job. Deine Website und deine Ads sollten das genauso klar zeigen. Darum kümmern wir uns, und nur darum.</p>
-            <div class="actions">
-              <a class="btn" href="/kontakt">Kostenlosen Marketing-Check anfordern</a>
-              <a class="link" href="/leistungen">Leistungen ansehen</a>
+  <div class="page-wipe" id="pageWipe" aria-hidden="true"></div>
+  <div class="progress-bar" id="scrollProgress" aria-hidden="true">
+    <div class="progress-bar-fill" id="scrollProgressFill"></div>
+  </div>
+  <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Custom Cursor -->
+  
+
+  <div class="sticky-mobile-cta" id="stickyMobileCta">
+    <a href="/#kontakt" class="contact-trigger">Jetzt anfragen →</a>
+  </div>
+
+  <!-- NAV (injected by JS) -->
+  <div data-site-nav></div>
+
+
+  <main>
+
+  <!-- Leistungen Modal removed – Hub-Teaser on homepage instead -->
+
+  <!-- ══════════════════ HOME PAGE ══════════════════ -->
+  <div id="home">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-orb-stage" id="heroOrbStage" aria-hidden="true">
+          <canvas id="heroOrbCanvas"></canvas>
+        </div>
+        <div class="hero-label sr">Spezialisiert auf Sicherheitsunternehmen. Und sonst niemanden.</div>
+        <h1 class="hero-h1 sr" data-d="1">
+          <span class="hero-h1-static">Mehr qualifizierte Anfragen für</span>
+          <span class="hero-tw-word">
+            <span id="tw-text" aria-live="polite">Sicherheitsunternehmen</span><span class="tw-cursor" aria-hidden="true"></span>
+          </span>
+        </h1>
+        <div class="hero-sub-row">
+          <p class="hero-p sr" data-d="2">Du bist gut in deinem Job. Deine Website und deine Ads sollten das genauso klar kommunizieren. Wir kümmern uns darum — und nur darum.</p>
+          <div class="hero-actions sr" data-d="3">
+            <div class="btn-pulse-wrap">
+              <a href="/#kontakt" class="btn-ink">
+                Kostenlosen Marketing-Check anfordern
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
             </div>
+            <a href="/leistungen" class="btn-ghost">
+              Leistungen entdecken <span class="btn-arrow">→</span>
+            </a>
           </div>
-          <dl class="facts">
-            <div><dt>Branche</dt><dd>Nur Sicherheitsunternehmen. Sonst niemand.</dd></div>
-            <div><dt>Antwort</dt><dd>Innerhalb von 48 Stunden</dd></div>
-            <div><dt>Kanäle</dt><dd>Google, Meta, LinkedIn</dd></div>
-            <div><dt>Erste Kampagne</dt><dd>5–10 Werktage bis live</dd></div>
-          </dl>
         </div>
       </div>
+
     </section>
 
-    <section class="section--tight section--flush-top" aria-labelledby="leistungen-title">
-      <div class="wrap split">
-        <div class="split__head split__head--sticky">
-          <h2 id="leistungen-title">Was wir für dich tun</h2>
-          <p class="muted">Keine Pakete von der Stange. Wir bauen und betreuen, was bei Sicherheitsunternehmen wirklich Anfragen bringt.</p>
-        </div>
-        <div>
-          <ul class="index">
-            <li>
-              <a class="index__row" href="/leistungen/webseiten">
-                <div class="index__top"><h3>Webseiten</h3><span class="index__go">Mehr zu Webseiten</span></div>
-                <p>Eine Website, die dein Telefon klingeln lässt. Notrufnummer ganz oben, Vertrauen sofort sichtbar, klar aufgebaut für Google und für Kunden, die in 30 Sekunden entscheiden, ob sie anrufen.</p>
-                <p class="index__tags">Lokale SEO, Mobile First, 5–10 Werktage</p>
-              </a>
-            </li>
-            <li>
-              <a class="index__row" href="/leistungen/paid-ads">
-                <div class="index__top"><h3>Paid Ads</h3><span class="index__go">Mehr zu Paid Ads</span></div>
-                <p>Ads für Anfragen, nicht für Klicks. Google Ads für Objektschutz-Anfragen, Meta Ads fürs Recruiting, LinkedIn für B2B-Entscheider. Jede Plattform mit Strategie, nicht mit Hoffnung.</p>
-                <p class="index__tags">Google Ads, Meta Ads, Leadgenerierung, Recruiting</p>
-              </a>
-            </li>
-            <li>
-              <a class="index__row" href="/leistungen/ki">
-                <div class="index__top"><h3>KI-Automatisierung</h3><span class="index__go">Mehr zu KI</span></div>
-                <p>Bewerbervorfilterung, Anfrage-Bot rund um die Uhr, Dienstplanung: KI-Lösungen, die zur Größe deines Betriebs passen, ohne dass du IT-Experte sein musst. Nicht jede KI passt zu jedem Betrieb. Wir finden heraus, was bei dir Sinn macht.</p>
-                <p class="index__tags">Anfrage-Bot, Workflow-Automatisierung, CRM-Integration</p>
-              </a>
-            </li>
+    <!-- Animated Stats Strip -->
+    <div class="home-stats" id="homeStats">
+      <div class="home-stat">
+        <div class="n"><span class="stat-counter" data-target="24" data-suffix="h" data-prefix="&lt;">&lt;24h</span></div>
+        <div class="l">Antwort auf deine Anfrage</div>
+      </div>
+      <div class="home-stat">
+        <div class="n"><span class="stat-counter" data-target="100" data-suffix="%">100%</span></div>
+        <div class="l">Fokus auf Sicherheitsbranche</div>
+      </div>
+      <a class="home-stat home-stat-link" href="/leistungen" aria-label="Zu den Leistungen">
+        <div class="n"><span class="stat-counter" data-target="3" data-suffix="">3</span></div>
+        <div class="l">Kanäle: Google, Meta, LinkedIn</div>
+      </a>
+      <div class="home-stat">
+        <div class="n"><span class="stat-counter" data-target="5" data-suffix=" – 10" data-prefix="">5 – 10</span></div>
+        <div class="l">Werktage bis erste Kampagne live</div>
+      </div>
+    </div>
+
+    <!-- Leistungen Hub Teaser -->
+    <section class="svc-hub" aria-labelledby="svc-hub-heading">
+      <div class="svc-hub-header sr">
+        <p class="svc-hub-label">Was wir für dich tun</p>
+        <h2 id="svc-hub-heading">Webseiten, die Vertrauen aufbauen und Anfragen bringen.<br><span>Ads, die genau die richtigen Menschen erreichen.</span></h2>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.7;max-width:640px;margin:1rem auto 0;">Keine Pakete von der Stange — sondern das, was für Sicherheitsunternehmen wie deins wirklich funktioniert.</p>
+      </div>
+      <div class="svc-hub-grid">
+
+        <!-- Webseiten -->
+        <article class="svc-card sr" data-d="0">
+          <div class="svc-card-icon">🌐</div>
+          <div class="svc-card-num">01</div>
+          <h3 class="svc-card-title">Webseiten</h3>
+          <p class="svc-card-desc">Website, die dein Telefon klingeln lässt. Notrufnummer ganz oben. Vertrauen sofort sichtbar. Klar strukturiert für Google — und für Kunden, die in 30 Sekunden entscheiden, ob sie anrufen.</p>
+          <ul class="svc-card-tags">
+            <li>Blitzschnell</li>
+            <li>Lokale SEO</li>
+            <li>Mobile First</li>
+            <li>5–10 Werktage</li>
           </ul>
-          <div class="index__after">
-            <p>Nicht sicher, wo du anfangen sollst? Im kostenlosen Erstgespräch finden wir es gemeinsam heraus.</p>
-            <a class="link" href="/kontakt">Erstgespräch anfragen</a>
-          </div>
-        </div>
+          <a href="/leistungen/webseiten" class="svc-card-btn">Mehr erfahren <span class="svc-card-arrow">→</span></a>
+        </article>
+
+        <!-- Paid Ads -->
+        <article class="svc-card sr" data-d="1">
+          <div class="svc-card-icon">📣</div>
+          <div class="svc-card-num">02</div>
+          <h3 class="svc-card-title">Paid Ads</h3>
+          <p class="svc-card-desc">Ads für Anfragen, nicht für Klicks. Google Ads für Objektschutz-Anfragen. Meta Ads für Recruiting. LinkedIn für B2B-Entscheider. Jede Plattform mit Strategie — nicht mit Hoffnung.</p>
+          <ul class="svc-card-tags">
+            <li>Google Ads</li>
+            <li>Meta Ads</li>
+            <li>Leadgenerierung</li>
+            <li>Recruiting</li>
+          </ul>
+          <a href="/leistungen/paid-ads" class="svc-card-btn">Mehr erfahren <span class="svc-card-arrow">→</span></a>
+        </article>
+
+        <!-- KI-Automatisierung -->
+        <article class="svc-card svc-card--dark sr" data-d="2">
+          <div class="svc-card-icon">🤖</div>
+          <div class="svc-card-num">03</div>
+          <h3 class="svc-card-title">KI-Automatisierung</h3>
+          <p class="svc-card-desc">KI ist kein Zukunftsthema mehr — sie ist ein Werkzeug, das jetzt schon Arbeitszeit spart. Bewerbervorfilterung, 24/7-Chatbot, Dienstplanung. Wir setzen KI-Lösungen auf, die zu deiner Unternehmensgröße passen — ohne dass du ein IT-Experte sein musst.</p>
+          <p style="font-size:.8rem;color:rgba(245,243,238,.5);margin-top:.5rem;font-style:italic;">Nicht jede KI passt zu jedem Betrieb. Wir finden raus, was bei deiner Größe Sinn macht.</p>
+          <ul class="svc-card-tags">
+            <li>24/7 Anfrage-Bot</li>
+            <li>Workflow-Automatisierung</li>
+            <li>CRM-Integration</li>
+            <li>Sofort umsetzbar</li>
+          </ul>
+          <a href="/leistungen/ki" class="svc-card-btn">Mehr erfahren <span class="svc-card-arrow">→</span></a>
+        </article>
+
+      </div>
+      <div class="svc-hub-footer sr">
+        <p>Nicht sicher, wo du anfangen sollst?</p>
+        <a href="/#kontakt" class="btn-ink">Im kostenlosen Erstgespräch gemeinsam herausfinden →</a>
       </div>
     </section>
 
-    <section class="band-green usp" aria-label="Unser Versprechen">
-      <div class="wrap">
-        <h2 class="usp__hw" id="uspHandwriting">
-          <span class="visually-hidden">Du zahlst erst, wenn du zufrieden bist.</span>
-          <span class="usp__line" data-usp-line aria-hidden="true">Du zahlst erst,</span>
-          <span class="usp__line" data-usp-line aria-hidden="true">wenn du zufrieden bist.</span>
-        </h2>
-        <div class="usp__grid">
-          <ol class="usp__steps">
-            <li><div><b>Wir liefern.</b>Webseite, Kampagne oder Automatisierung, so wie vereinbart.</div></li>
-            <li><div><b>Du prüfst und bestätigst.</b>Erst wenn du sagst, dass es passt, geht es weiter.</div></li>
-            <li><div><b>Dann kommt die Rechnung.</b>Unser Honorar zahlst du erst nach deiner Bestätigung.</div></li>
-          </ol>
-          <p class="usp__note"><b>Zum Werbebudget:</b> Das Versprechen gilt für unser Honorar. Werbebudget bei Google, Meta &amp; Co. zahlst du von Anfang an direkt an die Plattform, unabhängig davon, wann du uns bezahlst.</p>
-        </div>
+    <section class="home-trust" aria-labelledby="home-trust-heading">
+      <div class="home-trust-copy sr">
+        <p class="page-label">Warum das fair ist</p>
+        <h2 id="home-trust-heading">Du musst uns nicht blind glauben.<br><span>Wir starten so, dass Vertrauen entstehen kann.</span></h2>
+        <p>InboxElevate ist neu. Deshalb verkaufen wir dir keine künstliche Erfolgsstory, sondern einen klaren Start: feste Ansprechpartner, transparente Ziele und ein Pilot, bei dem du erst siehst, ob die Richtung stimmt.</p>
+        <a href="/ueber-uns" class="btn-ink">Mehr über uns lesen <span class="btn-arrow">→</span></a>
+      </div>
+      <div class="home-trust-grid">
+        <article class="trust-card sr" data-d="1">
+          <span>01</span>
+          <h3>Direkt statt anonym</h3>
+          <p>Du sprichst nicht mit wechselnden Projektmanagern. Dein Ansprechpartner kennt dein Unternehmen, dein Ziel und den Stand der Umsetzung.</p>
+        </article>
+        <article class="trust-card sr" data-d="2">
+          <span>02</span>
+          <h3>Resultate zuerst</h3>
+          <p>Für passende Pilotprojekte können wir so starten, dass du erst erste nachvollziehbare Signale siehst, bevor du dich langfristig bindest.</p>
+        </article>
+        <article class="trust-card sr" data-d="3">
+          <span>03</span>
+          <h3>Fokus statt Bauchladen</h3>
+          <p>Wir arbeiten gezielt für Sicherheitsunternehmen. Dadurch drehen sich Strategie, Texte und Kampagnen nicht um alles, sondern um deine Branche.</p>
+        </article>
       </div>
     </section>
 
-    <section class="section band-white" aria-labelledby="trust-title">
-      <div class="wrap split">
-        <div class="split__head">
-          <h2 id="trust-title">Du musst uns nicht blind glauben</h2>
-          <p class="lede">Wir starten so, dass Vertrauen entstehen kann.</p>
-        </div>
-        <div class="trust__body">
-          <p>InboxElevate ist neu. Deshalb verkaufen wir dir keine künstliche Erfolgsstory, sondern einen klaren Start: feste Ansprechpartner, transparente Ziele und ein Pilot, bei dem du erst siehst, ob die Richtung stimmt.</p>
-          <p><strong class="runin">Direkt statt anonym.</strong> Du sprichst nicht mit wechselnden Projektmanagern. Dein Ansprechpartner kennt dein Unternehmen, dein Ziel und den Stand der Umsetzung.</p>
-          <p><strong class="runin">Resultate zuerst.</strong> Für passende Pilotprojekte können wir so starten, dass du erst erste nachvollziehbare Signale siehst, bevor du dich langfristig bindest.</p>
-          <p><strong class="runin">Fokus statt Bauchladen.</strong> Wir arbeiten gezielt für Sicherheitsunternehmen. Dadurch drehen sich Strategie, Texte und Kampagnen nicht um alles, sondern um deine Branche.</p>
-          <p><a class="link" href="/ueber-uns">Mehr über uns</a></p>
-        </div>
-      </div>
-    </section>
+  </div>
 
-    <section class="cta-band" aria-labelledby="cta-title">
-      <div class="wrap">
-        <div>
-          <h2 id="cta-title">Wissen, wo du Anfragen verlierst?</h2>
-          <p>Im kostenlosen Marketing-Check schauen wir uns deine Website und deine Anzeigen an und sagen dir ehrlich, was den größten Unterschied macht.</p>
-        </div>
-        <div class="cta-band__action">
-          <a class="btn" href="/kontakt">Marketing-Check anfordern</a>
-          <p class="small">Antwort innerhalb von 48 Stunden.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <footer class="site-footer" data-site-footer></footer>
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg viewBox="0 0 40 40" fill="none" style="width:30px;">
+          <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <p><strong>InboxElevate</strong><br>Mehr Anfragen. Mehr Bewerbungen. Spezialisiert auf Sicherheitsunternehmen.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigation</h5>
+        <a href="/">Start</a>
+        <a href="/leistungen">Leistungen</a>
+        <a href="/prozess">Prozess</a>
+        <a href="/ueber-uns">Über uns</a>
+        <a href="/tipps">Tipps</a>
+      </div>
+      <div class="footer-col">
+        <h5>Leistungen</h5>
+        <a href="/leistungen/webseiten">Webentwicklung</a>
+        <a href="/leistungen/paid-ads">Paid Ads</a>
+        <a href="/leistungen/ki">KI-Automatisierung</a>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakt</h5>
+        <a href="mailto:david@inbox-elevate.de">david@inbox-elevate.de</a>
+        <a href="/#kontakt">Anfrage stellen</a>
+        <a href="/datenschutz">Datenschutz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 InboxElevate. Alle Rechte vorbehalten.</p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/company/inboxelevate/" class="soc" title="LinkedIn">in</a>
+        <a href="mailto:david@inbox-elevate.de" class="soc" title="Email">✉</a>
+      </div>
+    </div>
+  </footer>
 
-  <div class="sticky-cta" id="stickyCta" data-show="false"><a class="btn" href="/kontakt">Kostenlosen Marketing-Check anfordern</a></div>
-
-  <script src="/js/site.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/CustomEase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Draggable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/InertiaPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/Physics2DPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="/js/main.js" defer></script>
 </body>
+
 </html>

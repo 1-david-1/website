@@ -201,10 +201,9 @@
         // Error callback
         (error) => {
           console.error('An error happened while loading the model:', error);
-          /* Modell nicht erreichbar: den ganzen Bereich ausblenden statt eine Fehlermeldung zu zeigen */
-          var section = container.closest('[data-model-section]');
-          if (section) { section.hidden = true; }
-          else if (percentText) { percentText.textContent = 'Fehler beim Laden'; }
+          if (percentText) {
+            percentText.textContent = 'Fehler beim Laden';
+          }
         }
       );
     } else {
