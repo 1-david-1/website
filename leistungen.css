@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Leistungen: Übersicht + Unterseiten (Webseiten, Paid Ads, KI)
+   Gemeinsames Gerüst: Brotkrumen → Hero mit Muster → Problem → Lösung →
+   Ablauf (gestapelte Karten) → FAQ → weitere Leistungen → CTA
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+.page-hero { padding-bottom: clamp(3rem, 6vw, 5rem); }
+.page-hero h1 { font-size: clamp(2.6rem, 1.3rem + 4.6vw, 4.9rem); line-height: 1; }
+.page-hero__grid {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 2.5rem clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+.page-hero__copy > * + * { margin-top: 1.5rem; }
+.page-hero--plain h1 { margin-top: clamp(1.5rem, 3vw, 2.5rem); max-width: 14em; }
+.page-hero--plain .lede { margin-top: 1.5rem; }
+@media (max-width: 56rem) { .page-hero__grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Abschnittsköpfe ---------- */
+.section-head { max-width: 46rem; margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem); }
+.section-head > * + * { margin-top: 1rem; }
+
+/* ---------- Einsatzfelder (KI) ---------- */
+.uses { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: var(--rule); }
+.uses__item { padding: 1.5rem 2rem 1.75rem 0; border-bottom: var(--hair); }
+.uses__item:nth-child(even) { padding-left: 2rem; padding-right: 0; border-left: var(--hair); }
+.uses__item h3 { margin-bottom: .6rem; }
+.uses__item p { color: var(--steel); }
+.uses__item .uses__gain { margin-top: .8rem; color: var(--ink); font-weight: 500; }
+.uses__gain b { color: var(--green-ink); font-weight: 600; }
+@media (max-width: 48rem) {
+  .uses { grid-template-columns: minmax(0, 1fr); }
+  .uses__item, .uses__item:nth-child(even) { padding: 1.25rem 0 1.4rem; border-left: 0; }
+}
+
+/* ---------- Übersicht: größere Verzeichniszeilen ---------- */
+.index--lg .index__row {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 1rem clamp(2rem, 5vw, 5rem);
+  padding-block: 2.1rem 2.3rem;
+}
+.index--lg .index__top { flex-direction: column; align-items: flex-start; gap: .9rem; }
+.index--lg .index__top h2 { font-size: clamp(2.4rem, 1.5rem + 3vw, 4rem); line-height: 1; }
+.index__list { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: .3rem 2.5rem; margin-top: 1rem; font-weight: 600; }
+.index__list li::before {
+  content: ""; display: inline-block; width: .5rem; height: .5rem;
+  margin-right: .65rem; background: var(--green); vertical-align: .08em;
+}
+@media (max-width: 56rem) { .index--lg .index__row { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 30rem) { .index__list { grid-template-columns: minmax(0, 1fr); } }
+
+.aside-link { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1.5rem; padding-block: 1.75rem; }
+.aside-link p { max-width: 36em; }
+
+/* ---------- Weitere Leistungen ---------- */
+.also { border-top: var(--rule); }
+.also a {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .3rem 1.5rem;
+  padding: 1.15rem 0 1.25rem;
+  border-bottom: var(--hair); text-decoration: none;
+}
+.also h3 { font-size: clamp(1.7rem, 1.4rem + 1vw, 2.3rem); }
+.also span { font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .22em; text-decoration-color: var(--green); }
+
+/* ---------- Muster: gemeinsame Basis ---------- */
+.mock-wrap > figcaption { margin-top: .8rem; font-size: .9375rem; line-height: 1.45; color: var(--steel); }
+.mock {
+  background: var(--white);
+  border: var(--rule); border-radius: 10px;
+  overflow: hidden;
+  font-size: 1rem; line-height: 1.4;
+}
+.pin {
+  display: inline-grid; place-items: center; flex: none;
+  width: 1.55rem; height: 1.55rem; border-radius: 50%;
+  background: var(--green); color: var(--ink); border: 2px solid var(--ink);
+  font: 700 .875rem/1 var(--f-body); font-style: normal;
+}
+.mock-note { display: block; margin-top: .7rem; }
+.legend { display: grid; gap: .35rem; margin-top: .2rem; }
+.legend li { display: flex; align-items: center; gap: .65rem; color: var(--ink); }
+.bar { display: block; height: .6rem; width: var(--w, 70%); background: var(--sand); border-radius: 3px; }
+
+/* ---------- Muster: Webseite ---------- */
+.mock-site__bar { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .8rem 1rem; border-bottom: var(--hair); }
+.mock-site__logo { font: 700 1.2rem/1 var(--f-head); }
+.mock-site__call {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .4rem .75rem; border-radius: var(--r);
+  background: var(--green); border: 2px solid var(--ink); font-weight: 600; font-size: .9375rem;
+}
+.mock-site__hero { display: grid; gap: .55rem; padding: 1.4rem 1rem 1.25rem; background: var(--mint); }
+.mock-site__h { font: 700 clamp(1.5rem, 1.2rem + 1vw, 2rem)/1.05 var(--f-head); margin-bottom: .35rem; }
+.mock-site__hero .bar { background: rgba(22, 25, 28, .2); }
+.mock-site__trust { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .6rem; padding: .85rem 1rem; border-bottom: var(--hair); }
+.mock-site__trust span:not(.pin) { padding: .2rem .55rem; border: 2px solid var(--ink); border-radius: 4px; font-size: .875rem; font-weight: 600; }
+.mock-site__form { display: grid; grid-template-columns: auto 1fr 1fr; gap: .6rem; align-items: center; padding: 1rem; }
+.mock-field { padding: .5rem .7rem; border: 2px solid var(--line); border-radius: 4px; color: var(--steel); font-size: .9375rem; }
+.mock-btn { grid-column: 2 / -1; padding: .55rem .9rem; text-align: center; background: var(--ink); color: var(--paper); border-radius: var(--r); font-weight: 600; font-size: .9375rem; }
+
+/* ---------- Muster: Suchanzeige ---------- */
+.mock-ad__q { margin: 1rem 1rem .25rem; padding: .55rem 1rem; border: 2px solid var(--ink); border-radius: 999px; font-weight: 500; }
+.mock-ad__res { padding: 1rem 1.15rem 1.25rem; }
+.mock-ad__meta { font-size: .9375rem; color: var(--steel); }
+.mock-ad__meta b { margin-right: .5rem; padding: .05rem .4rem; border: 2px solid var(--ink); border-radius: 4px; color: var(--ink); font-size: .8125rem; }
+.mock-ad__title { margin-top: .3rem; font: 600 1.3rem/1.25 var(--f-body); text-decoration: underline; text-underline-offset: .18em; }
+.mock-ad__text { margin-top: .3rem; color: var(--steel); font-size: 1rem; }
+.mock-ad__neg { padding: .9rem 1.15rem 1.1rem; background: var(--sand); border-top: var(--hair); }
+.mock-ad__neg ul { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .55rem; }
+.mock-ad__neg li { padding: .15rem .6rem; border: 2px solid var(--ink); border-radius: 4px; font-size: .9375rem; font-weight: 500; text-decoration: line-through; text-decoration-thickness: 2px; background: var(--white); }
+
+/* ---------- Muster: Chat ---------- */
+.mock-chat__head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .8rem 1.1rem; border-bottom: var(--hair); font-weight: 600; }
+.mock-chat__log { display: grid; gap: .55rem; padding: 1.1rem; background: var(--paper); }
+.msg { max-width: 82%; padding: .6rem .85rem; border: 2px solid var(--ink); border-radius: 12px; font-size: 1rem; line-height: 1.35; }
+.msg--in { justify-self: start; background: var(--white); border-bottom-left-radius: 3px; }
+.msg--out { justify-self: end; background: var(--green); border-bottom-right-radius: 3px; font-weight: 500; }
+.checks { display: grid; gap: .45rem; padding: 1rem 1.1rem 1.15rem; border-top: var(--hair); }
+.checks li { display: flex; align-items: center; gap: .65rem; font-weight: 600; }
+.checks li::before {
+  content: ""; flex: none; width: .55rem; height: .95rem; margin: 0 .35rem .25rem .2rem;
+  border: solid var(--green-ink); border-width: 0 3px 3px 0; transform: rotate(40deg);
+}

@@ -1,0 +1,96 @@
+/* ==========================================================================
+   Gestapelte Karten – Vanilla-Port der StackingCards-Komponente
+   (Original: Khoa Phan, https://www.pldkhoa.dev, React + motion)
+   Jede Karte klebt per position: sticky unter dem Header, die nächste schiebt
+   sich darüber. Der Kartenkopf ist exakt so hoch wie der Versatz, so bleibt
+   beim Stapeln von jedem früheren Schritt die Kopfzeile sichtbar.
+   Skalierung der Karten: js/stack.js (--stack-scale)
+   ========================================================================== */
+
+.stack {
+  --stack-base: 1.25rem;     /* Abstand der ersten Karte unter dem Header */
+  --stack-step: 3.5rem;      /* Versatz je Karte = Höhe der Kopfzeile */
+  --card-min: 18.5rem;       /* Mindesthöhe einer Karte */
+  position: relative;
+}
+
+.stack__item {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--stack-base) + var(--i, 0) * var(--stack-step));
+  padding-bottom: clamp(4.5rem, 16vh, 10rem);   /* so lange bleibt eine Karte komplett lesbar */
+}
+.stack__item:last-child { padding-bottom: 0; }
+
+.stack-card {
+  --c: var(--white);
+  --t: var(--ink);
+  display: flex; flex-direction: column;
+  min-height: var(--card-min);
+  background: var(--c); color: var(--t);
+  border: 2px solid var(--ink); border-radius: 14px;
+  overflow: hidden;
+  transform-origin: top center;
+  transform: scale(var(--stack-scale, 1));
+  will-change: transform;
+}
+
+/* Farbfolge: von hell nach dunkel, der letzte Schritt ist immer Tinte */
+.stack__item:nth-child(2) .stack-card { --c: var(--mint); }
+.stack__item:nth-child(3) .stack-card { --c: var(--green); }
+.stack__item:nth-child(4) .stack-card { --c: var(--green-deep); --t: var(--paper); }
+.stack__item:nth-child(5) .stack-card { --c: var(--ink); --t: var(--paper); }
+.stack[data-count="4"] .stack__item:nth-child(4) .stack-card { --c: var(--ink); --t: var(--paper); }
+.stack[data-count="3"] .stack__item:nth-child(3) .stack-card { --c: var(--ink); --t: var(--paper); }
+
+.stack-card__head {
+  display: flex; align-items: center; gap: 1rem;
+  height: var(--stack-step);
+  padding-inline: 1.25rem 1.5rem;
+  box-shadow: inset 0 -1px 0 color-mix(in srgb, currentColor 28%, transparent);
+}
+.stack-card__no {
+  flex: none; display: grid; place-items: center;
+  width: 2.1rem; height: 2.1rem;
+  border: 2px solid currentColor; border-radius: 4px;
+  font: 700 1.25rem/1 var(--f-head);
+}
+.stack-card__title { font-size: clamp(1.4rem, 1.2rem + .8vw, 1.85rem); line-height: 1; }
+.stack-card__meta {
+  margin-left: auto; text-align: right;
+  font-size: .9375rem; font-weight: 600; line-height: 1.25;
+}
+
+.stack-card__body {
+  flex: 1;
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 1.5rem clamp(1.5rem, 4vw, 3.5rem);
+  padding: clamp(1.4rem, 3vw, 2.25rem) 1.5rem clamp(1.5rem, 3vw, 2.25rem) 1.5rem;
+}
+.stack-card__body p { max-width: 34em; font-size: 1.1875rem; line-height: 1.55; }
+.stack-card__body .stack-card__meta-m { display: none; }
+.stack-card__result {
+  align-self: end;
+  padding: .95rem 1.1rem 1.05rem;
+  border: 2px solid currentColor; border-radius: var(--r);
+}
+.stack-card__result dt { font-size: .9375rem; font-weight: 600; }
+.stack-card__result dd { margin-top: .2rem; font-size: 1.1875rem; font-weight: 600; line-height: 1.35; }
+
+@media (max-width: 48rem) {
+  .stack { --stack-step: 3.1rem; --card-min: 0; --stack-base: .75rem; }
+  .stack__item { padding-bottom: clamp(3rem, 12vh, 6rem); }
+  .stack-card { border-radius: 12px; }
+  .stack-card__head { padding-inline: .9rem 1rem; gap: .75rem; }
+  .stack-card__title { min-width: 0; font-size: 1.3rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .stack-card__head .stack-card__meta { display: none; }
+  .stack-card__body .stack-card__meta-m { display: block; font-size: .9375rem; font-weight: 600; line-height: 1.3; margin-bottom: -.35rem; }
+  .stack-card__body { grid-template-columns: minmax(0, 1fr); gap: 1.1rem; padding: 1.15rem 1rem 1.25rem; }
+  .stack-card__body p { font-size: 1.0625rem; }
+  .stack-card__result dd { font-size: 1.0625rem; }
+}
+
+/* Sehr niedrige Fenster: normale Liste statt Stapel */
+@media (max-height: 620px) {
+  .stack__item { position: static; padding-bottom: 1rem; }
+  .stack-card { min-height: 0; transform: none; will-change: auto; }
+}
