@@ -1,483 +1,93 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- @build:head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Leistungen für Sicherheitsunternehmen – InboxElevate</title>
   <meta name="description" content="Webseiten, Paid Ads und KI-Automatisierung speziell für Sicherheitsunternehmen. Mehr Anfragen, mehr Bewerbungen, weniger manuelle Arbeit.">
+  <meta name="theme-color" content="#F2F1EC">
   <link rel="canonical" href="https://inbox-elevate.de/leistungen/">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="theme-color" content="#f5f3ee">
   <link rel="icon" type="image/svg+xml" href="/assets/logo-mark.svg">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="InboxElevate">
   <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="InboxElevate">
   <meta property="og:title" content="Leistungen für Sicherheitsunternehmen – InboxElevate">
   <meta property="og:description" content="Webseiten, Paid Ads und KI-Automatisierung speziell für Sicherheitsunternehmen. Mehr Anfragen, mehr Bewerbungen, weniger manuelle Arbeit.">
   <meta property="og:url" content="https://inbox-elevate.de/leistungen/">
-  <meta property="og:image" content="https://inbox-elevate.de/assets/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/fonts.css">
-  <noscript><style>.sr,.sr-l,.sr-r{opacity:1!important;transform:none!important}</style></noscript>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Start","item":"https://inbox-elevate.de/"},{"@type":"ListItem","position":2,"name":"Leistungen","item":"https://inbox-elevate.de/leistungen/"}]}</script>
-  <!-- @end:head -->
-  <link rel="stylesheet" href="/css/main.css">
-  <style>
-    /* ── HUB PAGE STYLES ── */
-    .hub-page { padding-top: 68px; }
-
-    .hub-hero {
-      padding: 7rem clamp(1.5rem,5vw,5rem) 5rem;
-      background: var(--ink);
-      color: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-    .hub-hero::before {
-      content: '';
-      position: absolute;
-      top: -40%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(29,186,110,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hub-hero-label {
-      font-family: var(--M);
-      font-size: .7rem;
-      letter-spacing: .14em;
-      color: var(--green);
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      margin-bottom: 2rem;
-    }
-    .hub-hero-label::before {
-      content: '';
-      width: 20px;
-      height: 1px;
-      background: var(--green-fill);
-    }
-    .hub-hero h1 {
-      font-family: var(--H);
-      font-size: clamp(3rem,7vw,6rem);
-      font-weight: 800;
-      letter-spacing: -.05em;
-      line-height: .95;
-      margin-bottom: 2rem;
-      max-width: 900px;
-    }
-    .hub-hero h1 span { color: var(--green); }
-    .hub-hero p {
-      font-size: 1.15rem;
-      line-height: 1.7;
-      color: rgba(245,243,238,.72);
-      max-width: 600px;
-    }
-
-    /* ── SERVICE GRID ── */
-    .hub-services {
-      padding: 6rem clamp(1.5rem,5vw,5rem);
-      background: var(--cream);
-      display: grid;
-      gap: 2px;
-    }
-
-    .hub-service-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: var(--border);
-    }
-    .hub-service-row:first-child { border-top: 1px solid var(--border); }
-
-    .hub-service-cell {
-      background: var(--cream);
-      padding: 4rem clamp(1.5rem,4vw,4rem);
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      transition: background .25s;
-      position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-    }
-    .hub-service-cell:hover { background: rgba(29,186,110,.04); }
-    .hub-service-cell::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: 0;
-      width: 0; height: 3px;
-      background: var(--green-fill);
-      transition: width .35s ease;
-    }
-    .hub-service-cell:hover::after { width: 100%; }
-
-    .hub-svc-num {
-      font-family: var(--M);
-      font-size: .68rem;
-      color: var(--muted);
-      letter-spacing: .1em;
-      margin-bottom: 2rem;
-    }
-    .hub-svc-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: rgba(29,186,110,.1);
-      border: 1px solid rgba(29,186,110,.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .hub-svc-title {
-      font-family: var(--H);
-      font-size: clamp(1.8rem,3vw,2.8rem);
-      font-weight: 800;
-      letter-spacing: -.04em;
-      line-height: 1;
-      margin-bottom: 1.2rem;
-      color: var(--ink);
-    }
-    .hub-svc-desc {
-      color: var(--muted);
-      font-size: .95rem;
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-      max-width: 400px;
-    }
-    .hub-svc-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
-      margin-bottom: 2.5rem;
-    }
-    .hub-svc-tag {
-      font-family: var(--M);
-      font-size: .68rem;
-      letter-spacing: .06em;
-      background: rgba(11,14,26,.06);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: .3rem .8rem;
-      color: var(--ink);
-    }
-    .hub-svc-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      font-family: var(--H);
-      font-weight: 700;
-      font-size: .9rem;
-      color: var(--ink);
-      margin-top: auto;
-      transition: gap .2s;
-    }
-    .hub-svc-cta .arrow {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--ink);
-      color: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .9rem;
-      transition: background .2s, transform .2s;
-    }
-    .hub-service-cell:hover .hub-svc-cta { gap: .8rem; }
-    .hub-service-cell:hover .hub-svc-cta .arrow {
-      background: var(--green-fill);
-      color: var(--ink);
-      transform: translateX(4px);
-    }
-
-    /* KI wide card */
-    .hub-service-wide {
-      grid-column: 1 / -1;
-      background: var(--ink);
-      color: var(--cream);
-    }
-    .hub-service-wide:hover { background: #111520; }
-    .hub-service-wide .hub-svc-title { color: var(--cream); }
-    .hub-service-wide .hub-svc-desc { color: rgba(245,243,238,.65); max-width: 650px; }
-    .hub-service-wide .hub-svc-tag {
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.12);
-      color: rgba(245,243,238,.8);
-    }
-    .hub-service-wide .hub-svc-cta { color: var(--green); }
-    .hub-service-wide .hub-svc-cta .arrow { background: var(--green-fill); color: var(--ink); }
-    .hub-service-wide:hover .hub-svc-cta .arrow { background: var(--cream); color: var(--ink); }
-    .hub-service-wide .hub-svc-num { color: rgba(245,243,238,.3); }
-    .hub-service-wide .hub-svc-icon {
-      background: rgba(29,186,110,.15);
-      border-color: rgba(29,186,110,.3);
-    }
-
-    /* ── BOTTOM CTA ── */
-    .hub-bottom-cta {
-      background: var(--cream);
-      border-top: 1px solid var(--border);
-      padding: 6rem clamp(1.5rem,5vw,5rem);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 3rem;
-      align-items: center;
-    }
-    .hub-bottom-cta h2 {
-      font-family: var(--H);
-      font-size: clamp(1.8rem,4vw,3rem);
-      font-weight: 800;
-      letter-spacing: -.04em;
-      line-height: 1.1;
-      max-width: 600px;
-    }
-    .hub-bottom-cta h2 span { color: var(--green); }
-    .hub-bottom-cta p {
-      color: var(--muted);
-      margin-top: .8rem;
-      font-size: 1rem;
-      line-height: 1.65;
-    }
-
-    /* ── FOOTER ── */
-    .hub-footer {
-      background: var(--ink);
-      color: rgba(245,243,238,.4);
-      padding: 2rem clamp(1.5rem,5vw,5rem);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: .8rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .hub-footer a { color: rgba(245,243,238,.4); text-decoration: none; }
-    .hub-footer a:hover { color: var(--cream); }
-
-    @media(max-width:800px) {
-      .hub-service-row { grid-template-columns: 1fr; }
-      .hub-service-wide { grid-column: unset; }
-      .hub-bottom-cta { grid-template-columns: 1fr; }
-    }
-  </style>
-  <!-- @build:headend -->
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/type.css">
-  <!-- @end:headend -->
+  <link rel="preload" href="/assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/leistungen.css">
+  <link rel="stylesheet" href="/css/stack.css">
 </head>
 <body>
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+  <div data-site-header></div>
 
-  <!-- @build:nav -->
-  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <main id="main">
 
-  <header id="nav" class="site-nav">
-    <a href="/" class="logo logo-outer" aria-label="InboxElevate – Startseite">
-      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="logo-name">InboxElevate</span>
-    </a>
-    <div class="nav-actions">
-      <a href="/kontakt/" class="nav-contact">Anfrage stellen</a>
-      <button type="button" class="nav-close-btn" id="ham" aria-expanded="false" aria-controls="navOverlay" aria-label="Menü öffnen">
-        <span class="menu-button-text" aria-hidden="true">
-          <span class="p-large">Menü</span>
-          <span class="p-large">Schließen</span>
-        </span>
-        <span class="icon-wrap" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="menu-button-icon">
-            <path d="M7.33333 16L7.33333 -3.2055e-07L8.66667 -3.78832e-07L8.66667 16L7.33333 16Z" fill="currentColor"></path>
-            <path d="M16 8.66667L-2.62269e-07 8.66667L-3.78832e-07 7.33333L16 7.33333L16 8.66667Z" fill="currentColor"></path>
-            <path d="M6 7.33333L7.33333 7.33333L7.33333 6C7.33333 6.73637 6.73638 7.33333 6 7.33333Z" fill="currentColor"></path>
-            <path d="M10 7.33333L8.66667 7.33333L8.66667 6C8.66667 6.73638 9.26362 7.33333 10 7.33333Z" fill="currentColor"></path>
-            <path d="M6 8.66667L7.33333 8.66667L7.33333 10C7.33333 9.26362 6.73638 8.66667 6 8.66667Z" fill="currentColor"></path>
-            <path d="M10 8.66667L8.66667 8.66667L8.66667 10C8.66667 9.26362 9.26362 8.66667 10 8.66667Z" fill="currentColor"></path>
-          </svg>
-        </span>
-      </button>
-    </div>
-  </header>
-
-  <div data-nav="closed" class="nav-overlay-wrapper" id="navOverlay" role="dialog" aria-modal="true" aria-label="Hauptmenü">
-    <div class="overlay" id="navOverlayBg"></div>
-    <nav class="menu-content" aria-label="Hauptnavigation">
-      <div class="menu-bg" aria-hidden="true">
-        <div class="backdrop-layer first"></div>
-        <div class="backdrop-layer second"></div>
-        <div class="backdrop-layer"></div>
-        <div class="ambient-background-shapes">
-          <svg class="bg-shape bg-shape-1" viewBox="0 0 400 400" fill="none"><circle class="shape-element" cx="80" cy="120" r="40" fill="rgba(29,186,110,0.12)"/><circle class="shape-element" cx="300" cy="80" r="60" fill="rgba(29,186,110,0.09)"/><circle class="shape-element" cx="200" cy="300" r="80" fill="rgba(29,186,110,0.07)"/><circle class="shape-element" cx="350" cy="280" r="30" fill="rgba(29,186,110,0.12)"/></svg>
-          <svg class="bg-shape bg-shape-2" viewBox="0 0 400 400" fill="none"><path class="shape-element" d="M0 200 Q100 100, 200 200 T 400 200" stroke="rgba(29,186,110,0.18)" stroke-width="60" fill="none"/><path class="shape-element" d="M0 280 Q100 180, 200 280 T 400 280" stroke="rgba(29,186,110,0.12)" stroke-width="40" fill="none"/></svg>
-          <svg class="bg-shape bg-shape-3" viewBox="0 0 400 400" fill="none"><circle class="shape-element" cx="50" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="150" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="250" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="350" cy="50" r="8" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="100" cy="150" r="12" fill="rgba(29,186,110,0.22)"/><circle class="shape-element" cx="200" cy="150" r="12" fill="rgba(29,186,110,0.22)"/><circle class="shape-element" cx="300" cy="150" r="12" fill="rgba(29,186,110,0.22)"/><circle class="shape-element" cx="50" cy="250" r="10" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="150" cy="250" r="10" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="250" cy="250" r="10" fill="rgba(29,186,110,0.28)"/><circle class="shape-element" cx="350" cy="250" r="10" fill="rgba(29,186,110,0.28)"/></svg>
-          <svg class="bg-shape bg-shape-4" viewBox="0 0 400 400" fill="none"><path class="shape-element" d="M100 100 Q150 50, 200 100 Q250 150, 200 200 Q150 250, 100 200 Q50 150, 100 100" fill="rgba(29,186,110,0.1)"/><path class="shape-element" d="M250 200 Q300 150, 350 200 Q400 250, 350 300 Q300 350, 250 300 Q200 250, 250 200" fill="rgba(29,186,110,0.08)"/></svg>
-          <svg class="bg-shape bg-shape-5" viewBox="0 0 400 400" fill="none"><line class="shape-element" x1="0" y1="100" x2="300" y2="400" stroke="rgba(29,186,110,0.13)" stroke-width="30"/><line class="shape-element" x1="100" y1="0" x2="400" y2="300" stroke="rgba(29,186,110,0.1)" stroke-width="25"/><line class="shape-element" x1="200" y1="0" x2="400" y2="200" stroke="rgba(29,186,110,0.08)" stroke-width="20"/></svg>
-        </div>
+    <section class="page-hero page-hero--plain" aria-labelledby="page-title">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Brotkrumen"><ol><li><a href="/">Start</a></li><li aria-current="page">Leistungen</li></ol></nav>
+        <h1 id="page-title">Wachstum für Sicherheits&shy;unternehmen</h1>
+        <p class="lede">Kein Baukastendenken. Wir kombinieren genau die Maßnahmen, die deinem Unternehmen jetzt mehr qualifizierte Anfragen und Bewerbungen bringen.</p>
       </div>
-      <div class="menu-content-wrapper">
-        <button type="button" class="menu-close" id="menuClose" aria-label="Menü schließen">
-          <svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-x"/></svg>
-        </button>
-        <a href="/" class="menu-logo" aria-label="InboxElevate – Startseite">
-          <svg viewBox="0 0 40 40" fill="none" width="36" height="36" aria-hidden="true">
-            <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="menu-logo-text">InboxElevate</span>
-        </a>
-        <ul class="menu-list">
-          <li class="menu-list-item" data-shape="1"><a href="/" class="nav-link w-inline-block"><span class="nav-link-text">Start</span><span class="nav-link-hover-bg"></span></a></li>
-          <li class="menu-list-item" data-shape="2"><a href="/leistungen/" class="nav-link w-inline-block active" aria-current="page"><span class="nav-link-text">Leistungen</span><span class="nav-link-hover-bg"></span></a></li>
-          <li class="menu-list-item" data-shape="3"><a href="/prozess/" class="nav-link w-inline-block"><span class="nav-link-text">Prozess</span><span class="nav-link-hover-bg"></span></a></li>
-          <li class="menu-list-item" data-shape="4"><a href="/ueber-uns/" class="nav-link w-inline-block"><span class="nav-link-text">Über uns</span><span class="nav-link-hover-bg"></span></a></li>
-          <li class="menu-list-item" data-shape="5"><a href="/tipps/" class="nav-link w-inline-block"><span class="nav-link-text">Tipps</span><span class="nav-link-hover-bg"></span></a></li>
+    </section>
+
+    <section aria-label="Unsere Leistungen">
+      <div class="wrap">
+        <ul class="index index--lg">
+          <li>
+            <a class="index__row" href="/leistungen/webseiten">
+              <div class="index__top"><h2>Webseiten</h2><span class="index__go">Mehr zu Webseiten</span></div>
+              <div>
+                <p>Conversion-starke Websites, die speziell für Sicherheitsunternehmen entwickelt werden: mit sichtbarer Notrufnummer, Vertrauenssignalen und starker lokaler SEO.</p>
+                <ul class="index__list"><li>Schnelle Ladezeiten</li><li>Lokale SEO</li><li>Mobile First</li><li>5–10 Werktage</li></ul>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="index__row" href="/leistungen/paid-ads">
+              <div class="index__top"><h2>Paid Ads</h2><span class="index__go">Mehr zu Paid Ads</span></div>
+              <div>
+                <p>Google Search und Meta Ads, zielgenau ausgesteuert für Alarmanlagen-Anfragen, Objektschutz-Leads und das Recruiting von Sicherheitsmitarbeitern.</p>
+                <ul class="index__list"><li>Google Ads</li><li>Meta Ads</li><li>Leadgenerierung</li><li>Recruiting</li></ul>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="index__row" href="/leistungen/ki">
+              <div class="index__top"><h2>KI-Automatisierung</h2><span class="index__go">Mehr zu KI</span></div>
+              <div>
+                <p>Weniger manuelle Arbeit, schnellere Anfragenbearbeitung und klarer ROI. Wir bauen KI-Lösungen, die im Tagesgeschäft eines Sicherheitsunternehmens funktionieren, nicht im Labor.</p>
+                <ul class="index__list"><li>Anfragen vorqualifizieren</li><li>Anfrage-Bot rund um die Uhr</li><li>Workflow-Automatisierung</li><li>Sofort umsetzbar</li></ul>
+              </div>
+            </a>
+          </li>
         </ul>
-        <div class="menu-footer" data-menu-fade>
-          <p class="menu-sub-title">Leistungen im Einzelnen</p>
-          <ul class="menu-sub">
-            <li><a href="/leistungen/webseiten/">Webseiten</a></li>
-            <li><a href="/leistungen/paid-ads/">Paid Ads</a></li>
-            <li><a href="/leistungen/ki/">KI-Automatisierung</a></li>
-          </ul>
-          <a href="/kontakt/" class="btn-green menu-cta">Jetzt anfragen</a>
+        <div class="aside-link">
+          <p>Wie ein Projekt abläuft, steht auf der Prozess-Seite.</p>
+          <a class="link" href="/prozess">So arbeiten wir</a>
         </div>
       </div>
-    </nav>
-  </div>
-
-  <!-- @end:nav -->
-
-
-  <main id="main" class="hub-page">
-
-    <!-- HERO -->
-    <section class="hub-hero">
-      <div class="hub-hero-label">Unsere Leistungen</div>
-      <h1>Wachstum für<br><span>Sicherheits&shy;unternehmen.</span></h1>
-      <p>Kein Baukastendenken. Wir kombinieren genau die Maßnahmen, die deinem Unternehmen jetzt mehr qualifizierte Anfragen und Bewerbungen bringen.</p>
     </section>
 
-    <!-- SERVICE GRID -->
-    <section class="hub-services">
-
-      <div class="hub-service-row">
-        <!-- Webseiten -->
-        <a href="/leistungen/webseiten" class="hub-service-cell">
-          <div class="hub-svc-icon"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-globe"/></svg></div>
-          <h2 class="hub-svc-title">Webseiten</h2>
-          <p class="hub-svc-desc">Conversion-starke Websites die speziell für Sicherheitsunternehmen entwickelt werden — mit sichtbarer Notrufnummer, Vertrauenssignalen und starker lokaler SEO.</p>
-          <div class="hub-svc-tags">
-            <span class="hub-svc-tag">Blitzschnell</span>
-            <span class="hub-svc-tag">Lokale SEO</span>
-            <span class="hub-svc-tag">Mobile First</span>
-            <span class="hub-svc-tag">5–10 Werktage</span>
-          </div>
-          <div class="hub-svc-cta">Mehr erfahren <span class="arrow"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span></div>
-        </a>
-
-        <!-- Paid Ads -->
-        <a href="/leistungen/paid-ads" class="hub-service-cell">
-          <div class="hub-svc-icon"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-megaphone"/></svg></div>
-          <h2 class="hub-svc-title">Paid Ads</h2>
-          <p class="hub-svc-desc">Google Search und Meta Ads — zielgenau ausgesteuert für Alarmanlagen-Anfragen, Objektschutz-Leads und das Recruiting von Sicherheitsmitarbeitern.</p>
-          <div class="hub-svc-tags">
-            <span class="hub-svc-tag">Google Ads</span>
-            <span class="hub-svc-tag">Meta Ads</span>
-            <span class="hub-svc-tag">Leadgenerierung</span>
-            <span class="hub-svc-tag">Recruiting</span>
-          </div>
-          <div class="hub-svc-cta">Mehr erfahren <span class="arrow"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span></div>
-        </a>
+    <section class="cta-band" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div>
+          <h2 id="cta-title">Nicht sicher, was zu dir passt?</h2>
+          <p>Im kostenlosen Marketing-Check analysieren wir gemeinsam deine Situation und zeigen dir, welche Maßnahmen den größten Hebel haben.</p>
+        </div>
+        <div class="cta-band__action">
+          <a class="btn" href="/kontakt">Marketing-Check anfordern</a>
+          <p class="small">Antwort innerhalb von 48 Stunden.</p>
+        </div>
       </div>
-
-      <!-- KI wide -->
-      <div class="hub-service-row">
-        <a href="/leistungen/ki" class="hub-service-cell hub-service-wide">
-          <div class="hub-svc-icon"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-bot"/></svg></div>
-          <h2 class="hub-svc-title">KI-Automatisierung</h2>
-          <p class="hub-svc-desc">Weniger manuelle Arbeit, schnellere Anfragenbearbeitung und klarer ROI. Wir implementieren KI-Lösungen, die direkt im Tagesgeschäft eines Sicherheitsunternehmens funktionieren — nicht im Labor.</p>
-          <div class="hub-svc-tags">
-            <span class="hub-svc-tag">Anfragequalifizierung</span>
-            <span class="hub-svc-tag">24/7 KI-Bot</span>
-            <span class="hub-svc-tag">Workflow-Automatisierung</span>
-            <span class="hub-svc-tag">Sofortige Umsetzung</span>
-          </div>
-          <div class="hub-svc-cta">Mehr erfahren <span class="arrow"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"/></svg></span></div>
-        </a>
-      </div>
-
     </section>
-
-    <!-- BOTTOM CTA -->
-    <div class="hub-bottom-cta">
-      <div>
-        <h2>Nicht sicher, was<br>zu dir passt?</h2>
-        <p>Im kostenlosen Marketing-Check analysieren wir gemeinsam deine Situation und zeigen dir, welche Maßnahmen den größten Hebel haben.</p>
-      </div>
-      <a href="/kontakt" class="btn-ink">Marketing-Check anfordern</a>
-    </div>
-
   </main>
 
-  <!-- @build:footer -->
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <p><strong>InboxElevate</strong><br>Mehr Anfragen. Mehr Bewerbungen. Spezialisiert auf Sicherheitsunternehmen.</p>
-      </div>
-      <div class="footer-col">
-        <p class="footer-title">Navigation</p>
-        <a href="/">Start</a>
-        <a href="/leistungen/">Leistungen</a>
-        <a href="/prozess/">Prozess</a>
-        <a href="/ueber-uns/">Über uns</a>
-        <a href="/tipps/">Tipps</a>
-      </div>
-      <div class="footer-col">
-        <p class="footer-title">Leistungen</p>
-        <a href="/leistungen/webseiten/">Webseiten</a>
-        <a href="/leistungen/paid-ads/">Paid Ads</a>
-        <a href="/leistungen/ki/">KI-Automatisierung</a>
-      </div>
-      <div class="footer-col">
-        <p class="footer-title">Kontakt</p>
-        <a href="mailto:david@inbox-elevate.de">david@inbox-elevate.de</a>
-        <a href="/kontakt/">Anfrage stellen</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 InboxElevate. Alle Rechte vorbehalten.</p>
-      <ul class="footer-legal">
-        <li><a href="/impressum/">Impressum</a></li>
-        <li><a href="/datenschutz/">Datenschutz</a></li>
-      </ul>
-      <div class="socials">
-        <a href="https://www.linkedin.com/company/inboxelevate/" target="_blank" rel="noopener noreferrer" class="soc" aria-label="InboxElevate auf LinkedIn (öffnet in neuem Tab)"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin"/></svg></a>
-        <a href="mailto:david@inbox-elevate.de" class="soc" aria-label="E-Mail an InboxElevate"><svg class="ico" aria-hidden="true"><use href="/assets/icons.svg#i-mail"/></svg></a>
-      </div>
-    </div>
-  </footer>
+  <footer class="site-footer" data-site-footer></footer>
 
-  <!-- @end:footer -->
-
-
-  <!-- @build:scripts -->
-  <script src="/vendor/gsap.min.js"></script>
-  <script src="/vendor/CustomEase.min.js"></script>
-  <script src="/js/main.js" defer></script>
-  <!-- @end:scripts -->
+  <script src="/js/site.js" defer></script>
 </body>
 </html>

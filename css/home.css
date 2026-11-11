@@ -1,0 +1,92 @@
+/* ==========================================================================
+   Startseite
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(2.25rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5.5rem); }
+.hero__title {
+  font-size: clamp(2.1rem, 9vw, 3.75rem);
+  line-height: .98;
+  text-wrap: wrap;
+}
+@media (min-width: 40rem) { .hero__title { font-size: clamp(2.6rem, 1.1rem + 6.6vw, 6.5rem); } }
+.hero__lead { display: block; }
+@media (max-width: 40rem) { .hero__title { min-height: 3.1em; } }
+
+/* das wechselnde Wort steht auf einem Schild, wie ein Namensschild an der Tür */
+.plate {
+  display: inline-block;
+  margin-top: .08em; padding: .02em .2em .1em;
+  background: var(--green); color: var(--white);
+  border-radius: 6px;
+  box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  overflow-wrap: anywhere;
+}
+#tw-text::after {
+  content: ""; display: inline-block;
+  width: .07em; height: .8em; margin-left: .07em;
+  background: currentColor; vertical-align: -.05em;
+  animation: caret 1s steps(1) infinite;
+}
+@keyframes caret { 50% { opacity: 0; } }
+
+.hero__row {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 2.25rem clamp(2rem, 6vw, 6rem);
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+  align-items: start;
+}
+.hero__copy > * + * { margin-top: 1.75rem; }
+
+.facts { display: grid; grid-template-columns: 1fr 1fr; border-top: var(--rule); }
+.facts > div { padding: .9rem 1rem 1rem 0; border-bottom: var(--hair); }
+.facts > div:nth-child(even) { padding-left: 1rem; border-left: var(--hair); }
+.facts dt { font-size: .9375rem; font-weight: 600; color: var(--steel); }
+.facts dd { margin-top: .15rem; font-size: 1.1875rem; font-weight: 600; line-height: 1.3; }
+@media (max-width: 56rem) { .hero__row { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 30rem) {
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .facts > div:nth-child(even) { padding-left: 0; border-left: 0; }
+}
+
+/* ---------- USP: Zahlung erst nach Bestätigung ---------- */
+.usp { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+.usp__hw {
+  font-family: var(--f-hand); font-weight: 400;
+  font-size: clamp(2.35rem, 1rem + 6vw, 5.5rem);
+  line-height: 1.22; letter-spacing: 0;
+  color: var(--white);
+  display: flex; flex-direction: column; align-items: flex-start; gap: .1em;
+  min-height: 2.5em;
+}
+.usp__line { display: block; }
+.usp__line svg { display: inline-block; height: 1.05em; overflow: visible; vertical-align: middle; }
+.usp__grid {
+  display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 2.5rem clamp(2rem, 6vw, 6rem);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  align-items: start;
+}
+.usp__steps { counter-reset: s; border-top: var(--rule); }
+.usp__steps li {
+  counter-increment: s;
+  display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: .25rem 1rem;
+  padding: 1rem 0 1.05rem;
+  border-bottom: 2px solid rgba(22, 25, 28, .35);
+  font-size: 1.1875rem; line-height: 1.45;
+}
+.usp__steps li::before { content: counter(s); font: 700 1.9rem/1 var(--f-head); }
+.usp__steps b { display: block; font: 700 1.6rem/1.1 var(--f-head); margin-bottom: .15rem; }
+.usp__note {
+  padding: 1.1rem 1.25rem 1.2rem;
+  background: var(--paper); border: var(--rule); border-radius: var(--r);
+  font-size: 1.0625rem; line-height: 1.5;
+}
+.usp__note b { font-weight: 600; }
+@media (max-width: 56rem) { .usp__grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Vertrauen ---------- */
+.runin { font: 700 1.6rem/1.1 var(--f-head); margin-right: .15em; }
+.trust__body > * + * { margin-top: 1.25rem; }
+.trust__body p { max-width: 36em; }
+.trust__body > p:first-child { font-size: 1.3125rem; line-height: 1.5; }
