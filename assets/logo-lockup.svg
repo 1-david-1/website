@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" fill="none">
+  <rect width="520" height="180" rx="28" fill="#ffffff"/>
+  <path d="M220 60L300 24M300 24L238 18M300 24L292 88" stroke="#109e56" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M300 24L258 66" stroke="#109e56" stroke-width="8" stroke-linecap="round"/>
+  <path d="M258 66L252 102L270 82" stroke="#109e56" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="260" y="132" text-anchor="middle" fill="#07195b" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="700" letter-spacing="-1.5">InboxElevate</text>
+  <text x="260" y="154" text-anchor="middle" fill="#62677d" font-family="Arial, sans-serif" font-size="15">Boost Engagement, Elevate Results.</text>
+</svg>
