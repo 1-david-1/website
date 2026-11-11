@@ -1,9 +1,0 @@
-Lokal gehostete Schriften (statt Google Fonts, siehe Datenschutzerklärung)
-
-- Bricolage Grotesque  - SIL Open Font License 1.1 - https://github.com/ateliertriay/bricolage
-- Instrument Sans      - SIL Open Font License 1.1 - https://github.com/Instrument/instrument-sans
-- IBM Plex Mono        - SIL Open Font License 1.1 - https://github.com/IBM/plex
-- Caveat               - SIL Open Font License 1.1 - https://github.com/googlefonts/caveat
-- Permanent Marker     - Apache License 2.0        - https://github.com/googlefonts/permanent-marker
-
-Dateien stammen aus den npm-Paketen @fontsource/* und @fontsource-variable/* (Latin-Subset).
