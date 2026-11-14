@@ -214,22 +214,14 @@
   function getFooterHTML() {
     return `<div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="logo" style="color:var(--cream);">
-          <svg viewBox="0 0 40 40" width="26" fill="none">
-            <path d="M8 32L34 8M34 8L14 6M34 8L32 28" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M34 8L20 22" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M20 22L18 32L23 26" stroke="#1dba6e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          InboxElevate
-        </a>
-        <p>Mehr Anfragen. Mehr Bewerbungen. Spezialisiert auf Sicherheitsunternehmen.</p>
+        <p><strong>InboxElevate</strong><br>Mehr Anfragen. Mehr Bewerbungen. Spezialisiert auf Sicherheitsunternehmen.</p>
       </div>
       <div class="footer-col">
         <h5>Navigation</h5>
         <a href="/">Start</a>
         <a href="/leistungen">Leistungen</a>
-        <a href="/#prozess">Prozess</a>
-        <a href="/#ueber-uns">Über uns</a>
+        <a href="/prozess">Prozess</a>
+        <a href="/ueber-uns">Über uns</a>
         <a href="/tipps">Tipps</a>
       </div>
       <div class="footer-col">
@@ -240,16 +232,16 @@
       </div>
       <div class="footer-col">
         <h5>Kontakt</h5>
-        <a class="js-email-link" data-u="david" data-d="inbox-elevate.de">[E-Mail laden…]</a>
+        <a href="mailto:${SITE_CONFIG.email}">${SITE_CONFIG.email}</a>
         <a href="/kontakt">Anfrage stellen</a>
-        <a href="/#datenschutz">Datenschutz</a>
+        <a href="/datenschutz">Datenschutz</a>
       </div>
     </div>
     <div class="footer-bottom">
       <p>© 2026 InboxElevate. Alle Rechte vorbehalten.</p>
       <div class="socials">
-        <a href="${SITE_CONFIG.linkedin}" target="_blank" rel="noopener noreferrer" class="soc">in</a>
-        <a class="soc js-email-link" data-u="david" data-d="inbox-elevate.de">✉</a>
+        <a href="${SITE_CONFIG.linkedin}" target="_blank" rel="noopener noreferrer" class="soc" title="LinkedIn">in</a>
+        <a href="mailto:${SITE_CONFIG.email}" class="soc" title="Email">✉</a>
       </div>
     </div>`;
   }
@@ -406,7 +398,7 @@
       const cFormOk = document.getElementById('cFormOk');
       if (cForm) cForm.style.display = 'none';
       if (cFormOk) cFormOk.style.display = 'block';
-      showToast('Nachricht gesendet', 'Wir melden uns innerhalb von 48 Stunden.', 'success');
+      showToast('Nachricht gesendet', 'Wir melden uns innerhalb von 24 Stunden.', 'success');
     } catch {
       btn.disabled = false;
       btn.innerHTML = originalHtml;
