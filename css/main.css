@@ -1471,143 +1471,149 @@
       margin-bottom: 1.6rem;
     }
 
-    .home-trust-grid {
-      display: grid;
-      gap: 1.4rem;
-    }
+    /* Schrift für alle Hinweise neben dem Mauszeiger */
+    :root { --note: 'Apple Chancery', 'Snell Roundhand', 'Lucida Calligraphy', 'URW Chancery L', 'Z003', cursive; }
 
-    .flip-slot:nth-child(odd) { margin-right: clamp(0rem, 3vw, 3rem); }
-    .flip-slot:nth-child(even) { margin-left: clamp(0rem, 3vw, 3rem); }
-
-    /* Karten: jede mit eigener Eckenform (--r) */
-    .flip-card {
-      --r: 3.2rem 1rem 3.2rem 1rem;
+    .home-trust {
       position: relative;
-      perspective: 1400px;
-      transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      grid-template-areas: "head head" "body zone";
+      gap: 2rem 3rem;
+      align-items: start;
     }
-    .flip-card--b { --r: 1rem 3.2rem 1rem 3.2rem; }
-    .flip-card--c { --r: 3.2rem 3.2rem 1rem 3.2rem; }
+    .trust-head { grid-area: head; max-width: 66rem; }
+    .home-trust-copy .trust-lead { font-size: 1.15rem; max-width: 44rem; margin-bottom: 0; }
+    .trust-body { grid-area: body; align-self: center; }
+    .trust-body p { color: var(--muted); font-size: 1.05rem; line-height: 1.75; max-width: 30rem; margin-bottom: 1.6rem; }
+    .sky-zone { grid-area: zone; min-height: 27rem; }
 
-    @media (hover: hover) and (pointer: fine) {
-      .flip-card:hover { transform: scale(1.045); }
-      .flip-card:hover .flip-face { box-shadow: 0 22px 44px rgba(11, 14, 26, .12); }
-    }
-
-    .flip-face { padding: 2rem 2.4rem; border-radius: var(--r); }
-    .flip-front { position: relative; background: var(--cream); border: 1px solid var(--border); }
-    .flip-back { background: var(--ink); color: var(--cream); margin-top: .8rem; }
-    .flip-front h3 { font-family: var(--H); font-size: 1.35rem; font-weight: 800; line-height: 1.2; margin-bottom: .6rem; }
-    .flip-front p { color: var(--muted); font-size: .98rem; line-height: 1.65; max-width: 34ch; }
-    .flip-back p { font-size: 1.05rem; line-height: 1.7; max-width: 38ch; }
-
-    /* Umdrehen (nur mit JS; ohne JS stehen beide Seiten untereinander) */
-    .flip-card.is-ready .flip-inner {
-      display: grid;
-      transform-style: preserve-3d;
-      transition: transform .85s cubic-bezier(.45, .05, .2, 1);
-    }
-    .flip-card.is-ready .flip-face {
-      grid-area: 1 / 1;
-      margin: 0;
-      min-height: 12rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-    .flip-card.is-ready .flip-back { transform: rotateY(180deg); }
-    .flip-card.is-flipped .flip-inner { transform: rotateY(180deg); }
-
-    /* Textreveal auf der Rückseite: Wort für Wort */
-    .flip-card.is-ready .w {
-      display: inline-block;
+    .home-trust.is-detail .trust-head,
+    .home-trust.is-detail .trust-body {
       opacity: 0;
-      transform: translateY(.7em);
-      filter: blur(5px);
-      transition: opacity .45s ease, transform .55s cubic-bezier(.2, .7, .2, 1), filter .45s ease;
-    }
-    .flip-card.is-flipped .w {
-      opacity: 1;
-      transform: none;
-      filter: none;
-      transition-delay: calc(.4s + var(--i) * 28ms);
+      transform: translateY(-14px);
+      visibility: hidden;
+      transition: opacity .6s ease, transform .6s ease, visibility 0s linear .6s;
     }
 
-    .flip-toggle {
+    /* Himmel: legt sich über die ganze Sektion */
+    .sky { position: absolute; inset: 0; z-index: 2; overflow: hidden; pointer-events: none; --tf: .62; --ty: calc(var(--tw, 600px) * .05); }
+    .sky[data-active="sun"] { --tf: .46; --ty: 0px; }
+    .sky-defs { position: absolute; }
+
+    .sky-obj {
       position: absolute;
-      inset: 0;
-      z-index: 2;
-      border: 0;
-      background: transparent;
-      border-radius: var(--r);
-      cursor: pointer;
+      left: calc(var(--zx, 0px) + var(--zw, 0px) * var(--fx));
+      top: calc(var(--zy, 0px) + var(--zh, 0px) * var(--fy));
+      width: calc(var(--zw, 0px) * var(--fw));
+      aspect-ratio: var(--ar);
+      transform: translate(-50%, -50%) translateX(var(--dx, 0px));
+      transition: transform 1.7s cubic-bezier(.45, 0, .2, 1), opacity .9s ease;
     }
-    .flip-toggle:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
+    .sky-obj--sun { --fx: .46; --fy: .45; --fw: .42; --ar: 1 / 1; }
+    .sky-obj--a   { --fx: .66; --fy: .16; --fw: .34; --ar: 280 / 164; }
+    .sky-obj--b   { --fx: .19; --fy: .75; --fw: .40; --ar: 280 / 164; }
+    .sky-obj.is-active { z-index: 2; }
+    .sky-obj.is-away { opacity: 0; }
 
-    /* Touch: kein Mauszeiger, deshalb Hinweis direkt auf der Karte */
+    .o-y { width: 100%; height: 100%; transform: translateY(var(--dy, 0px)); transition: transform 1.7s cubic-bezier(.35, -.45, .3, 1.05); }
+    .o-body { position: relative; width: 100%; height: 100%; transform: scale(var(--k, 1)); transition: transform 1.7s cubic-bezier(.5, 0, .15, 1); }
+    .sky:not(.is-detail) .sky-obj:hover .o-body { transform: scale(1.07); transition-duration: .35s; }
+
+    .o-art { display: block; width: 100%; height: 100%; overflow: visible; animation: skyBob 7s ease-in-out infinite alternate; }
+    .sky-obj--a .o-art { animation-duration: 8.5s; animation-delay: -2s; }
+    .sky-obj--b .o-art { animation-duration: 9.5s; animation-delay: -5s; }
+    .rays { transform-origin: 120px 120px; animation: skySpin 70s linear infinite; }
+    @keyframes skyBob { from { transform: translateY(-6px); } to { transform: translateY(6px); } }
+    @keyframes skySpin { to { transform: rotate(360deg); } }
+
+    .o-hit { position: absolute; inset: 8%; padding: 0; border: 0; background: transparent; cursor: pointer; pointer-events: auto; border-radius: 40%; }
+    .sky-obj--sun .o-hit { inset: 12%; border-radius: 50%; }
+    .o-hit:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+    .sky-obj.is-away .o-hit { pointer-events: none; }
+
+    .o-label {
+      position: absolute; left: 50%; top: 50%; z-index: 1;
+      width: max-content; max-width: min(11rem, 80%);
+      padding: .55rem 1.1rem; border-radius: 1.6rem;
+      background: #fff; color: var(--ink);
+      font: 800 .92rem/1.25 var(--H); text-align: center;
+      box-shadow: 0 8px 24px rgba(11, 14, 26, .18);
+      transform: translate(-50%, -50%) scale(.85); opacity: 0; pointer-events: none;
+      transition: opacity .25s ease, transform .25s cubic-bezier(.2, .7, .2, 1);
+    }
+    .sky:not(.is-detail) .o-hit:hover + .o-label,
+    .sky:not(.is-detail) .o-hit:focus-visible + .o-label { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+    /* Weitere Wolken: erst in der Detailansicht, als Umriss */
+    .amb {
+      position: absolute; left: var(--ax); top: var(--ay); width: var(--aw);
+      transform: translate(-50%, -50%) scale(.85); opacity: 0;
+      transition: opacity .9s ease calc(.5s + var(--i) * .12s), transform 1.1s cubic-bezier(.2, .7, .2, 1) calc(.5s + var(--i) * .12s);
+    }
+    .sky.is-detail .amb { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    .amb-in { animation: skyDrift var(--dur) ease-in-out infinite alternate; animation-delay: calc(var(--i) * -2s); animation-play-state: paused; }
+    .sky.is-detail .amb-in { animation-play-state: running; }
+    .amb svg { display: block; width: 100%; height: auto; pointer-events: none; }
+    .amb use { fill: none; stroke: #cfd0d6; stroke-width: 6; stroke-linejoin: round; }
+    .sky.is-detail .amb use { pointer-events: all; cursor: pointer; }
+    @keyframes skyDrift { from { transform: translateX(-22px); } to { transform: translateX(22px); } }
+
+    /* Aufgedeckter Text in der Mitte */
+    .sky-reveal {
+      position: absolute; left: 50%; top: calc(50% + var(--ty)); z-index: 3;
+      width: calc(var(--tw, 600px) * var(--tf));
+      text-align: center; transform: translate(-50%, -50%);
+      opacity: 0; pointer-events: none; transition: opacity .5s ease;
+    }
+    .sky-reveal.show { opacity: 1; }
+    .rv-title {
+      display: inline-block; margin: 0 0 .9rem; padding: .55rem 1.2rem; border-radius: 1.6rem;
+      background: #fff; color: var(--ink);
+      font: 800 clamp(1rem, 1.5vw, 1.25rem)/1.25 var(--H); text-wrap: balance;
+      box-shadow: 0 8px 24px rgba(11, 14, 26, .18);
+    }
+    .rv-text { margin: 0; color: var(--cream); font-size: clamp(.92rem, 1.3vw, 1.18rem); line-height: 1.6; }
+    .sky[data-active="sun"] .rv-text { color: var(--ink); }
+    .dc-w { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: top; }
+    .dc-x { color: #1dba6e; opacity: .85; }
+    .sky[data-active="sun"] .dc-x { color: rgba(11, 14, 26, .5); }
+
+    .sky-hint { display: none; position: absolute; left: 50%; bottom: 2.2rem; z-index: 4; transform: translateX(-50%); margin: 0; font-family: var(--note); font-size: 1.1rem; color: rgba(11, 14, 26, .7); white-space: nowrap; }
     @media (hover: none) {
-      .flip-front::after {
-        content: 'Tippen zum Umdrehen';
-        position: absolute;
-        right: 1.4rem;
-        bottom: 1rem;
-        font-size: .74rem;
-        font-weight: 600;
-        color: rgba(11, 14, 26, .7);
-      }
+      .sky-hint--rest { display: block; }
+      .sky.is-detail .sky-hint--rest { display: none; }
+      .sky.is-detail .sky-hint--back { display: block; }
     }
 
-    /* Hinweis neben dem Mauszeiger */
-    .card-cursor {
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      padding: .45rem .85rem;
-      border-radius: 999px;
-      background: var(--ink);
-      color: var(--cream);
-      font: 600 .78rem/1 var(--B);
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity .15s;
-      box-shadow: 0 6px 18px rgba(11, 14, 26, .25);
+    /* Hinweis neben dem Mauszeiger (immer Apple Chancery) */
+    .cursor-note {
+      position: fixed; left: 0; top: 0; z-index: 9999;
+      padding: .3rem .9rem .4rem; border-radius: 999px;
+      background: var(--cream); color: var(--ink);
+      border: 1px solid rgba(11, 14, 26, .2);
+      font-family: var(--note); font-size: 1.2rem; line-height: 1.1; white-space: nowrap;
+      pointer-events: none; opacity: 0; transition: opacity .15s;
+      box-shadow: 0 6px 18px rgba(11, 14, 26, .18);
     }
-    .card-cursor::before {
-      content: '';
-      width: .45rem;
-      height: .45rem;
-      margin-right: .5rem;
-      border-radius: 50%;
-      background: #1dba6e;
-    }
-    .card-cursor.on { opacity: 1; }
-    .card-cursor.inv { background: var(--cream); color: var(--ink); }
+    .cursor-note.on { opacity: 1; }
 
     /* Überschrift: Buchstaben wachsen, wenn die Maus nah ist */
     .prox-word { display: inline-block; white-space: nowrap; }
-    .prox-letter {
-      display: inline-block;
-      transform-origin: 50% 65%;
-      transition: transform .14s ease-out;
-      will-change: transform;
-    }
+    .prox-letter { display: inline-block; transform-origin: 50% 65%; transition: transform .14s ease-out; will-change: transform; }
 
     @media (max-width: 900px) {
-      .flip-slot:nth-child(n) { margin-left: 0; margin-right: 0; }
+      .home-trust { grid-template-areas: "head" "body" "zone"; }
+      .sky-zone { min-height: 26rem; }
+      .sky-obj--sun { --fx: .46; --fy: .46; --fw: .62; }
+      .sky-obj--a   { --fx: .70; --fy: .14; --fw: .52; }
+      .sky-obj--b   { --fx: .30; --fy: .82; --fw: .56; }
+      .amb { width: calc(var(--aw) * 2.2); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .flip-card,
-      .flip-card.is-ready .flip-inner,
-      .flip-card.is-ready .w,
-      .prox-letter { transition: none; }
-      .flip-card:hover { transform: none; }
+      .sky *, .prox-letter { transition-duration: 0s !important; animation: none !important; }
+      .sky-obj, .o-y, .o-body, .amb, .sky-reveal, .o-label { transition: none !important; }
+      .home-trust.is-detail .trust-head, .home-trust.is-detail .trust-body { transition: none; }
     }
 
     /* ── ABOUT PAGE ── */

@@ -1256,17 +1256,44 @@
     section.addEventListener('pointerleave', () => { mx = my = -9999; active = false; tick(); });
   }
 
-  /* ── Vertrauens-Karten: Hover vergrößert, Klick dreht um ── */
-  function initTrustCards() {
-    const cards = document.querySelectorAll('.flip-card');
-    if (!cards.length) return;
-    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  /* ── Vertrauens-Himmel: Sonne und Wolken decken ihre Aussage auf ── */
+  function initTrustSky() {
+    const section = document.querySelector('.home-trust');
+    const stage = section && section.querySelector('[data-sky]');
+    const zone = section && section.querySelector('.sky-zone');
+    if (!stage || !zone || stage.dataset.skyBound === 'true') return;
+    stage.dataset.skyBound = 'true';
+
+    const objs = Array.from(stage.querySelectorAll('[data-sky-obj]'));
+    const reveal = stage.querySelector('.sky-reveal');
+    const rvTitle = reveal.querySelector('.rv-title');
+    const rvText = reveal.querySelector('.rv-text');
+    const live = stage.querySelector('[data-sky-live]');
+    const fadeOut = Array.from(section.querySelectorAll('.trust-head, .trust-body'));
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const narrow = () => window.innerWidth <= 900;
+    const POOL = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&*+?';
+    let state = 'rest', active = null, token = 0, timers = [];
+
+    /* Ruhezone (rechts unten) an die CSS-Variablen übergeben */
+    const setZone = () => {
+      const s = stage.getBoundingClientRect(), z = zone.getBoundingClientRect();
+      stage.style.setProperty('--zx', (z.left - s.left) + 'px');
+      stage.style.setProperty('--zy', (z.top - s.top) + 'px');
+      stage.style.setProperty('--zw', z.width + 'px');
+      stage.style.setProperty('--zh', z.height + 'px');
+    };
+    setZone();
+    if ('ResizeObserver' in window) new ResizeObserver(setZone).observe(section);
+    window.addEventListener('resize', setZone);
+
+    /* Hinweis neben dem Mauszeiger */
     let tip = null;
-    if (finePointer) {
+    const tipText = () => state === 'rest' ? 'Klicke, um es aufzudecken' : 'Klicke, um zurückzukehren';
+    if (fine) {
       tip = document.createElement('div');
-      tip.className = 'card-cursor';
+      tip.className = 'cursor-note';
       tip.setAttribute('aria-hidden', 'true');
-      tip.textContent = 'Hier klicken';
       document.body.appendChild(tip);
     }
     const moveTip = e => {
@@ -1274,45 +1301,138 @@
       const x = e.clientX + 18 + w > window.innerWidth ? e.clientX - 18 - w : e.clientX + 18;
       tip.style.transform = `translate3d(${x}px, ${e.clientY + 20}px, 0)`;
     };
-    cards.forEach(card => {
-      if (card.dataset.flipBound === 'true') return;
-      card.dataset.flipBound = 'true';
-      card.querySelectorAll('.flip-reveal').forEach(p => {
-        const words = p.textContent.trim().split(/\s+/);
-        p.textContent = '';
-        words.forEach((word, i) => {
-          const s = document.createElement('span');
-          s.className = 'w';
-          s.style.setProperty('--i', i);
-          s.textContent = word;
-          p.appendChild(s);
-          if (i < words.length - 1) p.appendChild(document.createTextNode(' '));
+    const bindTip = el => {
+      if (!tip) return;
+      el.addEventListener('pointerenter', e => {
+        if (state === 'returning') return;
+        tip.textContent = tipText(); moveTip(e); tip.classList.add('on');
+      });
+      el.addEventListener('pointermove', moveTip);
+      el.addEventListener('pointerleave', () => tip.classList.remove('on'));
+    };
+
+    /* Entschlüsseln: Wörter behalten ihre Breite, damit nichts springt */
+    const build = (el, text) => {
+      el.textContent = '';
+      const words = text.split(' ').map(w => {
+        const box = document.createElement('span'), ok = document.createElement('span'), bad = document.createElement('span');
+        box.className = 'dc-w'; bad.className = 'dc-x'; ok.textContent = w;
+        box.append(ok, bad);
+        el.append(box, document.createTextNode(' '));
+        return { w, box, ok, bad, t: [] };
+      });
+      words.forEach(o => { o.box.style.width = o.box.getBoundingClientRect().width + 'px'; o.ok.textContent = ''; });
+      return words;
+    };
+    const run = (words, ms, myToken, done) => {
+      const total = words.reduce((n, o) => n + o.w.length, 0) || 1;
+      let idx = 0;
+      words.forEach(o => { for (let i = 0; i < o.w.length; i++) o.t[i] = (idx++ / total) * ms * .7 + Math.random() * ms * .3; });
+      const start = performance.now();
+      (function frame(now) {
+        if (myToken !== token) return;
+        let all = true;
+        words.forEach(o => {
+          let n = 0;
+          while (n < o.w.length && now - start >= o.t[n]) n++;
+          if (n < o.w.length) all = false;
+          let junk = '';
+          for (let i = n; i < o.w.length; i++) junk += POOL[(Math.random() * POOL.length) | 0];
+          o.ok.textContent = o.w.slice(0, n);
+          o.bad.textContent = junk;
         });
+        if (all) { words.forEach(o => { o.box.style.width = ''; }); if (done) done(); return; }
+        requestAnimationFrame(frame);
+      })(start);
+    };
+
+    const stopTimers = () => { token++; timers.forEach(clearTimeout); timers = []; };
+
+    function open(obj) {
+      if (state !== 'rest') return;
+      state = 'going';
+      active = obj;
+      const kind = obj.dataset.skyObj, title = obj.dataset.title, text = obj.dataset.text;
+      const s = stage.getBoundingClientRect(), r = obj.getBoundingClientRect();
+      const tw = kind === 'sun'
+        ? (narrow() ? s.width * 1.5 : Math.min(s.height * .95, 840))
+        : (narrow() ? s.width * 1.25 : Math.min(s.width * .52, 780));
+      stage.style.setProperty('--tw', tw + 'px');
+      stage.dataset.active = kind;
+      stage.classList.add('is-detail');
+      section.classList.add('is-detail');
+      fadeOut.forEach(el => el.setAttribute('inert', ''));
+
+      obj.classList.add('is-active');
+      obj.style.setProperty('--dx', (s.left + s.width / 2 - (r.left + r.width / 2)) + 'px');
+      obj.style.setProperty('--dy', (s.top + s.height / 2 - (r.top + r.height / 2)) + 'px');
+      obj.style.setProperty('--k', tw / r.width);
+      objs.filter(o => o !== obj).forEach(o => {
+        const rr = o.getBoundingClientRect();
+        const left = rr.left + rr.width / 2 < s.left + s.width / 2;
+        o.classList.add('is-away');
+        o.setAttribute('inert', '');
+        o.style.setProperty('--dx', (left ? -1 : 1) * s.width * .55 + 'px');
+        o.style.setProperty('--dy', (o.dataset.skyObj === 'sun' ? -s.height * .5 : 0) + 'px');
       });
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'flip-toggle';
-      btn.setAttribute('aria-pressed', 'false');
-      btn.setAttribute('aria-label', card.querySelector('h3').textContent + ': Karte umdrehen');
-      card.appendChild(btn);
-      card.classList.add('is-ready');
-      const setLabel = () => {
-        if (!tip) return;
-        const flipped = card.classList.contains('is-flipped');
-        tip.textContent = flipped ? 'Zurückdrehen' : 'Hier klicken';
-        tip.classList.toggle('inv', flipped); // auf der dunklen Rückseite hell darstellen
-      };
-      btn.addEventListener('click', () => {
-        const flipped = card.classList.toggle('is-flipped');
-        btn.setAttribute('aria-pressed', String(flipped));
-        setLabel();
-      });
-      if (tip) {
-        btn.addEventListener('pointerenter', e => { setLabel(); moveTip(e); tip.classList.add('on'); });
-        btn.addEventListener('pointermove', moveTip);
-        btn.addEventListener('pointerleave', () => tip.classList.remove('on'));
+      obj.querySelector('.o-hit').setAttribute('aria-label', 'Zurück zur Übersicht');
+      if (tip) tip.textContent = tipText();
+
+      /* Text vorbereiten, damit die Größe von Anfang an feststeht */
+      const myToken = token;
+      const tWords = build(rvTitle, title), pWords = build(rvText, text);
+      const cy = s.top + s.height / 2;
+      if (cy < window.innerHeight * .25 || cy > window.innerHeight * .75) {
+        window.scrollBy({ top: cy - window.innerHeight / 2, behavior: reducedMotion ? 'auto' : 'smooth' });
       }
+      timers.push(setTimeout(() => {
+        state = 'detail';
+        reveal.classList.add('show');
+        const finish = () => { live.textContent = title + '. ' + text; };
+        if (reducedMotion) {
+          tWords.forEach(o => { o.box.style.width = ''; o.ok.textContent = o.w; });
+          pWords.forEach(o => { o.box.style.width = ''; o.ok.textContent = o.w; });
+          finish(); return;
+        }
+        run(tWords, 650, myToken, () => run(pWords, 1700, myToken, finish));
+      }, reducedMotion ? 0 : 1250));
+    }
+
+    function back() {
+      if (state === 'rest' || state === 'returning') return;
+      stopTimers();
+      state = 'returning';
+      const obj = active;
+      reveal.classList.remove('show');
+      stage.classList.remove('is-detail');
+      section.classList.remove('is-detail');
+      fadeOut.forEach(el => el.removeAttribute('inert'));
+      objs.forEach(o => {
+        ['--dx', '--dy', '--k'].forEach(p => o.style.removeProperty(p));
+        o.classList.remove('is-active', 'is-away');
+        o.removeAttribute('inert');
+      });
+      obj.querySelector('.o-hit').setAttribute('aria-label', obj.dataset.title + ': aufdecken');
+      if (tip) tip.classList.remove('on');
+      timers.push(setTimeout(() => {
+        state = 'rest';
+        active = null;
+        stage.removeAttribute('data-active');
+        rvTitle.textContent = ''; rvText.textContent = ''; live.textContent = '';
+        obj.querySelector('.o-hit').focus({ preventScroll: true });
+      }, reducedMotion ? 0 : 1800));
+    }
+
+    objs.forEach(o => {
+      const hit = o.querySelector('.o-hit');
+      hit.addEventListener('click', () => { if (state === 'rest') open(o); else back(); });
+      bindTip(hit);
     });
+    stage.querySelectorAll('.amb use').forEach(u => {
+      u.addEventListener('click', () => { if (stage.classList.contains('is-detail')) back(); });
+      bindTip(u);
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') back(); });
   }
 
   /* ── Boot ── */
@@ -1328,7 +1448,7 @@
   initBrandAnimation();
   initMagneticButtons();
   initTrustProximity();
-  initTrustCards();
+  initTrustSky();
   initSpotlights();
   initPreloader();
   initGsapInteractions();
