@@ -1459,7 +1459,7 @@
       margin-bottom: 1rem;
     }
 
-    .home-trust-copy h2 span {
+    .home-trust-copy h2 .home-trust-accent {
       color: var(--green);
     }
 
@@ -1473,44 +1473,141 @@
 
     .home-trust-grid {
       display: grid;
-      gap: 1rem;
+      gap: 1.4rem;
     }
 
-    .trust-card {
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.5rem;
-      transition: border-color .25s, transform .25s, background .25s;
+    .flip-slot:nth-child(odd) { margin-right: clamp(0rem, 3vw, 3rem); }
+    .flip-slot:nth-child(even) { margin-left: clamp(0rem, 3vw, 3rem); }
+
+    /* Karten: jede mit eigener Eckenform (--r) */
+    .flip-card {
+      --r: 3.2rem 1rem 3.2rem 1rem;
+      position: relative;
+      perspective: 1400px;
+      transition: transform .35s cubic-bezier(.2, .7, .2, 1);
+    }
+    .flip-card--b { --r: 1rem 3.2rem 1rem 3.2rem; }
+    .flip-card--c { --r: 3.2rem 3.2rem 1rem 3.2rem; }
+
+    @media (hover: hover) and (pointer: fine) {
+      .flip-card:hover { transform: scale(1.045); }
+      .flip-card:hover .flip-face { box-shadow: 0 22px 44px rgba(11, 14, 26, .12); }
     }
 
-    .trust-card:hover {
-      background: rgba(29, 186, 110, .06);
-      border-color: rgba(29, 186, 110, .34);
-      transform: translateX(4px);
+    .flip-face { padding: 2rem 2.4rem; border-radius: var(--r); }
+    .flip-front { position: relative; background: var(--cream); border: 1px solid var(--border); }
+    .flip-back { background: var(--ink); color: var(--cream); margin-top: .8rem; }
+    .flip-front h3 { font-family: var(--H); font-size: 1.35rem; font-weight: 800; line-height: 1.2; margin-bottom: .6rem; }
+    .flip-front p { color: var(--muted); font-size: .98rem; line-height: 1.65; max-width: 34ch; }
+    .flip-back p { font-size: 1.05rem; line-height: 1.7; max-width: 38ch; }
+
+    /* Umdrehen (nur mit JS; ohne JS stehen beide Seiten untereinander) */
+    .flip-card.is-ready .flip-inner {
+      display: grid;
+      transform-style: preserve-3d;
+      transition: transform .85s cubic-bezier(.45, .05, .2, 1);
+    }
+    .flip-card.is-ready .flip-face {
+      grid-area: 1 / 1;
+      margin: 0;
+      min-height: 12rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .flip-card.is-ready .flip-back { transform: rotateY(180deg); }
+    .flip-card.is-flipped .flip-inner { transform: rotateY(180deg); }
+
+    /* Textreveal auf der Rückseite: Wort für Wort */
+    .flip-card.is-ready .w {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(.7em);
+      filter: blur(5px);
+      transition: opacity .45s ease, transform .55s cubic-bezier(.2, .7, .2, 1), filter .45s ease;
+    }
+    .flip-card.is-flipped .w {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition-delay: calc(.4s + var(--i) * 28ms);
     }
 
-    .trust-card span {
-      display: block;
-      font-family: var(--M);
-      font-size: .68rem;
-      color: var(--green);
-      letter-spacing: .08em;
-      margin-bottom: .65rem;
+    .flip-toggle {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      border: 0;
+      background: transparent;
+      border-radius: var(--r);
+      cursor: pointer;
+    }
+    .flip-toggle:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
+
+    /* Touch: kein Mauszeiger, deshalb Hinweis direkt auf der Karte */
+    @media (hover: none) {
+      .flip-front::after {
+        content: 'Tippen zum Umdrehen';
+        position: absolute;
+        right: 1.4rem;
+        bottom: 1rem;
+        font-size: .74rem;
+        font-weight: 600;
+        color: rgba(11, 14, 26, .7);
+      }
     }
 
-    .trust-card h3 {
-      font-family: var(--H);
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0;
-      margin-bottom: .45rem;
+    /* Hinweis neben dem Mauszeiger */
+    .card-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      padding: .45rem .85rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--cream);
+      font: 600 .78rem/1 var(--B);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .15s;
+      box-shadow: 0 6px 18px rgba(11, 14, 26, .25);
+    }
+    .card-cursor::before {
+      content: '';
+      width: .45rem;
+      height: .45rem;
+      margin-right: .5rem;
+      border-radius: 50%;
+      background: #1dba6e;
+    }
+    .card-cursor.on { opacity: 1; }
+    .card-cursor.inv { background: var(--cream); color: var(--ink); }
+
+    /* Überschrift: Buchstaben wachsen, wenn die Maus nah ist */
+    .prox-word { display: inline-block; white-space: nowrap; }
+    .prox-letter {
+      display: inline-block;
+      transform-origin: 50% 65%;
+      transition: transform .14s ease-out;
+      will-change: transform;
     }
 
-    .trust-card p {
-      color: var(--muted);
-      font-size: .9rem;
-      line-height: 1.65;
+    @media (max-width: 900px) {
+      .flip-slot:nth-child(n) { margin-left: 0; margin-right: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flip-card,
+      .flip-card.is-ready .flip-inner,
+      .flip-card.is-ready .w,
+      .prox-letter { transition: none; }
+      .flip-card:hover { transform: none; }
     }
 
     /* ── ABOUT PAGE ── */

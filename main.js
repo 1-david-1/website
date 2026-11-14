@@ -1189,6 +1189,132 @@
     });
   }
 
+  /* ── Vertrauens-Überschrift: Buchstaben wachsen in der Nähe der Maus ──
+     (Näherungs-Logik aus TextCursorProximity, nur der Größen-Effekt) */
+  function initTrustProximity() {
+    const heading = document.getElementById('home-trust-heading');
+    const section = heading && heading.closest('.home-trust');
+    if (!heading || !section || heading.dataset.proxBound === 'true') return;
+    if (reducedMotion || coarsePointerQuery.matches) return;
+    heading.dataset.proxBound = 'true';
+
+    const RADIUS = 130;
+    const MAX_SCALE = 1.35;
+    const FALLOFF = 'exponential'; // 'linear' | 'exponential' | 'gaussian'
+    const calculateFalloff = distance => {
+      const n = Math.min(Math.max(1 - distance / RADIUS, 0), 1);
+      if (FALLOFF === 'exponential') return n * n;
+      if (FALLOFF === 'gaussian') return Math.exp(-Math.pow(distance / (RADIUS / 2), 2) / 2);
+      return n;
+    };
+
+    const label = heading.textContent.replace(/\s+/g, ' ').trim();
+    const letters = [];
+    (function split(node) {
+      Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === Node.ELEMENT_NODE) { if (child.tagName !== 'BR') split(child); return; }
+        if (child.nodeType !== Node.TEXT_NODE) return;
+        const frag = document.createDocumentFragment();
+        child.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+          const word = document.createElement('span');
+          word.className = 'prox-word';
+          word.setAttribute('aria-hidden', 'true');
+          Array.from(part).forEach(ch => {
+            const l = document.createElement('span');
+            l.className = 'prox-letter';
+            l.textContent = ch;
+            word.appendChild(l);
+            letters.push(l);
+          });
+          frag.appendChild(word);
+        });
+        child.replaceWith(frag);
+      });
+    })(heading);
+    const sr = document.createElement('span');
+    sr.className = 'visually-hidden';
+    sr.textContent = label;
+    heading.appendChild(sr);
+
+    let mx = -9999, my = -9999, raf = 0, active = false;
+    const tick = () => {
+      const rects = letters.map(l => l.getBoundingClientRect()); // erst alles lesen ...
+      letters.forEach((l, i) => {                                 // ... dann schreiben
+        const r = rects[i];
+        const p = calculateFalloff(Math.hypot(r.left + r.width / 2 - mx, r.top + r.height / 2 - my));
+        l.style.transform = p > 0.001 ? `scale(${1 + p * (MAX_SCALE - 1)})` : '';
+      });
+      raf = active ? requestAnimationFrame(tick) : 0;
+    };
+    section.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      mx = e.clientX; my = e.clientY;
+      if (!raf) { active = true; raf = requestAnimationFrame(tick); }
+    });
+    section.addEventListener('pointerleave', () => { mx = my = -9999; active = false; tick(); });
+  }
+
+  /* ── Vertrauens-Karten: Hover vergrößert, Klick dreht um ── */
+  function initTrustCards() {
+    const cards = document.querySelectorAll('.flip-card');
+    if (!cards.length) return;
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let tip = null;
+    if (finePointer) {
+      tip = document.createElement('div');
+      tip.className = 'card-cursor';
+      tip.setAttribute('aria-hidden', 'true');
+      tip.textContent = 'Hier klicken';
+      document.body.appendChild(tip);
+    }
+    const moveTip = e => {
+      const w = tip.offsetWidth;
+      const x = e.clientX + 18 + w > window.innerWidth ? e.clientX - 18 - w : e.clientX + 18;
+      tip.style.transform = `translate3d(${x}px, ${e.clientY + 20}px, 0)`;
+    };
+    cards.forEach(card => {
+      if (card.dataset.flipBound === 'true') return;
+      card.dataset.flipBound = 'true';
+      card.querySelectorAll('.flip-reveal').forEach(p => {
+        const words = p.textContent.trim().split(/\s+/);
+        p.textContent = '';
+        words.forEach((word, i) => {
+          const s = document.createElement('span');
+          s.className = 'w';
+          s.style.setProperty('--i', i);
+          s.textContent = word;
+          p.appendChild(s);
+          if (i < words.length - 1) p.appendChild(document.createTextNode(' '));
+        });
+      });
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'flip-toggle';
+      btn.setAttribute('aria-pressed', 'false');
+      btn.setAttribute('aria-label', card.querySelector('h3').textContent + ': Karte umdrehen');
+      card.appendChild(btn);
+      card.classList.add('is-ready');
+      const setLabel = () => {
+        if (!tip) return;
+        const flipped = card.classList.contains('is-flipped');
+        tip.textContent = flipped ? 'Zurückdrehen' : 'Hier klicken';
+        tip.classList.toggle('inv', flipped); // auf der dunklen Rückseite hell darstellen
+      };
+      btn.addEventListener('click', () => {
+        const flipped = card.classList.toggle('is-flipped');
+        btn.setAttribute('aria-pressed', String(flipped));
+        setLabel();
+      });
+      if (tip) {
+        btn.addEventListener('pointerenter', e => { setLabel(); moveTip(e); tip.classList.add('on'); });
+        btn.addEventListener('pointermove', moveTip);
+        btn.addEventListener('pointerleave', () => tip.classList.remove('on'));
+      }
+    });
+  }
+
   /* ── Boot ── */
   injectNav();
   initFullscreenMenu();
@@ -1201,6 +1327,8 @@
   initUspHandwriting();
   initBrandAnimation();
   initMagneticButtons();
+  initTrustProximity();
+  initTrustCards();
   initSpotlights();
   initPreloader();
   initGsapInteractions();
